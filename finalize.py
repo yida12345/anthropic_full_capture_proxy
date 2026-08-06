@@ -1,0 +1,602 @@
+from __future__ import annotations
+
+import argparse
+import json
+import re
+from dataclasses import dataclass, field
+from pathlib import Path
+from typing import Any, Iterator, Optional
+
+from capture_core import SCHEMA_VERSION, body_representation, utc_timestamp, write_json
+
+
+@dataclass
+class SessionLocation:
+    message_id: str
+    task_id: str
+    task_dir: str
+    harbor_agent_id: Optional[str]
+    session_id: str
+    actor_type: str
+    agent_id: Optional[str]
+    agent_type: Optional[str]
+    agent_description: Optional[str]
+    first_timestamp: Optional[str]
+    first_line: int
+    session_file: str
+    source_files: list[str] = field(default_factory=list)
+    fragment_count: int = 1
+
+    def semantic_key(self) -> tuple[str, str, str, str]:
+        return (
+            self.task_id,
+            self.session_id,
+            self.actor_type,
+            self.agent_id or "",
+        )
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "message_id": self.message_id,
+            "task_id": self.task_id,
+            "task_dir": self.task_dir,
+            "harbor_agent_id": self.harbor_agent_id,
+            "session_id": self.session_id,
+            "actor_type": self.actor_type,
+            "agent_id": self.agent_id,
+            "agent_type": self.agent_type,
+            "agent_description": self.agent_description,
+            "first_timestamp": self.first_timestamp,
+            "first_line": self.first_line,
+            "session_file": self.session_file,
+            "source_files": sorted(set(self.source_files or [self.session_file])),
+            "fragment_count": self.fragment_count,
+        }
+
+
+@dataclass(frozen=True)
+class CaptureRecord:
+    capture_dir: Path
+    request: dict[str, Any]
+    response: dict[str, Any]
+    state: dict[str, Any]
+
+    @property
+    def capture_id(self) -> str:
+        value = self.request.get("capture_id") or self.capture_dir.name
+        return str(value)
+
+    @property
+    def message_id(self) -> Optional[str]:
+        value = self.response.get("message_id")
+        return value if isinstance(value, str) and value else None
+
+
+def read_json(path: Path) -> dict[str, Any]:
+    try:
+        value = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+    return value if isinstance(value, dict) else {}
+
+
+def jsonl_records(path: Path) -> Iterator[tuple[int, dict[str, Any]]]:
+    try:
+        handle = path.open("r", encoding="utf-8")
+    except OSError:
+        return
+    with handle:
+        for line_number, line in enumerate(handle, 1):
+            if not line.strip():
+                continue
+            try:
+                value = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            if isinstance(value, dict):
+                yield line_number, value
+
+
+def is_probable_session_file(path: Path) -> bool:
+    lower_parts = {part.lower() for part in path.parts}
+    return "projects" in lower_parts or "subagents" in lower_parts
+
+
+def discover_session_files(harbor_root: Path) -> list[Path]:
+    if harbor_root.is_file():
+        return [harbor_root]
+    return sorted(
+        path
+        for path in harbor_root.rglob("*.jsonl")
+        if is_probable_session_file(path)
+    )
+
+
+def task_context(path: Path, harbor_root: Path) -> tuple[str, Path]:
+    """从 Harbor 的 tasks/<task_id>/... 路径提取任务，避免依赖代理 URL。"""
+    try:
+        relative = path.resolve().relative_to(harbor_root.resolve())
+    except ValueError:
+        relative = path
+    parts = list(relative.parts)
+    lowered = [part.lower() for part in parts]
+
+    if "tasks" in lowered:
+        index = lowered.index("tasks")
+        if index + 1 < len(parts):
+            task_dir = harbor_root.joinpath(*parts[: index + 2])
+            return parts[index + 1], task_dir
+
+    if harbor_root.name.lower() == "tasks" and parts:
+        return parts[0], harbor_root / parts[0]
+
+    if (harbor_root / "final_status.json").exists():
+        return harbor_root.name, harbor_root
+
+    return "unknown_task", harbor_root
+
+
+def find_harbor_agent_id(task_dir: Path) -> Optional[str]:
+    final_status = read_json(task_dir / "final_status.json")
+    value = final_status.get("agent_id")
+    if isinstance(value, str) and value:
+        return value
+
+    candidates: set[str] = set()
+    persisted_root = task_dir / "persisted_workspaces"
+    if persisted_root.is_dir():
+        for path in persisted_root.glob("*/agent_id.txt"):
+            try:
+                text = path.read_text(encoding="utf-8").strip()
+            except OSError:
+                continue
+            if text:
+                candidates.add(text)
+    if len(candidates) == 1:
+        return next(iter(candidates))
+    return None
+
+
+def read_subagent_metadata(path: Path) -> dict[str, Any]:
+    metadata_path = path.with_suffix(".meta.json")
+    return read_json(metadata_path) if metadata_path.exists() else {}
+
+
+def subagent_id_from_path(path: Path) -> Optional[str]:
+    if path.parent.name.lower() != "subagents":
+        return None
+    stem = path.stem
+    return stem[6:] if stem.startswith("agent-") else stem
+
+
+def build_session_index(
+    harbor_root: Path,
+) -> tuple[dict[str, SessionLocation], dict[str, list[SessionLocation]], dict[str, int]]:
+    index: dict[str, SessionLocation] = {}
+    conflicts: dict[str, list[SessionLocation]] = {}
+    stats = {"session_files": 0, "records": 0, "assistant_fragments": 0}
+    agent_id_cache: dict[Path, Optional[str]] = {}
+
+    for session_file in discover_session_files(harbor_root):
+        stats["session_files"] += 1
+        task_id, task_dir = task_context(session_file, harbor_root)
+        if task_dir not in agent_id_cache:
+            agent_id_cache[task_dir] = find_harbor_agent_id(task_dir)
+        harbor_agent_id = agent_id_cache[task_dir]
+        path_agent_id = subagent_id_from_path(session_file)
+        metadata = read_subagent_metadata(session_file)
+
+        for line_number, record in jsonl_records(session_file):
+            stats["records"] += 1
+            if record.get("type") != "assistant":
+                continue
+            message = record.get("message")
+            if not isinstance(message, dict):
+                continue
+            message_id = message.get("id")
+            if not isinstance(message_id, str) or not message_id:
+                continue
+            stats["assistant_fragments"] += 1
+
+            record_agent_id = record.get("agentId") or record.get("agent_id")
+            agent_id = (
+                record_agent_id
+                if isinstance(record_agent_id, str) and record_agent_id
+                else path_agent_id
+            )
+            is_subagent = bool(
+                path_agent_id
+                or agent_id
+                or record.get("isSidechain")
+                or record.get("is_sidechain")
+            )
+            session_id_value = record.get("sessionId") or record.get("session_id")
+            session_id = (
+                session_id_value
+                if isinstance(session_id_value, str) and session_id_value
+                else session_file.stem
+            )
+            location = SessionLocation(
+                message_id=message_id,
+                task_id=task_id,
+                task_dir=str(task_dir.resolve()),
+                harbor_agent_id=harbor_agent_id,
+                session_id=session_id,
+                actor_type="subagent" if is_subagent else "main",
+                agent_id=agent_id if is_subagent else None,
+                agent_type=metadata.get("agentType")
+                if isinstance(metadata.get("agentType"), str)
+                else None,
+                agent_description=metadata.get("description")
+                if isinstance(metadata.get("description"), str)
+                else None,
+                first_timestamp=record.get("timestamp")
+                if isinstance(record.get("timestamp"), str)
+                else None,
+                first_line=line_number,
+                session_file=str(session_file.resolve()),
+                source_files=[str(session_file.resolve())],
+            )
+
+            previous = index.get(message_id)
+            if previous is None:
+                index[message_id] = location
+                continue
+            if previous.semantic_key() == location.semantic_key():
+                # CC 可能把同一模型响应拆成多条 assistant 事件；这里只增加碎片计数，不增加轮次。
+                previous.fragment_count += 1
+                previous.source_files.append(location.session_file)
+                if location.first_timestamp and (
+                    not previous.first_timestamp
+                    or location.first_timestamp < previous.first_timestamp
+                ):
+                    previous.first_timestamp = location.first_timestamp
+                    previous.first_line = location.first_line
+                    previous.session_file = location.session_file
+                elif (
+                    location.session_file == previous.session_file
+                    and location.first_line < previous.first_line
+                ):
+                    previous.first_line = location.first_line
+                continue
+
+            candidates = conflicts.setdefault(message_id, [previous])
+            if location.semantic_key() not in {item.semantic_key() for item in candidates}:
+                candidates.append(location)
+
+    return index, conflicts, stats
+
+
+def resolve_raw_root(capture_root: Path) -> Path:
+    nested = capture_root / "raw"
+    return nested if nested.is_dir() else capture_root
+
+
+def load_captures(capture_root: Path) -> tuple[list[CaptureRecord], int]:
+    raw_root = resolve_raw_root(capture_root)
+    records: list[CaptureRecord] = []
+    completed_root = raw_root / "completed"
+    if completed_root.is_dir():
+        for capture_dir in sorted(path for path in completed_root.iterdir() if path.is_dir()):
+            records.append(
+                CaptureRecord(
+                    capture_dir=capture_dir,
+                    request=read_json(capture_dir / "request.json"),
+                    response=read_json(capture_dir / "response.json"),
+                    state=read_json(capture_dir / "state.json"),
+                )
+            )
+    inflight_root = raw_root / "inflight"
+    inflight_count = (
+        len([path for path in inflight_root.iterdir() if path.is_dir()])
+        if inflight_root.is_dir()
+        else 0
+    )
+    return records, inflight_count
+
+
+WINDOWS_RESERVED_NAMES = {
+    "CON",
+    "PRN",
+    "AUX",
+    "NUL",
+    *(f"COM{index}" for index in range(1, 10)),
+    *(f"LPT{index}" for index in range(1, 10)),
+}
+
+
+def safe_component(value: str) -> str:
+    result = re.sub(r"[^0-9A-Za-z._-]+", "_", value).strip(" ._") or "unknown"
+    if result.upper() in WINDOWS_RESERVED_NAMES:
+        result = "_" + result
+    return result[:180]
+
+
+def load_sse_events(capture_dir: Path) -> list[dict[str, Any]]:
+    path = capture_dir / "sse_events.jsonl"
+    if not path.exists():
+        return []
+    return [record for _, record in jsonl_records(path)]
+
+
+def association_dict(
+    location: Optional[SessionLocation], round_number: Optional[int] = None
+) -> Optional[dict[str, Any]]:
+    if location is None:
+        return None
+    value = location.to_dict()
+    value["round"] = round_number
+    return value
+
+
+def final_request(
+    record: CaptureRecord,
+    location: Optional[SessionLocation],
+    round_number: Optional[int] = None,
+) -> dict[str, Any]:
+    raw_body_path = record.capture_dir / "request.body"
+    raw_body = raw_body_path.read_bytes() if raw_body_path.exists() else b""
+    transport = {
+        key: value for key, value in record.request.items() if key != "body_json"
+    }
+    return {
+        "schema_version": SCHEMA_VERSION,
+        "capture_id": record.capture_id,
+        "association": association_dict(location, round_number),
+        "transport": transport,
+        "body": body_representation(raw_body),
+        "provenance": {
+            "raw_capture_dir": str(record.capture_dir.resolve()),
+            "raw_body_file": "request.body",
+        },
+    }
+
+
+def final_response(
+    record: CaptureRecord,
+    location: Optional[SessionLocation],
+    round_number: Optional[int] = None,
+) -> dict[str, Any]:
+    raw_body_path = record.capture_dir / "response.body"
+    raw_body = raw_body_path.read_bytes() if raw_body_path.exists() else b""
+    transport = {
+        key: value
+        for key, value in record.response.items()
+        if key not in {"body_json", "message"}
+    }
+    return {
+        "schema_version": SCHEMA_VERSION,
+        "capture_id": record.capture_id,
+        "association": association_dict(location, round_number),
+        "transport": transport,
+        "message": record.response.get("message"),
+        "sse_events": load_sse_events(record.capture_dir),
+        "body": body_representation(raw_body),
+        "state": record.state,
+        "provenance": {
+            "raw_capture_dir": str(record.capture_dir.resolve()),
+            "raw_body_file": "response.body",
+        },
+    }
+
+
+def write_capture_pair(
+    destination: Path,
+    record: CaptureRecord,
+    location: Optional[SessionLocation],
+    round_number: Optional[int] = None,
+) -> None:
+    destination.mkdir(parents=True, exist_ok=False)
+    write_json(
+        destination / "request.json",
+        final_request(record, location, round_number),
+    )
+    write_json(
+        destination / "response.json",
+        final_response(record, location, round_number),
+    )
+
+
+def round_sort_key(
+    item: tuple[CaptureRecord, SessionLocation],
+) -> tuple[str, str, int, str, str]:
+    capture, location = item
+    timestamp = location.first_timestamp or "9999-12-31T23:59:59Z"
+    return (
+        timestamp,
+        location.session_file,
+        location.first_line,
+        str(capture.request.get("captured_at") or ""),
+        capture.capture_id,
+    )
+
+
+def ensure_empty_output(output_root: Path) -> None:
+    if output_root.exists() and any(output_root.iterdir()):
+        raise FileExistsError(f"输出目录不是空目录: {output_root}")
+    output_root.mkdir(parents=True, exist_ok=True)
+
+
+def finalize_dataset(
+    capture_root: Path,
+    harbor_root: Path,
+    output_root: Path,
+) -> dict[str, Any]:
+    ensure_empty_output(output_root)
+    session_index, session_conflicts, session_stats = build_session_index(harbor_root)
+    captures, inflight_count = load_captures(capture_root)
+
+    captures_by_message: dict[str, list[CaptureRecord]] = {}
+    for capture in captures:
+        if capture.message_id:
+            captures_by_message.setdefault(capture.message_id, []).append(capture)
+    duplicate_capture_ids = {
+        message_id
+        for message_id, values in captures_by_message.items()
+        if len(values) > 1
+    }
+
+    matched: dict[tuple[str, str, str], list[tuple[CaptureRecord, SessionLocation]]] = {}
+    unmatched: list[CaptureRecord] = []
+    auxiliary: list[CaptureRecord] = []
+    conflict_records: list[tuple[CaptureRecord, list[SessionLocation]]] = []
+
+    for capture in captures:
+        message_id = capture.message_id
+        is_messages = bool(capture.request.get("is_messages_request"))
+        if not message_id:
+            (unmatched if is_messages else auxiliary).append(capture)
+            continue
+        if message_id in session_conflicts or message_id in duplicate_capture_ids:
+            candidates = session_conflicts.get(message_id, [])
+            conflict_records.append((capture, candidates))
+            continue
+        location = session_index.get(message_id)
+        if location is None:
+            (unmatched if is_messages else auxiliary).append(capture)
+            continue
+        actor_id = location.agent_id or "main"
+        key = (location.task_id, location.actor_type, actor_id)
+        matched.setdefault(key, []).append((capture, location))
+
+    tasks_root = output_root / "tasks"
+    task_summary: dict[str, dict[str, Any]] = {}
+    matched_count = 0
+
+    for (task_id, actor_type, actor_id), items in sorted(matched.items()):
+        items.sort(key=round_sort_key)
+        task_folder = tasks_root / safe_component(task_id)
+        actor_folder_name = (
+            "main_agent"
+            if actor_type == "main"
+            else "subagent_" + safe_component(actor_id)
+        )
+        actor_folder = task_folder / actor_folder_name
+        first_location = items[0][1]
+        actor_folder.mkdir(parents=True, exist_ok=True)
+        write_json(
+            actor_folder / "agent.json",
+            {
+                "schema_version": SCHEMA_VERSION,
+                "task_id": task_id,
+                "actor_type": actor_type,
+                "agent_id": None if actor_type == "main" else actor_id,
+                "harbor_agent_id": first_location.harbor_agent_id,
+                "session_id": first_location.session_id,
+                "agent_type": first_location.agent_type,
+                "agent_description": first_location.agent_description,
+                "round_count": len(items),
+                "session_files": sorted(
+                    {
+                        source
+                        for _, location in items
+                        for source in location.source_files
+                    }
+                ),
+            },
+        )
+        for round_number, (capture, location) in enumerate(items, 1):
+            round_folder = actor_folder / f"round_{round_number:06d}"
+            write_capture_pair(round_folder, capture, location, round_number)
+            matched_count += 1
+
+        task_info = task_summary.setdefault(
+            task_id,
+            {
+                "task_id": task_id,
+                "task_dir": first_location.task_dir,
+                "harbor_agent_id": first_location.harbor_agent_id,
+                "agents": [],
+                "round_count": 0,
+            },
+        )
+        task_info["agents"].append(
+            {
+                "actor_type": actor_type,
+                "agent_id": None if actor_type == "main" else actor_id,
+                "folder": actor_folder_name,
+                "round_count": len(items),
+            }
+        )
+        task_info["round_count"] += len(items)
+
+    for task_id, task_info in task_summary.items():
+        write_json(tasks_root / safe_component(task_id) / "task.json", task_info)
+
+    for capture in unmatched:
+        write_capture_pair(output_root / "unmatched" / capture.capture_id, capture, None)
+    for capture in auxiliary:
+        write_capture_pair(output_root / "auxiliary" / capture.capture_id, capture, None)
+    for capture, candidates in conflict_records:
+        destination = output_root / "conflicts" / capture.capture_id
+        write_capture_pair(destination, capture, None)
+        write_json(
+            destination / "conflict.json",
+            {
+                "message_id": capture.message_id,
+                "session_candidates": [candidate.to_dict() for candidate in candidates],
+                "duplicate_capture_count": len(
+                    captures_by_message.get(capture.message_id or "", [])
+                ),
+            },
+        )
+
+    report = {
+        "schema_version": SCHEMA_VERSION,
+        "generated_at": utc_timestamp(),
+        "capture_root": str(capture_root.resolve()),
+        "harbor_root": str(harbor_root.resolve()),
+        "output_root": str(output_root.resolve()),
+        "captures": len(captures),
+        "matched": matched_count,
+        "unmatched": len(unmatched),
+        "auxiliary": len(auxiliary),
+        "conflicts": len(conflict_records),
+        "inflight": inflight_count,
+        "tasks": len(task_summary),
+        "session_message_ids": len(session_index),
+        "session_conflict_ids": len(session_conflicts),
+        "duplicate_capture_message_ids": len(duplicate_capture_ids),
+        "session_scan": session_stats,
+    }
+    write_json(output_root / "finalization_report.json", report)
+    return report
+
+
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="把代理原始数据与 Harbor/Claude Code session 关联并生成最终数据集"
+    )
+    parser.add_argument(
+        "--capture-dir",
+        type=Path,
+        required=True,
+        help="proxy.py 的 --log-dir，或其 raw 子目录",
+    )
+    parser.add_argument(
+        "--harbor-run-dir",
+        type=Path,
+        required=True,
+        help="Harbor run 目录、tasks 目录或单个 task 目录",
+    )
+    parser.add_argument(
+        "--output-dir",
+        type=Path,
+        required=True,
+        help="最终数据集目录；必须不存在或为空",
+    )
+    return parser.parse_args(argv)
+
+
+def main() -> None:
+    args = parse_args()
+    report = finalize_dataset(
+        capture_root=args.capture_dir,
+        harbor_root=args.harbor_run_dir,
+        output_root=args.output_dir,
+    )
+    print(json.dumps(report, ensure_ascii=False, indent=2))
+
+
+if __name__ == "__main__":
+    main()
