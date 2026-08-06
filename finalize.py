@@ -24,7 +24,8 @@ from typing import Any, Callable, Iterator, Optional
 from capture_core import SCHEMA_VERSION, body_representation, utc_timestamp, write_json
 
 
-# 转换后的 request.json 顶层部分。列表既是输出结构说明，也方便下游程序检查字段。
+# request.json 完整支持的顶层字段只有下面 6 个。此列表同时是实际输出白名单：
+# 删除某项，该字段就不输出；调整顺序会改变输出顺序；添加未知项或重复项会报错。
 FINAL_REQUEST_PARTS = [
     "schema_version",  # 数据格式版本
     "capture_id",  # 代理为本次 HTTP 请求生成的唯一采集 ID
@@ -34,7 +35,9 @@ FINAL_REQUEST_PARTS = [
     "provenance",  # 本记录对应的原始 capture 目录和 body 文件
 ]
 
-# 转换后的 response.json 顶层部分。SSE 原文在 body，解析事件和聚合 Message 分开保存。
+# response.json 完整支持的顶层字段只有下面 9 个。此列表同时是实际输出白名单：
+# 删除某项，该字段就不输出；调整顺序会改变输出顺序；添加未知项或重复项会报错。
+# SSE 原文在 body，解析事件和聚合 Message 分开保存。
 FINAL_RESPONSE_PARTS = [
     "schema_version",  # 数据格式版本
     "capture_id",  # 与 request.json 相同的唯一采集 ID
@@ -46,6 +49,58 @@ FINAL_RESPONSE_PARTS = [
     "state",  # complete/partial、传输错误、客户端断开等采集状态
     "provenance",  # 本记录对应的原始 capture 目录和 body 文件
 ]
+
+# 用不可变集合保存代码当前能够构造的完整顶层字段。它们不是输出配置；修改实际
+# 输出请编辑上面的 FINAL_REQUEST_PARTS / FINAL_RESPONSE_PARTS。
+SUPPORTED_FINAL_REQUEST_PARTS = frozenset(
+    {
+        "schema_version", 
+        "capture_id", 
+        "association", 
+        "transport", 
+        "body", 
+        "provenance"
+    }
+)
+SUPPORTED_FINAL_RESPONSE_PARTS = frozenset(
+    {
+        "schema_version",
+        "capture_id",
+        "association",
+        "transport",
+        "message",
+        "sse_events",
+        "body",
+        "state",
+        "provenance",
+    }
+)
+
+
+def validate_output_parts(
+    parts: list[str], supported_parts: frozenset[str], output_name: str
+) -> None:
+    """验证输出白名单，未知字段或重复字段都会立即报错。"""
+
+    unknown_parts = [part for part in parts if part not in supported_parts]
+    duplicate_parts = sorted({part for part in parts if parts.count(part) > 1})
+    if unknown_parts or duplicate_parts:
+        problems: list[str] = []
+        if unknown_parts:
+            problems.append(f"不支持的顶层字段: {unknown_parts}")
+        if duplicate_parts:
+            problems.append(f"重复的顶层字段: {duplicate_parts}")
+        raise ValueError(f"{output_name} 输出字段配置错误；" + "；".join(problems))
+
+
+def select_output_parts(
+    complete_value: dict[str, Any], parts: list[str], output_name: str
+) -> dict[str, Any]:
+    """按照白名单及其顺序，从完整记录中选择真正写入 JSON 的顶层字段。"""
+
+    supported_parts = frozenset(complete_value)
+    validate_output_parts(parts, supported_parts, output_name)
+    return {part: complete_value[part] for part in parts}
 
 
 @dataclass
@@ -442,13 +497,14 @@ def final_request(
     record: CaptureRecord,
     location: Optional[SessionLocation],
     round_number: Optional[int] = None,
+    output_parts: Optional[list[str]] = None,
 ) -> dict[str, Any]:
     raw_body_path = record.capture_dir / "request.body"
     raw_body = raw_body_path.read_bytes() if raw_body_path.exists() else b""
     transport = {
         key: value for key, value in record.request.items() if key != "body_json"
     }
-    return {
+    complete_value = {
         "schema_version": SCHEMA_VERSION,
         "capture_id": record.capture_id,
         "association": association_dict(location, round_number),
@@ -459,12 +515,15 @@ def final_request(
             "raw_body_file": "request.body",
         },
     }
+    selected_parts = FINAL_REQUEST_PARTS if output_parts is None else output_parts
+    return select_output_parts(complete_value, selected_parts, "request.json")
 
 
 def final_response(
     record: CaptureRecord,
     location: Optional[SessionLocation],
     round_number: Optional[int] = None,
+    output_parts: Optional[list[str]] = None,
 ) -> dict[str, Any]:
     raw_body_path = record.capture_dir / "response.body"
     raw_body = raw_body_path.read_bytes() if raw_body_path.exists() else b""
@@ -473,7 +532,7 @@ def final_response(
         for key, value in record.response.items()
         if key not in {"body_json", "message"}
     }
-    return {
+    complete_value = {
         "schema_version": SCHEMA_VERSION,
         "capture_id": record.capture_id,
         "association": association_dict(location, round_number),
@@ -487,6 +546,8 @@ def final_response(
             "raw_body_file": "response.body",
         },
     }
+    selected_parts = FINAL_RESPONSE_PARTS if output_parts is None else output_parts
+    return select_output_parts(complete_value, selected_parts, "response.json")
 
 
 def write_capture_pair(
@@ -494,15 +555,17 @@ def write_capture_pair(
     record: CaptureRecord,
     location: Optional[SessionLocation],
     round_number: Optional[int] = None,
+    request_output_parts: Optional[list[str]] = None,
+    response_output_parts: Optional[list[str]] = None,
 ) -> None:
     destination.mkdir(parents=True, exist_ok=False)
     write_json(
         destination / "request.json",
-        final_request(record, location, round_number),
+        final_request(record, location, round_number, request_output_parts),
     )
     write_json(
         destination / "response.json",
-        final_response(record, location, round_number),
+        final_response(record, location, round_number, response_output_parts),
     )
 
 
@@ -534,6 +597,8 @@ def finalize_dataset(
     session_files: Optional[list[Path]] = None,
     task_context_resolver: Optional[Callable[[Path, Path], tuple[str, Path]]] = None,
     location_filter: Optional[Callable[[SessionLocation], bool]] = None,
+    request_output_parts: Optional[list[str]] = None,
+    response_output_parts: Optional[list[str]] = None,
 ) -> dict[str, Any]:
     """执行关联、分类、round 排序和最终文件写出。
 
@@ -549,8 +614,29 @@ def finalize_dataset(
     False 的轨迹不会写入 tasks、unmatched 或 conflicts。这一点适合实现“只保留
     reward=1 的成功轨迹”，且不会把已知的失败轨迹伪装成 unmatched。
 
+    ``request_output_parts`` 和 ``response_output_parts`` 是实际输出白名单。未传时
+    使用文件开头的 FINAL_REQUEST_PARTS / FINAL_RESPONSE_PARTS；未知或重复字段
+    会在创建输出目录之前报错。
+
     输出目录必须为空，这是为了防止不同 Harbor run 的旧 round 被静默混入。
     """
+    selected_request_parts = list(
+        FINAL_REQUEST_PARTS if request_output_parts is None else request_output_parts
+    )
+    selected_response_parts = list(
+        FINAL_RESPONSE_PARTS if response_output_parts is None else response_output_parts
+    )
+    # 提前验证，避免配置写错后仍创建一个空的 output 目录或写出部分数据。
+    validate_output_parts(
+        selected_request_parts,
+        SUPPORTED_FINAL_REQUEST_PARTS,
+        "request.json",
+    )
+    validate_output_parts(
+        selected_response_parts,
+        SUPPORTED_FINAL_RESPONSE_PARTS,
+        "response.json",
+    )
     ensure_empty_output(output_root)
     session_index, session_conflicts, session_stats = build_session_index(
         harbor_root,
@@ -656,7 +742,14 @@ def finalize_dataset(
         )
         for round_number, (capture, location) in enumerate(items, 1):
             round_folder = actor_folder / f"round_{round_number:06d}"
-            write_capture_pair(round_folder, capture, location, round_number)
+            write_capture_pair(
+                round_folder,
+                capture,
+                location,
+                round_number,
+                selected_request_parts,
+                selected_response_parts,
+            )
             matched_count += 1
 
         task_info = task_summary.setdefault(
@@ -683,12 +776,30 @@ def finalize_dataset(
         write_json(tasks_root / safe_component(task_id) / "task.json", task_info)
 
     for capture in unmatched:
-        write_capture_pair(output_root / "unmatched" / capture.capture_id, capture, None)
+        write_capture_pair(
+            output_root / "unmatched" / capture.capture_id,
+            capture,
+            None,
+            request_output_parts=selected_request_parts,
+            response_output_parts=selected_response_parts,
+        )
     for capture in auxiliary:
-        write_capture_pair(output_root / "auxiliary" / capture.capture_id, capture, None)
+        write_capture_pair(
+            output_root / "auxiliary" / capture.capture_id,
+            capture,
+            None,
+            request_output_parts=selected_request_parts,
+            response_output_parts=selected_response_parts,
+        )
     for capture, candidates in conflict_records:
         destination = output_root / "conflicts" / capture.capture_id
-        write_capture_pair(destination, capture, None)
+        write_capture_pair(
+            destination,
+            capture,
+            None,
+            request_output_parts=selected_request_parts,
+            response_output_parts=selected_response_parts,
+        )
         write_json(
             destination / "conflict.json",
             {

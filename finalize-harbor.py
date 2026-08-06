@@ -19,7 +19,8 @@ from capture_core import write_json
 from finalize import SessionLocation, finalize_dataset
 
 
-# 转换后的 request.json 顶层部分。列表用于明确输出契约，方便下游程序检查字段。
+# request.json 完整支持的顶层字段只有下面 6 个。此列表同时是实际输出白名单：
+# 删除某项，该字段就不输出；调整顺序会改变输出顺序；添加未知项或重复项会报错。
 FINAL_REQUEST_PARTS = [
     "schema_version",  # 数据格式版本
     "capture_id",  # 代理为本次 HTTP 请求生成的唯一采集 ID
@@ -29,7 +30,9 @@ FINAL_REQUEST_PARTS = [
     "provenance",  # 本记录对应的原始 capture 目录和 body 文件
 ]
 
-# 转换后的 response.json 顶层部分。SSE 原文、解析事件和聚合 Message 分开保存。
+# response.json 完整支持的顶层字段只有下面 9 个。此列表同时是实际输出白名单：
+# 删除某项，该字段就不输出；调整顺序会改变输出顺序；添加未知项或重复项会报错。
+# SSE 原文、解析事件和聚合 Message 分开保存。
 FINAL_RESPONSE_PARTS = [
     "schema_version",  # 数据格式版本
     "capture_id",  # 与 request.json 相同的唯一采集 ID
@@ -177,6 +180,9 @@ def main() -> None:
         session_files=session_files,
         task_context_resolver=harbor_job_task_context,
         location_filter=location_filter,
+        # 显式传入本文件的白名单，使 finalize-harbor.py 可以独立控制输出字段。
+        request_output_parts=FINAL_REQUEST_PARTS,
+        response_output_parts=FINAL_RESPONSE_PARTS,
     )
     report.update(
         {

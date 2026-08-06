@@ -13,7 +13,7 @@ from capture_core import (
     header_records,
     write_json,
 )
-from finalize import finalize_dataset
+from finalize import CaptureRecord, final_request, final_response, finalize_dataset
 from proxy import parse_args
 
 
@@ -372,6 +372,38 @@ class FinalizerTests(unittest.TestCase):
             self.assertTrue(
                 (output_root / "tasks/task_a/subagent_sub1/round_000001/request.json").exists()
             )
+
+
+class OutputPartsTests(unittest.TestCase):
+    def setUp(self):
+        # body 文件不存在时 final_request/final_response 会使用空 bytes，足以验证
+        # 顶层字段白名单而不创建测试目录。
+        self.record = CaptureRecord(
+            capture_dir=Path("__nonexistent_capture_for_output_parts_test__"),
+            request={"capture_id": "cap_parts"},
+            response={},
+            state={},
+        )
+
+    def test_removing_parts_really_removes_top_level_output(self):
+        request = final_request(
+            self.record,
+            None,
+            output_parts=["capture_id", "body"],
+        )
+        response = final_response(
+            self.record,
+            None,
+            output_parts=["message", "state"],
+        )
+        self.assertEqual(list(request), ["capture_id", "body"])
+        self.assertEqual(list(response), ["message", "state"])
+
+    def test_unknown_or_duplicate_parts_raise(self):
+        with self.assertRaisesRegex(ValueError, "不支持的顶层字段"):
+            final_request(self.record, None, output_parts=["capture_id", "unknown"])
+        with self.assertRaisesRegex(ValueError, "重复的顶层字段"):
+            final_response(self.record, None, output_parts=["state", "state"])
 
 
 class ProxyIntegrationTests(unittest.IsolatedAsyncioTestCase):
