@@ -25,9 +25,9 @@ FINAL_REQUEST_PARTS = [
     "schema_version",  # 数据格式版本
     "capture_id",  # 代理为本次 HTTP 请求生成的唯一采集 ID
     "association",  # task、session、主/子 agent、round 的关联信息
-    "transport",  # 请求方法、URL、header、时间、客户端等 HTTP 元数据
+    # "transport",  # 请求方法、URL、header、时间、客户端等 HTTP 元数据
     "body",  # 请求原始 body 的 JSON/UTF-8/Base64 表示、大小和 SHA-256
-    "provenance",  # 本记录对应的原始 capture 目录和 body 文件
+    # "provenance",  # 本记录对应的原始 capture 目录和 body 文件
 ]
 
 # response.json 完整支持的顶层字段只有下面 9 个。此列表同时是实际输出白名单：
@@ -39,10 +39,10 @@ FINAL_RESPONSE_PARTS = [
     "association",  # task、session、主/子 agent、round 的关联信息
     "transport",  # 状态码、header、耗时、流式状态、聚合状态等响应元数据
     "message",  # 非流式 JSON 或由 Anthropic SSE 聚合得到的完整 Message
-    "sse_events",  # 按接收顺序解析出的 SSE 事件；非流式响应为空列表
-    "body",  # 原始响应 body（流式时是原始 SSE）的可逆表示和 SHA-256
-    "state",  # complete/partial、传输错误、客户端断开等采集状态
-    "provenance",  # 本记录对应的原始 capture 目录和 body 文件
+    # "sse_events",  # 按接收顺序解析出的 SSE 事件；非流式响应为空列表
+    # "body",  # 原始响应 body（流式时是原始 SSE）的可逆表示和 SHA-256
+    # "state",  # complete/partial、传输错误、客户端断开等采集状态
+    # "provenance",  # 本记录对应的原始 capture 目录和 body 文件
 ]
 
 

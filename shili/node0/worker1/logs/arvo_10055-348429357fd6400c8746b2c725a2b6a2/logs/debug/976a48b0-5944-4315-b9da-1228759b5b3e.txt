@@ -1,0 +1,900 @@
+2026-08-05T05:02:17.391Z [DEBUG] MDM settings load completed in 1ms
+2026-08-05T05:02:17.394Z [DEBUG] Broken symlink or missing file encountered for settings.json at path: /root/.claude/settings.json
+2026-08-05T05:02:17.394Z [DEBUG] Broken symlink or missing file encountered for settings.json at path: /etc/claude-code/managed-settings.json
+2026-08-05T05:02:17.395Z [DEBUG] Broken symlink or missing file encountered for settings.json at path: /workspace/.claude/settings.json
+2026-08-05T05:02:17.395Z [DEBUG] Broken symlink or missing file encountered for settings.json at path: /workspace/.claude/settings.local.json
+2026-08-05T05:02:17.395Z [DEBUG] CA certs: Config fallback - globalEnv keys: , settingsEnv keys: none
+2026-08-05T05:02:17.404Z [DEBUG] Preserving file permissions: 100644
+2026-08-05T05:02:17.404Z [DEBUG] Writing to temp file: /root/.claude.json.tmp.8.1785906137404
+2026-08-05T05:02:17.404Z [DEBUG] Temp file written successfully, size: 84 bytes
+2026-08-05T05:02:17.405Z [DEBUG] Applied original permissions to temp file
+2026-08-05T05:02:17.405Z [DEBUG] Renaming /root/.claude.json.tmp.8.1785906137404 to /root/.claude.json
+2026-08-05T05:02:17.405Z [DEBUG] File /root/.claude.json written atomically
+2026-08-05T05:02:17.405Z [DEBUG] [init] configureGlobalMTLS starting
+2026-08-05T05:02:17.405Z [DEBUG] [init] configureGlobalMTLS complete
+2026-08-05T05:02:17.405Z [DEBUG] [init] configureGlobalAgents starting
+2026-08-05T05:02:17.406Z [DEBUG] CA certs: useSystemCA=false, extraCertsPath=undefined
+2026-08-05T05:02:17.406Z [DEBUG] [init] configureGlobalAgents complete
+2026-08-05T05:02:17.413Z [DEBUG] Error log sink initialized
+2026-08-05T05:02:17.423Z [DEBUG] Preserving file permissions: 100644
+2026-08-05T05:02:17.424Z [DEBUG] Writing to temp file: /root/.claude.json.tmp.8.1785906137423
+2026-08-05T05:02:17.424Z [DEBUG] Temp file written successfully, size: 120 bytes
+2026-08-05T05:02:17.424Z [DEBUG] Applied original permissions to temp file
+2026-08-05T05:02:17.424Z [DEBUG] Renaming /root/.claude.json.tmp.8.1785906137423 to /root/.claude.json
+2026-08-05T05:02:17.424Z [DEBUG] File /root/.claude.json written atomically
+2026-08-05T05:02:17.452Z [DEBUG] Preserving file permissions: 100644
+2026-08-05T05:02:17.452Z [DEBUG] Writing to temp file: /root/.claude.json.tmp.8.1785906137451
+2026-08-05T05:02:17.453Z [DEBUG] Temp file written successfully, size: 159 bytes
+2026-08-05T05:02:17.453Z [DEBUG] Applied original permissions to temp file
+2026-08-05T05:02:17.453Z [DEBUG] Renaming /root/.claude.json.tmp.8.1785906137451 to /root/.claude.json
+2026-08-05T05:02:17.453Z [DEBUG] File /root/.claude.json written atomically
+2026-08-05T05:02:17.470Z [DEBUG] Preserving file permissions: 100644
+2026-08-05T05:02:17.471Z [DEBUG] Writing to temp file: /root/.claude.json.tmp.8.1785906137470
+2026-08-05T05:02:17.472Z [DEBUG] Temp file written successfully, size: 185 bytes
+2026-08-05T05:02:17.472Z [DEBUG] Applied original permissions to temp file
+2026-08-05T05:02:17.473Z [DEBUG] Renaming /root/.claude.json.tmp.8.1785906137470 to /root/.claude.json
+2026-08-05T05:02:17.473Z [DEBUG] File /root/.claude.json written atomically
+2026-08-05T05:02:17.490Z [DEBUG] Preserving file permissions: 100644
+2026-08-05T05:02:17.490Z [DEBUG] Writing to temp file: /root/.claude.json.tmp.8.1785906137490
+2026-08-05T05:02:17.491Z [DEBUG] Temp file written successfully, size: 265 bytes
+2026-08-05T05:02:17.491Z [DEBUG] Applied original permissions to temp file
+2026-08-05T05:02:17.491Z [DEBUG] Renaming /root/.claude.json.tmp.8.1785906137490 to /root/.claude.json
+2026-08-05T05:02:17.491Z [DEBUG] File /root/.claude.json written atomically
+2026-08-05T05:02:17.494Z [DEBUG] [claudeai-mcp] No access token
+2026-08-05T05:02:17.494Z [DEBUG] [STARTUP] Loading MCP configs...
+2026-08-05T05:02:17.504Z [DEBUG] Git remote URL: null
+2026-08-05T05:02:17.504Z [DEBUG] No git remote URL found
+2026-08-05T05:02:17.520Z [DEBUG] installed_plugins.json doesn't exist, returning empty V2 object
+2026-08-05T05:02:17.521Z [DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+2026-08-05T05:02:17.525Z [DEBUG] [ToolSearch:optimistic] disabled: ANTHROPIC_BASE_URL=http://10.17.5.141:30200/ is not a first-party Anthropic host. Set ENABLE_TOOL_SEARCH=true (or auto / auto:N) if your proxy forwards tool_reference blocks.
+2026-08-05T05:02:17.526Z [DEBUG] [STARTUP] Running setup()...
+2026-08-05T05:02:17.530Z [DEBUG] Loading skills from: managed=/etc/claude-code/.claude/skills, user=/root/.claude/skills, project=[]
+2026-08-05T05:02:17.532Z [DEBUG] Error log sink initialized
+2026-08-05T05:02:17.548Z [DEBUG] getPluginSkills: Processing 0 enabled plugins
+2026-08-05T05:02:17.555Z [DEBUG] Total plugin skills loaded: 0
+2026-08-05T05:02:17.555Z [DEBUG] Total plugin commands loaded: 0
+2026-08-05T05:02:17.556Z [DEBUG] Registered 0 hooks from 0 plugins
+2026-08-05T05:02:17.572Z [DEBUG] [STARTUP] setup() completed in 46ms
+2026-08-05T05:02:17.572Z [DEBUG] Cleared CA certificates cache
+2026-08-05T05:02:17.573Z [DEBUG] Cleared mTLS configuration cache
+2026-08-05T05:02:17.573Z [DEBUG] Cleared proxy agent cache
+2026-08-05T05:02:17.573Z [DEBUG] CA certs: useSystemCA=false, extraCertsPath=undefined
+2026-08-05T05:02:17.574Z [DEBUG] [STARTUP] Loading commands and agents...
+2026-08-05T05:02:17.578Z [DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=/usr/local/lib/node_modules/@anthropic-ai/claude-code/vendor/ripgrep/x64-linux/rg)
+2026-08-05T05:02:17.588Z [DEBUG] rg error (signal=null, code=2, stderr: rg: /root/.claude/agents: IO error for operation on /root/.claude/agents: No such file or directory (os error 2)
+), 0 results
+2026-08-05T05:02:17.589Z [DEBUG] rg error (signal=null, code=2, stderr: rg: /etc/claude-code/.claude/agents: IO error for operation on /etc/claude-code/.claude/agents: No such file or directory (os error 2)
+), 0 results
+2026-08-05T05:02:17.589Z [DEBUG] Total plugin agents loaded: 0
+2026-08-05T05:02:17.589Z [DEBUG] rg error (signal=null, code=2, stderr: rg: /root/.claude/commands: IO error for operation on /root/.claude/commands: No such file or directory (os error 2)
+), 0 results
+2026-08-05T05:02:17.590Z [DEBUG] rg error (signal=null, code=2, stderr: rg: /etc/claude-code/.claude/commands: IO error for operation on /etc/claude-code/.claude/commands: No such file or directory (os error 2)
+), 0 results
+2026-08-05T05:02:17.590Z [DEBUG] Loaded 0 unique skills (0 unconditional, 0 conditional, managed: 0, user: 0, project: 0, additional: 0, legacy commands: 0)
+2026-08-05T05:02:17.590Z [DEBUG] getSkills returning: 0 skill dir commands, 0 plugin skills, 8 bundled skills, 0 builtin plugin skills
+2026-08-05T05:02:17.592Z [DEBUG] [STARTUP] Commands and agents loaded in 18ms
+2026-08-05T05:02:17.592Z [DEBUG] [LSP MANAGER] initializeLspServerManager() called
+2026-08-05T05:02:17.593Z [DEBUG] [LSP MANAGER] Created manager instance, state=pending
+2026-08-05T05:02:17.593Z [DEBUG] [LSP MANAGER] Starting async initialization (generation 1)
+2026-08-05T05:02:17.593Z [DEBUG] Starting background startup prefetches
+2026-08-05T05:02:17.594Z [DEBUG] [Bootstrap] Fetching
+2026-08-05T05:02:17.620Z [DEBUG] [STARTUP] MCP configs resolved in 27ms (awaited at +126ms)
+2026-08-05T05:02:17.622Z [DEBUG] Total LSP servers loaded: 0
+2026-08-05T05:02:17.622Z [DEBUG] Initialized versioned plugins system with 0 plugins
+2026-08-05T05:02:17.622Z [DEBUG] [LSP SERVER MANAGER] getAllLspServers returned 0 server(s)
+2026-08-05T05:02:17.622Z [DEBUG] LSP manager initialized with 0 servers
+2026-08-05T05:02:17.622Z [DEBUG] Cleared CA certificates cache
+2026-08-05T05:02:17.622Z [DEBUG] Cleared mTLS configuration cache
+2026-08-05T05:02:17.622Z [DEBUG] Cleared proxy agent cache
+2026-08-05T05:02:17.622Z [DEBUG] CA certs: useSystemCA=false, extraCertsPath=undefined
+2026-08-05T05:02:17.623Z [DEBUG] LSP server manager initialized successfully
+2026-08-05T05:02:17.623Z [DEBUG] LSP notification handlers registered successfully for all 0 server(s)
+2026-08-05T05:02:17.631Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:02:17.633Z [DEBUG] [Perfetto] initializePerfettoTracing called, env value: undefined
+2026-08-05T05:02:17.633Z [DEBUG] [3P telemetry] isTelemetryEnabled=false (CLAUDE_CODE_ENABLE_TELEMETRY=undefined)
+2026-08-05T05:02:17.651Z [DEBUG] Plugin autoupdate: skipped (auto-updater disabled)
+2026-08-05T05:02:17.771Z [DEBUG] [ScheduledTasks] scheduler start() — enabled=false, hasTasks=false
+2026-08-05T05:02:17.771Z [DEBUG] installPluginsForHeadless: starting
+2026-08-05T05:02:17.772Z [DEBUG] installPluginsForHeadless: no marketplaces declared
+2026-08-05T05:02:17.809Z [DEBUG] "rg error (signal=null, code=2, stderr: rg: /root/.claude/output-styles: IO error for operation on /root/.claude/output-styles: No such file or directory (os error 2)\n), 0 results"
+2026-08-05T05:02:17.809Z [DEBUG] "rg error (signal=null, code=2, stderr: rg: /etc/claude-code/.claude/output-styles: IO error for operation on /etc/claude-code/.claude/output-styles: No such file or directory (os error 2)\n), 0 results"
+2026-08-05T05:02:17.810Z [DEBUG] Total plugin output styles loaded: 0
+2026-08-05T05:02:17.816Z [DEBUG] "rg error (signal=null, code=2, stderr: rg: /root/.claude/plugins/cache: IO error for operation on /root/.claude/plugins/cache: No such file or directory (os error 2)\n), 0 results"
+2026-08-05T05:02:17.829Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-08-05T05:02:17.830Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-08-05T05:02:17.830Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-08-05T05:02:17.830Z [DEBUG] Sending 4 skills via attachment (initial, 4 total sent)
+2026-08-05T05:02:17.832Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-08-05T05:02:17.833Z [WARN] [3P telemetry] Event dropped (no event logger initialized): user_prompt
+2026-08-05T05:02:17.838Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:02:17.842Z [DEBUG] autocompact: tokens=699 threshold=167000 effectiveWindow=180000
+2026-08-05T05:02:17.844Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-08-05T05:02:17.856Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.89.4fa; cc_entrypoint=sdk-cli; cch=00000;
+2026-08-05T05:02:17.857Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:02:17.858Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:02:17.860Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-08-05T05:02:17.860Z [DEBUG] [API:auth] OAuth token check starting
+2026-08-05T05:02:17.861Z [DEBUG] [API:auth] OAuth token check complete
+2026-08-05T05:02:17.862Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:02:17.867Z [DEBUG] [API REQUEST] /v1/messages source=sdk
+2026-08-05T05:02:21.970Z [DEBUG] Stream started - received first chunk
+2026-08-05T05:02:22.508Z [DEBUG] [auto-mode] verifyAutoModeGateAccess: enabledState=disabled disabledBySettings=false model=DeepSeek-V4-Flash-0731 modelSupported=false disableFastModeBreakerFires=false carouselAvailable=false canEnterAuto=false
+2026-08-05T05:02:22.509Z [WARN] auto mode disabled: tengu_auto_mode_config.enabled === "disabled" (circuit breaker)
+2026-08-05T05:02:22.509Z [DEBUG] [auto-mode] kickOutOfAutoIfNeeded applying: ctx.mode=bypassPermissions ctx.prePlanMode=undefined reason=circuit-breaker
+2026-08-05T05:02:22.509Z [DEBUG] [auto-mode] verifyAutoModeGateAccess setAvailable: true -> false
+2026-08-05T05:02:22.740Z [DEBUG] [Bootstrap] Fetch failed: ENOTFOUND
+2026-08-05T05:02:22.740Z [ERROR] "Error: [url=https://api.anthropic.com/api/claude_cli/bootstrap] Error: getaddrinfo ENOTFOUND api.anthropic.com\n    at ev.from (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:108:7836)\n    at XV.<anonymous> (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:116:12658)\n    at XV.emit (node:events:531:35)\n    at Lq1.<computed> (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:115:1120)\n    at ClientRequest.emit (node:events:519:28)\n    at emitErrorEvent (node:_http_client:108:11)\n    at TLSSocket.socketErrorListener (node:_http_client:575:5)\n    at TLSSocket.emit (node:events:519:28)\n    at emitErrorNT (node:internal/streams/destroy:170:8)\n    at emitErrorCloseNT (node:internal/streams/destroy:129:3)\n    at rm6.request (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:118:2450)\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n    at async file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:8286:19165\n    at async ki (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:3706)\n    at async lrY (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:8286:18926)\n    at async G65 (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:8286:19560)"
+2026-08-05T05:02:22.793Z [ERROR] Failed to fetch MCP registry: timeout of 5000ms exceeded
+2026-08-05T05:02:26.055Z [DEBUG] Creating shell snapshot for bash (/bin/bash)
+2026-08-05T05:02:26.056Z [DEBUG] Looking for shell config file: /root/.bashrc
+2026-08-05T05:02:26.056Z [DEBUG] Snapshots directory: /root/.claude/shell-snapshots
+2026-08-05T05:02:26.057Z [DEBUG] Creating snapshot at: /root/.claude/shell-snapshots/snapshot-bash-1785906146056-mf0fow.sh
+2026-08-05T05:02:26.057Z [DEBUG] Execution timeout: 10000ms
+2026-08-05T05:02:26.081Z [DEBUG] Shell snapshot created successfully (3092 bytes)
+2026-08-05T05:02:26.084Z [DEBUG] No session environment scripts found
+2026-08-05T05:02:26.084Z [DEBUG] Spawning shell without login (-l flag skipped)
+2026-08-05T05:02:26.109Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-08-05T05:02:26.110Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-08-05T05:02:26.110Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-08-05T05:02:26.110Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-08-05T05:02:26.110Z [DEBUG] autocompact: tokens=23386 threshold=167000 effectiveWindow=180000
+2026-08-05T05:02:26.111Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-08-05T05:02:26.112Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.89.4fa; cc_entrypoint=sdk-cli; cch=00000;
+2026-08-05T05:02:26.113Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:02:26.113Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:02:26.113Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-08-05T05:02:26.113Z [DEBUG] [API:auth] OAuth token check starting
+2026-08-05T05:02:26.114Z [DEBUG] [API:auth] OAuth token check complete
+2026-08-05T05:02:26.115Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:02:26.117Z [DEBUG] [API REQUEST] /v1/messages source=sdk
+2026-08-05T05:02:26.580Z [DEBUG] Stream started - received first chunk
+2026-08-05T05:02:27.528Z [ERROR] Failed to fetch org fast mode status, defaulting to disabled (network_error): Error: getaddrinfo ENOTFOUND api.anthropic.com
+2026-08-05T05:02:28.356Z [DEBUG] Spawning shell without login (-l flag skipped)
+2026-08-05T05:02:28.381Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-08-05T05:02:28.381Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-08-05T05:02:28.381Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-08-05T05:02:28.381Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-08-05T05:02:28.382Z [DEBUG] autocompact: tokens=23756 threshold=167000 effectiveWindow=180000
+2026-08-05T05:02:28.382Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-08-05T05:02:28.383Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.89.4fa; cc_entrypoint=sdk-cli; cch=00000;
+2026-08-05T05:02:28.383Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:02:28.383Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:02:28.384Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-08-05T05:02:28.384Z [DEBUG] [API:auth] OAuth token check starting
+2026-08-05T05:02:28.384Z [DEBUG] [API:auth] OAuth token check complete
+2026-08-05T05:02:28.385Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:02:28.387Z [DEBUG] [API REQUEST] /v1/messages source=sdk
+2026-08-05T05:02:28.687Z [DEBUG] Stream started - received first chunk
+2026-08-05T05:02:30.567Z [DEBUG] Spawning shell without login (-l flag skipped)
+2026-08-05T05:02:32.830Z [ERROR] "Error: Error: 1P event logging: 50 events failed to export (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\n    at pN1.queueFailedEvents (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:2546)\n    at async pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1465)"
+2026-08-05T05:02:32.833Z [ERROR] "Error: Error: {\"stack\":\"Error: Failed to export 50 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\\n    at pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1640)\",\"message\":\"Failed to export 50 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\",\"name\":\"Error\"}\n    at MQ1.error (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:2087:4337)\n    at dk1.error (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:10507)\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:36853\n    at Gq_ (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:37399)\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:472:24943"
+2026-08-05T05:02:32.833Z [ERROR] [3P telemetry] OTEL diag error: {"stack":"Error: Failed to export 50 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\n    at pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1640)","message":"Failed to export 50 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)","name":"Error"}
+2026-08-05T05:02:41.856Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-08-05T05:02:41.863Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-08-05T05:02:41.863Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-08-05T05:02:41.863Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-08-05T05:02:41.865Z [DEBUG] autocompact: tokens=24091 threshold=167000 effectiveWindow=180000
+2026-08-05T05:02:41.865Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-08-05T05:02:41.866Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.89.4fa; cc_entrypoint=sdk-cli; cch=00000;
+2026-08-05T05:02:41.866Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:02:41.867Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:02:41.867Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-08-05T05:02:41.867Z [DEBUG] [API:auth] OAuth token check starting
+2026-08-05T05:02:41.868Z [DEBUG] [API:auth] OAuth token check complete
+2026-08-05T05:02:41.868Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:02:41.870Z [DEBUG] [API REQUEST] /v1/messages source=sdk
+2026-08-05T05:02:42.410Z [DEBUG] Stream started - received first chunk
+2026-08-05T05:02:43.715Z [DEBUG] Spawning shell without login (-l flag skipped)
+2026-08-05T05:02:43.752Z [DEBUG] Invalidating session environment cache
+2026-08-05T05:02:43.754Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-08-05T05:02:43.754Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-08-05T05:02:43.754Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-08-05T05:02:43.754Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-08-05T05:02:43.755Z [DEBUG] autocompact: tokens=25602 threshold=167000 effectiveWindow=180000
+2026-08-05T05:02:43.756Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-08-05T05:02:43.757Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.89.4fa; cc_entrypoint=sdk-cli; cch=00000;
+2026-08-05T05:02:43.757Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:02:43.757Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:02:43.757Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-08-05T05:02:43.758Z [DEBUG] [API:auth] OAuth token check starting
+2026-08-05T05:02:43.759Z [DEBUG] [API:auth] OAuth token check complete
+2026-08-05T05:02:43.759Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:02:43.761Z [DEBUG] [API REQUEST] /v1/messages source=sdk
+2026-08-05T05:02:44.148Z [DEBUG] Stream started - received first chunk
+2026-08-05T05:02:46.276Z [DEBUG] No session environment scripts found
+2026-08-05T05:02:46.279Z [DEBUG] Spawning shell without login (-l flag skipped)
+2026-08-05T05:02:46.297Z [DEBUG] Bash tool error (25ms): Shell command failed
+2026-08-05T05:02:46.299Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-08-05T05:02:46.299Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-08-05T05:02:46.299Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-08-05T05:02:46.299Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-08-05T05:02:46.300Z [DEBUG] autocompact: tokens=26283 threshold=167000 effectiveWindow=180000
+2026-08-05T05:02:46.300Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-08-05T05:02:46.301Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.89.4fa; cc_entrypoint=sdk-cli; cch=00000;
+2026-08-05T05:02:46.301Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:02:46.301Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:02:46.301Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-08-05T05:02:46.301Z [DEBUG] [API:auth] OAuth token check starting
+2026-08-05T05:02:46.303Z [DEBUG] [API:auth] OAuth token check complete
+2026-08-05T05:02:46.303Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:02:46.305Z [DEBUG] [API REQUEST] /v1/messages source=sdk
+2026-08-05T05:02:46.618Z [DEBUG] Stream started - received first chunk
+2026-08-05T05:02:48.190Z [DEBUG] Spawning shell without login (-l flag skipped)
+2026-08-05T05:02:48.656Z [ERROR] "Error: Error: 1P event logging: 48 events failed to export (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\n    at pN1.queueFailedEvents (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:2546)\n    at async pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1465)"
+2026-08-05T05:02:48.657Z [ERROR] "Error: Error: {\"stack\":\"Error: Failed to export 48 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\\n    at pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1640)\",\"message\":\"Failed to export 48 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\",\"name\":\"Error\"}\n    at MQ1.error (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:2087:4337)\n    at dk1.error (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:10507)\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:36853\n    at Gq_ (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:37399)\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:472:24943"
+2026-08-05T05:02:48.657Z [ERROR] [3P telemetry] OTEL diag error: {"stack":"Error: Failed to export 48 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\n    at pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1640)","message":"Failed to export 48 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)","name":"Error"}
+2026-08-05T05:02:54.898Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-08-05T05:02:54.899Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-08-05T05:02:54.900Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-08-05T05:02:54.900Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-08-05T05:02:54.900Z [DEBUG] autocompact: tokens=26468 threshold=167000 effectiveWindow=180000
+2026-08-05T05:02:54.901Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-08-05T05:02:54.901Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.89.4fa; cc_entrypoint=sdk-cli; cch=00000;
+2026-08-05T05:02:54.903Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:02:54.903Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:02:54.903Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-08-05T05:02:54.903Z [DEBUG] [API:auth] OAuth token check starting
+2026-08-05T05:02:54.904Z [DEBUG] [API:auth] OAuth token check complete
+2026-08-05T05:02:54.904Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:02:54.906Z [DEBUG] [API REQUEST] /v1/messages source=sdk
+2026-08-05T05:02:55.211Z [DEBUG] Stream started - received first chunk
+2026-08-05T05:02:56.810Z [DEBUG] Spawning shell without login (-l flag skipped)
+2026-08-05T05:03:01.691Z [DEBUG] Invalidating session environment cache
+2026-08-05T05:03:01.696Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-08-05T05:03:01.696Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-08-05T05:03:01.696Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-08-05T05:03:01.696Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-08-05T05:03:01.697Z [DEBUG] autocompact: tokens=26632 threshold=167000 effectiveWindow=180000
+2026-08-05T05:03:01.697Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-08-05T05:03:01.698Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.89.4fa; cc_entrypoint=sdk-cli; cch=00000;
+2026-08-05T05:03:01.698Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:03:01.698Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:03:01.698Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-08-05T05:03:01.699Z [DEBUG] [API:auth] OAuth token check starting
+2026-08-05T05:03:01.700Z [DEBUG] [API:auth] OAuth token check complete
+2026-08-05T05:03:01.700Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:03:01.702Z [DEBUG] [API REQUEST] /v1/messages source=sdk
+2026-08-05T05:03:02.124Z [DEBUG] Stream started - received first chunk
+2026-08-05T05:03:03.338Z [DEBUG] No session environment scripts found
+2026-08-05T05:03:03.338Z [DEBUG] Spawning shell without login (-l flag skipped)
+2026-08-05T05:03:03.356Z [DEBUG] Bash tool error (20ms): Shell command failed
+2026-08-05T05:03:03.358Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-08-05T05:03:03.358Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-08-05T05:03:03.358Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-08-05T05:03:03.358Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-08-05T05:03:03.359Z [DEBUG] autocompact: tokens=26855 threshold=167000 effectiveWindow=180000
+2026-08-05T05:03:03.359Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-08-05T05:03:03.360Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.89.4fa; cc_entrypoint=sdk-cli; cch=00000;
+2026-08-05T05:03:03.361Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:03:03.361Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:03:03.361Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-08-05T05:03:03.361Z [DEBUG] [API:auth] OAuth token check starting
+2026-08-05T05:03:03.362Z [DEBUG] [API:auth] OAuth token check complete
+2026-08-05T05:03:03.363Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:03:03.365Z [DEBUG] [API REQUEST] /v1/messages source=sdk
+2026-08-05T05:03:03.672Z [ERROR] "Error: Error: 1P event logging: 71 events failed to export (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\n    at pN1.queueFailedEvents (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:2546)\n    at async pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1465)"
+2026-08-05T05:03:03.672Z [ERROR] "Error: Error: {\"stack\":\"Error: Failed to export 71 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\\n    at pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1640)\",\"message\":\"Failed to export 71 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\",\"name\":\"Error\"}\n    at MQ1.error (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:2087:4337)\n    at dk1.error (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:10507)\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:36853\n    at Gq_ (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:37399)\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:472:24943"
+2026-08-05T05:03:03.672Z [ERROR] [3P telemetry] OTEL diag error: {"stack":"Error: Failed to export 71 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\n    at pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1640)","message":"Failed to export 71 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)","name":"Error"}
+2026-08-05T05:03:03.864Z [DEBUG] Stream started - received first chunk
+2026-08-05T05:03:05.511Z [DEBUG] Spawning shell without login (-l flag skipped)
+2026-08-05T05:03:05.547Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-08-05T05:03:05.547Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-08-05T05:03:05.547Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-08-05T05:03:05.547Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-08-05T05:03:05.548Z [DEBUG] autocompact: tokens=27020 threshold=167000 effectiveWindow=180000
+2026-08-05T05:03:05.548Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-08-05T05:03:05.549Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.89.4fa; cc_entrypoint=sdk-cli; cch=00000;
+2026-08-05T05:03:05.549Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:03:05.549Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:03:05.549Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-08-05T05:03:05.549Z [DEBUG] [API:auth] OAuth token check starting
+2026-08-05T05:03:05.550Z [DEBUG] [API:auth] OAuth token check complete
+2026-08-05T05:03:05.551Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:03:05.552Z [DEBUG] [API REQUEST] /v1/messages source=sdk
+2026-08-05T05:03:05.875Z [DEBUG] Stream started - received first chunk
+2026-08-05T05:03:07.674Z [DEBUG] Spawning shell without login (-l flag skipped)
+2026-08-05T05:03:07.693Z [DEBUG] Invalidating session environment cache
+2026-08-05T05:03:07.696Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-08-05T05:03:07.696Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-08-05T05:03:07.697Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-08-05T05:03:07.697Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-08-05T05:03:07.698Z [DEBUG] autocompact: tokens=28247 threshold=167000 effectiveWindow=180000
+2026-08-05T05:03:07.698Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-08-05T05:03:07.699Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.89.4fa; cc_entrypoint=sdk-cli; cch=00000;
+2026-08-05T05:03:07.699Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:03:07.699Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:03:07.699Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-08-05T05:03:07.699Z [DEBUG] [API:auth] OAuth token check starting
+2026-08-05T05:03:07.701Z [DEBUG] [API:auth] OAuth token check complete
+2026-08-05T05:03:07.701Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:03:07.703Z [DEBUG] [API REQUEST] /v1/messages source=sdk
+2026-08-05T05:03:08.010Z [DEBUG] Stream started - received first chunk
+2026-08-05T05:03:11.261Z [DEBUG] No session environment scripts found
+2026-08-05T05:03:11.261Z [DEBUG] Spawning shell without login (-l flag skipped)
+2026-08-05T05:03:11.280Z [DEBUG] Invalidating session environment cache
+2026-08-05T05:03:11.283Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-08-05T05:03:11.283Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-08-05T05:03:11.283Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-08-05T05:03:11.283Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-08-05T05:03:11.284Z [DEBUG] autocompact: tokens=28956 threshold=167000 effectiveWindow=180000
+2026-08-05T05:03:11.284Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-08-05T05:03:11.285Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.89.4fa; cc_entrypoint=sdk-cli; cch=00000;
+2026-08-05T05:03:11.286Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:03:11.286Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:03:11.286Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-08-05T05:03:11.286Z [DEBUG] [API:auth] OAuth token check starting
+2026-08-05T05:03:11.287Z [DEBUG] [API:auth] OAuth token check complete
+2026-08-05T05:03:11.287Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:03:11.289Z [DEBUG] [API REQUEST] /v1/messages source=sdk
+2026-08-05T05:03:11.619Z [DEBUG] Stream started - received first chunk
+2026-08-05T05:03:13.070Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-08-05T05:03:13.071Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-08-05T05:03:13.071Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-08-05T05:03:13.071Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-08-05T05:03:13.071Z [DEBUG] autocompact: tokens=30714 threshold=167000 effectiveWindow=180000
+2026-08-05T05:03:13.072Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-08-05T05:03:13.073Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.89.4fa; cc_entrypoint=sdk-cli; cch=00000;
+2026-08-05T05:03:13.073Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:03:13.073Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:03:13.073Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-08-05T05:03:13.073Z [DEBUG] [API:auth] OAuth token check starting
+2026-08-05T05:03:13.075Z [DEBUG] [API:auth] OAuth token check complete
+2026-08-05T05:03:13.075Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:03:13.077Z [DEBUG] [API REQUEST] /v1/messages source=sdk
+2026-08-05T05:03:13.389Z [DEBUG] Stream started - received first chunk
+2026-08-05T05:03:18.688Z [ERROR] "Error: Error: 1P event logging: 135 events failed to export (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\n    at pN1.queueFailedEvents (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:2546)\n    at async pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1465)"
+2026-08-05T05:03:18.688Z [ERROR] "Error: Error: {\"stack\":\"Error: Failed to export 135 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\\n    at pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1640)\",\"message\":\"Failed to export 135 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\",\"name\":\"Error\"}\n    at MQ1.error (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:2087:4337)\n    at dk1.error (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:10507)\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:36853\n    at Gq_ (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:37399)\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:472:24943"
+2026-08-05T05:03:18.688Z [ERROR] [3P telemetry] OTEL diag error: {"stack":"Error: Failed to export 135 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\n    at pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1640)","message":"Failed to export 135 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)","name":"Error"}
+2026-08-05T05:03:20.523Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-08-05T05:03:20.523Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-08-05T05:03:20.523Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-08-05T05:03:20.523Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-08-05T05:03:20.524Z [DEBUG] autocompact: tokens=32835 threshold=167000 effectiveWindow=180000
+2026-08-05T05:03:20.524Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-08-05T05:03:20.525Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.89.4fa; cc_entrypoint=sdk-cli; cch=00000;
+2026-08-05T05:03:20.525Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:03:20.525Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:03:20.525Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-08-05T05:03:20.525Z [DEBUG] [API:auth] OAuth token check starting
+2026-08-05T05:03:20.526Z [DEBUG] [API:auth] OAuth token check complete
+2026-08-05T05:03:20.526Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:03:20.528Z [DEBUG] [API REQUEST] /v1/messages source=sdk
+2026-08-05T05:03:20.859Z [DEBUG] Stream started - received first chunk
+2026-08-05T05:03:26.753Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-08-05T05:03:26.753Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-08-05T05:03:26.753Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-08-05T05:03:26.753Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-08-05T05:03:26.754Z [DEBUG] autocompact: tokens=34667 threshold=167000 effectiveWindow=180000
+2026-08-05T05:03:26.754Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-08-05T05:03:26.755Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.89.4fa; cc_entrypoint=sdk-cli; cch=00000;
+2026-08-05T05:03:26.755Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:03:26.755Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:03:26.755Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-08-05T05:03:26.755Z [DEBUG] [API:auth] OAuth token check starting
+2026-08-05T05:03:26.756Z [DEBUG] [API:auth] OAuth token check complete
+2026-08-05T05:03:26.756Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:03:26.758Z [DEBUG] [API REQUEST] /v1/messages source=sdk
+2026-08-05T05:03:27.085Z [DEBUG] Stream started - received first chunk
+2026-08-05T05:03:30.520Z [ERROR] "Error: Error: {\"stack\":\"Error: Dropped 42 events: max attempts (8) reached\\n    at pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1305)\\n    at pN1.export (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:811)\\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:111099\\n    at sxq.with (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:16539)\\n    at $V1.with (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:17115)\\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:111039\\n    at new Promise (<anonymous>)\\n    at Object.iw_ [as _export] (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:111005)\\n    at K (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:472:24841)\\n    at mrq._export (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:472:25144)\",\"message\":\"Dropped 42 events: max attempts (8) reached\",\"name\":\"Error\"}\n    at MQ1.error (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:2087:4337)\n    at dk1.error (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:10507)\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:36853\n    at Gq_ (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:37399)\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:472:24943"
+2026-08-05T05:03:30.520Z [ERROR] [3P telemetry] OTEL diag error: {"stack":"Error: Dropped 42 events: max attempts (8) reached\n    at pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1305)\n    at pN1.export (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:811)\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:111099\n    at sxq.with (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:16539)\n    at $V1.with (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:17115)\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:111039\n    at new Promise (<anonymous>)\n    at Object.iw_ [as _export] (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:111005)\n    at K (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:472:24841)\n    at mrq._export (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:472:25144)","message":"Dropped 42 events: max attempts (8) reached","name":"Error"}
+2026-08-05T05:03:59.111Z [DEBUG] No session environment scripts found
+2026-08-05T05:03:59.113Z [DEBUG] Spawning shell without login (-l flag skipped)
+2026-08-05T05:03:59.140Z [DEBUG] Invalidating session environment cache
+2026-08-05T05:03:59.142Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-08-05T05:03:59.143Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-08-05T05:03:59.143Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-08-05T05:03:59.143Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-08-05T05:03:59.144Z [DEBUG] autocompact: tokens=37187 threshold=167000 effectiveWindow=180000
+2026-08-05T05:03:59.144Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-08-05T05:03:59.145Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.89.4fa; cc_entrypoint=sdk-cli; cch=00000;
+2026-08-05T05:03:59.145Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:03:59.146Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:03:59.146Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-08-05T05:03:59.146Z [DEBUG] [API:auth] OAuth token check starting
+2026-08-05T05:03:59.147Z [DEBUG] [API:auth] OAuth token check complete
+2026-08-05T05:03:59.148Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:03:59.150Z [DEBUG] [API REQUEST] /v1/messages source=sdk
+2026-08-05T05:03:59.500Z [DEBUG] Stream started - received first chunk
+2026-08-05T05:04:14.110Z [ERROR] "Error: Error: 1P event logging: 22 events failed to export (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\n    at pN1.queueFailedEvents (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:2546)\n    at async pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1465)"
+2026-08-05T05:04:14.110Z [ERROR] "Error: Error: {\"stack\":\"Error: Failed to export 22 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\\n    at pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1640)\",\"message\":\"Failed to export 22 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\",\"name\":\"Error\"}\n    at MQ1.error (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:2087:4337)\n    at dk1.error (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:10507)\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:36853\n    at Gq_ (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:37399)\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:472:24943"
+2026-08-05T05:04:14.110Z [ERROR] [3P telemetry] OTEL diag error: {"stack":"Error: Failed to export 22 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\n    at pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1640)","message":"Failed to export 22 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)","name":"Error"}
+2026-08-05T05:04:20.742Z [DEBUG] No session environment scripts found
+2026-08-05T05:04:20.742Z [DEBUG] Spawning shell without login (-l flag skipped)
+2026-08-05T05:04:20.771Z [DEBUG] Invalidating session environment cache
+2026-08-05T05:04:20.773Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-08-05T05:04:20.774Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-08-05T05:04:20.774Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-08-05T05:04:20.774Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-08-05T05:04:20.774Z [DEBUG] autocompact: tokens=39419 threshold=167000 effectiveWindow=180000
+2026-08-05T05:04:20.775Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-08-05T05:04:20.775Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.89.4fa; cc_entrypoint=sdk-cli; cch=00000;
+2026-08-05T05:04:20.776Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:04:20.776Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:04:20.776Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-08-05T05:04:20.776Z [DEBUG] [API:auth] OAuth token check starting
+2026-08-05T05:04:20.777Z [DEBUG] [API:auth] OAuth token check complete
+2026-08-05T05:04:20.777Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:04:20.779Z [DEBUG] [API REQUEST] /v1/messages source=sdk
+2026-08-05T05:04:21.187Z [DEBUG] Stream started - received first chunk
+2026-08-05T05:04:35.733Z [ERROR] "Error: Error: 1P event logging: 23 events failed to export (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\n    at pN1.queueFailedEvents (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:2546)\n    at async pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1465)"
+2026-08-05T05:04:35.734Z [ERROR] "Error: Error: {\"stack\":\"Error: Failed to export 23 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\\n    at pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1640)\",\"message\":\"Failed to export 23 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\",\"name\":\"Error\"}\n    at MQ1.error (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:2087:4337)\n    at dk1.error (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:10507)\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:36853\n    at Gq_ (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:37399)\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:472:24943"
+2026-08-05T05:04:35.734Z [ERROR] [3P telemetry] OTEL diag error: {"stack":"Error: Failed to export 23 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\n    at pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1640)","message":"Failed to export 23 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)","name":"Error"}
+2026-08-05T05:04:36.240Z [DEBUG] No session environment scripts found
+2026-08-05T05:04:36.240Z [DEBUG] Spawning shell without login (-l flag skipped)
+2026-08-05T05:04:36.258Z [DEBUG] Invalidating session environment cache
+2026-08-05T05:04:36.260Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-08-05T05:04:36.260Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-08-05T05:04:36.260Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-08-05T05:04:36.260Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-08-05T05:04:36.261Z [DEBUG] autocompact: tokens=40849 threshold=167000 effectiveWindow=180000
+2026-08-05T05:04:36.261Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-08-05T05:04:36.262Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.89.4fa; cc_entrypoint=sdk-cli; cch=00000;
+2026-08-05T05:04:36.262Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:04:36.263Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:04:36.263Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-08-05T05:04:36.263Z [DEBUG] [API:auth] OAuth token check starting
+2026-08-05T05:04:36.263Z [DEBUG] [API:auth] OAuth token check complete
+2026-08-05T05:04:36.264Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:04:36.266Z [DEBUG] [API REQUEST] /v1/messages source=sdk
+2026-08-05T05:04:36.651Z [DEBUG] Stream started - received first chunk
+2026-08-05T05:04:39.396Z [DEBUG] No session environment scripts found
+2026-08-05T05:04:39.397Z [DEBUG] Spawning shell without login (-l flag skipped)
+2026-08-05T05:04:39.417Z [DEBUG] Invalidating session environment cache
+2026-08-05T05:04:39.419Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-08-05T05:04:39.419Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-08-05T05:04:39.419Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-08-05T05:04:39.419Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-08-05T05:04:39.419Z [DEBUG] autocompact: tokens=41557 threshold=167000 effectiveWindow=180000
+2026-08-05T05:04:39.420Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-08-05T05:04:39.421Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.89.4fa; cc_entrypoint=sdk-cli; cch=00000;
+2026-08-05T05:04:39.421Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:04:39.421Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:04:39.422Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-08-05T05:04:39.422Z [DEBUG] [API:auth] OAuth token check starting
+2026-08-05T05:04:39.422Z [DEBUG] [API:auth] OAuth token check complete
+2026-08-05T05:04:39.422Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:04:39.425Z [DEBUG] [API REQUEST] /v1/messages source=sdk
+2026-08-05T05:04:39.772Z [DEBUG] Stream started - received first chunk
+2026-08-05T05:04:51.241Z [ERROR] "Error: Error: 1P event logging: 50 events failed to export (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\n    at pN1.queueFailedEvents (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:2546)\n    at async pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1465)"
+2026-08-05T05:04:51.242Z [ERROR] "Error: Error: {\"stack\":\"Error: Failed to export 50 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\\n    at pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1640)\",\"message\":\"Failed to export 50 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\",\"name\":\"Error\"}\n    at MQ1.error (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:2087:4337)\n    at dk1.error (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:10507)\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:36853\n    at Gq_ (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:37399)\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:472:24943"
+2026-08-05T05:04:51.242Z [ERROR] [3P telemetry] OTEL diag error: {"stack":"Error: Failed to export 50 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\n    at pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1640)","message":"Failed to export 50 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)","name":"Error"}
+2026-08-05T05:04:51.865Z [DEBUG] No session environment scripts found
+2026-08-05T05:04:51.866Z [DEBUG] Spawning shell without login (-l flag skipped)
+2026-08-05T05:04:51.887Z [DEBUG] Invalidating session environment cache
+2026-08-05T05:04:51.889Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-08-05T05:04:51.889Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-08-05T05:04:51.889Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-08-05T05:04:51.889Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-08-05T05:04:51.889Z [DEBUG] autocompact: tokens=42787 threshold=167000 effectiveWindow=180000
+2026-08-05T05:04:51.890Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-08-05T05:04:51.891Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.89.4fa; cc_entrypoint=sdk-cli; cch=00000;
+2026-08-05T05:04:51.891Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:04:51.891Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:04:51.891Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-08-05T05:04:51.891Z [DEBUG] [API:auth] OAuth token check starting
+2026-08-05T05:04:51.892Z [DEBUG] [API:auth] OAuth token check complete
+2026-08-05T05:04:51.892Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:04:51.894Z [DEBUG] [API REQUEST] /v1/messages source=sdk
+2026-08-05T05:04:52.332Z [DEBUG] Stream started - received first chunk
+2026-08-05T05:04:59.665Z [DEBUG] No session environment scripts found
+2026-08-05T05:04:59.666Z [DEBUG] Spawning shell without login (-l flag skipped)
+2026-08-05T05:04:59.685Z [DEBUG] Invalidating session environment cache
+2026-08-05T05:04:59.688Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-08-05T05:04:59.688Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-08-05T05:04:59.688Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-08-05T05:04:59.688Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-08-05T05:04:59.689Z [DEBUG] autocompact: tokens=43830 threshold=167000 effectiveWindow=180000
+2026-08-05T05:04:59.689Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-08-05T05:04:59.690Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.89.4fa; cc_entrypoint=sdk-cli; cch=00000;
+2026-08-05T05:04:59.690Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:04:59.690Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:04:59.690Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-08-05T05:04:59.690Z [DEBUG] [API:auth] OAuth token check starting
+2026-08-05T05:04:59.691Z [DEBUG] [API:auth] OAuth token check complete
+2026-08-05T05:04:59.691Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:04:59.693Z [DEBUG] [API REQUEST] /v1/messages source=sdk
+2026-08-05T05:05:00.249Z [DEBUG] Stream started - received first chunk
+2026-08-05T05:05:06.868Z [ERROR] "Error: Error: 1P event logging: 49 events failed to export (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\n    at pN1.queueFailedEvents (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:2546)\n    at async pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1465)"
+2026-08-05T05:05:06.869Z [ERROR] "Error: Error: {\"stack\":\"Error: Failed to export 49 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\\n    at pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1640)\",\"message\":\"Failed to export 49 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\",\"name\":\"Error\"}\n    at MQ1.error (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:2087:4337)\n    at dk1.error (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:10507)\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:36853\n    at Gq_ (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:37399)\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:472:24943"
+2026-08-05T05:05:06.869Z [ERROR] [3P telemetry] OTEL diag error: {"stack":"Error: Failed to export 49 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\n    at pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1640)","message":"Failed to export 49 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)","name":"Error"}
+2026-08-05T05:05:18.636Z [DEBUG] No session environment scripts found
+2026-08-05T05:05:18.636Z [DEBUG] Spawning shell without login (-l flag skipped)
+2026-08-05T05:05:18.662Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-08-05T05:05:18.662Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-08-05T05:05:18.662Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-08-05T05:05:18.662Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-08-05T05:05:18.663Z [DEBUG] autocompact: tokens=44992 threshold=167000 effectiveWindow=180000
+2026-08-05T05:05:18.663Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-08-05T05:05:18.665Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.89.4fa; cc_entrypoint=sdk-cli; cch=00000;
+2026-08-05T05:05:18.665Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:05:18.666Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:05:18.666Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-08-05T05:05:18.666Z [DEBUG] [API:auth] OAuth token check starting
+2026-08-05T05:05:18.667Z [DEBUG] [API:auth] OAuth token check complete
+2026-08-05T05:05:18.667Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:05:18.670Z [DEBUG] [API REQUEST] /v1/messages source=sdk
+2026-08-05T05:05:19.150Z [DEBUG] Stream started - received first chunk
+2026-08-05T05:05:28.330Z [DEBUG] Spawning shell without login (-l flag skipped)
+2026-08-05T05:05:28.353Z [DEBUG] Invalidating session environment cache
+2026-08-05T05:05:28.356Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-08-05T05:05:28.356Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-08-05T05:05:28.356Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-08-05T05:05:28.356Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-08-05T05:05:28.356Z [DEBUG] autocompact: tokens=45859 threshold=167000 effectiveWindow=180000
+2026-08-05T05:05:28.357Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-08-05T05:05:28.358Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.89.4fa; cc_entrypoint=sdk-cli; cch=00000;
+2026-08-05T05:05:28.359Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:05:28.359Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:05:28.359Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-08-05T05:05:28.359Z [DEBUG] [API:auth] OAuth token check starting
+2026-08-05T05:05:28.360Z [DEBUG] [API:auth] OAuth token check complete
+2026-08-05T05:05:28.360Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:05:28.363Z [DEBUG] [API REQUEST] /v1/messages source=sdk
+2026-08-05T05:05:28.768Z [DEBUG] Stream started - received first chunk
+2026-08-05T05:05:31.649Z [DEBUG] No session environment scripts found
+2026-08-05T05:05:31.649Z [DEBUG] Spawning shell without login (-l flag skipped)
+2026-08-05T05:05:31.722Z [DEBUG] Invalidating session environment cache
+2026-08-05T05:05:31.724Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-08-05T05:05:31.724Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-08-05T05:05:31.724Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-08-05T05:05:31.724Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-08-05T05:05:31.725Z [DEBUG] autocompact: tokens=46254 threshold=167000 effectiveWindow=180000
+2026-08-05T05:05:31.725Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-08-05T05:05:31.726Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.89.4fa; cc_entrypoint=sdk-cli; cch=00000;
+2026-08-05T05:05:31.726Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:05:31.727Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:05:31.727Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-08-05T05:05:31.727Z [DEBUG] [API:auth] OAuth token check starting
+2026-08-05T05:05:31.728Z [DEBUG] [API:auth] OAuth token check complete
+2026-08-05T05:05:31.728Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:05:31.730Z [DEBUG] [API REQUEST] /v1/messages source=sdk
+2026-08-05T05:05:32.079Z [DEBUG] Stream started - received first chunk
+2026-08-05T05:05:33.631Z [ERROR] "Error: Error: 1P event logging: 41 events failed to export (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\n    at pN1.queueFailedEvents (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:2546)\n    at async pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1465)"
+2026-08-05T05:05:33.632Z [ERROR] "Error: Error: {\"stack\":\"Error: Failed to export 41 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\\n    at pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1640)\",\"message\":\"Failed to export 41 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\",\"name\":\"Error\"}\n    at MQ1.error (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:2087:4337)\n    at dk1.error (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:10507)\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:36853\n    at Gq_ (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:37399)\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:472:24943"
+2026-08-05T05:05:33.633Z [ERROR] [3P telemetry] OTEL diag error: {"stack":"Error: Failed to export 41 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\n    at pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1640)","message":"Failed to export 41 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)","name":"Error"}
+2026-08-05T05:05:36.087Z [DEBUG] No session environment scripts found
+2026-08-05T05:05:36.088Z [DEBUG] Spawning shell without login (-l flag skipped)
+2026-08-05T05:05:36.137Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-08-05T05:05:36.137Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-08-05T05:05:36.137Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-08-05T05:05:36.137Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-08-05T05:05:36.138Z [DEBUG] autocompact: tokens=47015 threshold=167000 effectiveWindow=180000
+2026-08-05T05:05:36.138Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-08-05T05:05:36.140Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.89.4fa; cc_entrypoint=sdk-cli; cch=00000;
+2026-08-05T05:05:36.141Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:05:36.141Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:05:36.141Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-08-05T05:05:36.141Z [DEBUG] [API:auth] OAuth token check starting
+2026-08-05T05:05:36.142Z [DEBUG] [API:auth] OAuth token check complete
+2026-08-05T05:05:36.142Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:05:36.145Z [DEBUG] [API REQUEST] /v1/messages source=sdk
+2026-08-05T05:05:36.574Z [DEBUG] Stream started - received first chunk
+2026-08-05T05:05:40.251Z [DEBUG] Spawning shell without login (-l flag skipped)
+2026-08-05T05:05:48.643Z [ERROR] "Error: Error: 1P event logging: 49 events failed to export (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\n    at pN1.queueFailedEvents (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:2546)\n    at async pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1465)"
+2026-08-05T05:05:48.643Z [ERROR] "Error: Error: {\"stack\":\"Error: Failed to export 49 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\\n    at pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1640)\",\"message\":\"Failed to export 49 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\",\"name\":\"Error\"}\n    at MQ1.error (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:2087:4337)\n    at dk1.error (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:10507)\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:36853\n    at Gq_ (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:37399)\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:472:24943"
+2026-08-05T05:05:48.643Z [ERROR] [3P telemetry] OTEL diag error: {"stack":"Error: Failed to export 49 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\n    at pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1640)","message":"Failed to export 49 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)","name":"Error"}
+2026-08-05T05:05:50.886Z [DEBUG] Invalidating session environment cache
+2026-08-05T05:05:50.889Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-08-05T05:05:50.890Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-08-05T05:05:50.890Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-08-05T05:05:50.890Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-08-05T05:05:50.890Z [DEBUG] autocompact: tokens=47578 threshold=167000 effectiveWindow=180000
+2026-08-05T05:05:50.891Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-08-05T05:05:50.892Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.89.4fa; cc_entrypoint=sdk-cli; cch=00000;
+2026-08-05T05:05:50.892Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:05:50.892Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:05:50.892Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-08-05T05:05:50.892Z [DEBUG] [API:auth] OAuth token check starting
+2026-08-05T05:05:50.893Z [DEBUG] [API:auth] OAuth token check complete
+2026-08-05T05:05:50.893Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:05:50.896Z [DEBUG] [API REQUEST] /v1/messages source=sdk
+2026-08-05T05:05:51.257Z [DEBUG] Stream started - received first chunk
+2026-08-05T05:05:52.994Z [DEBUG] No session environment scripts found
+2026-08-05T05:05:52.994Z [DEBUG] Spawning shell without login (-l flag skipped)
+2026-08-05T05:05:58.222Z [DEBUG] Invalidating session environment cache
+2026-08-05T05:05:58.225Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-08-05T05:05:58.225Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-08-05T05:05:58.225Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-08-05T05:05:58.225Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-08-05T05:05:58.226Z [DEBUG] autocompact: tokens=47806 threshold=167000 effectiveWindow=180000
+2026-08-05T05:05:58.226Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-08-05T05:05:58.228Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.89.4fa; cc_entrypoint=sdk-cli; cch=00000;
+2026-08-05T05:05:58.228Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:05:58.228Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:05:58.228Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-08-05T05:05:58.228Z [DEBUG] [API:auth] OAuth token check starting
+2026-08-05T05:05:58.229Z [DEBUG] [API:auth] OAuth token check complete
+2026-08-05T05:05:58.229Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:05:58.232Z [DEBUG] [API REQUEST] /v1/messages source=sdk
+2026-08-05T05:05:59.182Z [DEBUG] Stream started - received first chunk
+2026-08-05T05:06:01.188Z [DEBUG] No session environment scripts found
+2026-08-05T05:06:01.189Z [DEBUG] Spawning shell without login (-l flag skipped)
+2026-08-05T05:06:01.213Z [DEBUG] Invalidating session environment cache
+2026-08-05T05:06:01.215Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-08-05T05:06:01.215Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-08-05T05:06:01.215Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-08-05T05:06:01.215Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-08-05T05:06:01.216Z [DEBUG] autocompact: tokens=48029 threshold=167000 effectiveWindow=180000
+2026-08-05T05:06:01.216Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-08-05T05:06:01.218Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.89.4fa; cc_entrypoint=sdk-cli; cch=00000;
+2026-08-05T05:06:01.219Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:06:01.219Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:06:01.219Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-08-05T05:06:01.219Z [DEBUG] [API:auth] OAuth token check starting
+2026-08-05T05:06:01.220Z [DEBUG] [API:auth] OAuth token check complete
+2026-08-05T05:06:01.220Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:06:01.222Z [DEBUG] [API REQUEST] /v1/messages source=sdk
+2026-08-05T05:06:01.783Z [DEBUG] Stream started - received first chunk
+2026-08-05T05:06:04.754Z [DEBUG] No session environment scripts found
+2026-08-05T05:06:04.754Z [DEBUG] Spawning shell without login (-l flag skipped)
+2026-08-05T05:06:04.794Z [DEBUG] Invalidating session environment cache
+2026-08-05T05:06:04.796Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-08-05T05:06:04.796Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-08-05T05:06:04.797Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-08-05T05:06:04.797Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-08-05T05:06:04.797Z [DEBUG] autocompact: tokens=48421 threshold=167000 effectiveWindow=180000
+2026-08-05T05:06:04.797Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-08-05T05:06:04.799Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.89.4fa; cc_entrypoint=sdk-cli; cch=00000;
+2026-08-05T05:06:04.799Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:06:04.799Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:06:04.799Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-08-05T05:06:04.799Z [DEBUG] [API:auth] OAuth token check starting
+2026-08-05T05:06:04.800Z [DEBUG] [API:auth] OAuth token check complete
+2026-08-05T05:06:04.800Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:06:04.803Z [DEBUG] [API REQUEST] /v1/messages source=sdk
+2026-08-05T05:06:05.170Z [DEBUG] Stream started - received first chunk
+2026-08-05T05:06:05.376Z [ERROR] "Error: Error: 1P event logging: 51 events failed to export (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\n    at pN1.queueFailedEvents (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:2546)\n    at async pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1465)"
+2026-08-05T05:06:05.377Z [ERROR] "Error: Error: {\"stack\":\"Error: Failed to export 51 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\\n    at pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1640)\",\"message\":\"Failed to export 51 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\",\"name\":\"Error\"}\n    at MQ1.error (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:2087:4337)\n    at dk1.error (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:10507)\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:36853\n    at Gq_ (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:37399)\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:472:24943"
+2026-08-05T05:06:05.377Z [ERROR] [3P telemetry] OTEL diag error: {"stack":"Error: Failed to export 51 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\n    at pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1640)","message":"Failed to export 51 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)","name":"Error"}
+2026-08-05T05:06:20.387Z [ERROR] "Error: Error: 1P event logging: 45 events failed to export (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\n    at pN1.queueFailedEvents (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:2546)\n    at async pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1465)"
+2026-08-05T05:06:20.388Z [ERROR] "Error: Error: {\"stack\":\"Error: Failed to export 45 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\\n    at pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1640)\",\"message\":\"Failed to export 45 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\",\"name\":\"Error\"}\n    at MQ1.error (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:2087:4337)\n    at dk1.error (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:10507)\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:36853\n    at Gq_ (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:37399)\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:472:24943"
+2026-08-05T05:06:20.388Z [ERROR] [3P telemetry] OTEL diag error: {"stack":"Error: Failed to export 45 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\n    at pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1640)","message":"Failed to export 45 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)","name":"Error"}
+2026-08-05T05:07:22.639Z [DEBUG] Failed to check metrics opt-out status: timeout of 5000ms exceeded
+2026-08-05T05:07:22.640Z [ERROR] "AxiosError: [url=https://api.anthropic.com/api/claude_code/organizations/metrics_enabled] AxiosError: timeout of 5000ms exceeded\n    at XV.<anonymous> (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:116:13073)\n    at XV.emit (node:events:519:28)\n    at Timeout._onTimeout (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:115:3292)\n    at listOnTimeout (node:internal/timers:585:17)\n    at process.processTimers (node:internal/timers:521:7)\n    at rm6.request (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:118:2450)\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n    at async EZz (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:2087:490)\n    at async ki (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:3706)\n    at async LZz (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:2087:607)\n    at async Y (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:130:17662)\n    at async JF4 (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:2087:897)\n    at async JQ1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:2087:2029)"
+2026-08-05T05:07:22.640Z [DEBUG] Metrics export disabled by organization setting
+2026-08-05T05:08:12.500Z [DEBUG] No session environment scripts found
+2026-08-05T05:08:12.502Z [DEBUG] Spawning shell without login (-l flag skipped)
+2026-08-05T05:08:13.312Z [DEBUG] Invalidating session environment cache
+2026-08-05T05:08:13.316Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-08-05T05:08:13.316Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-08-05T05:08:13.316Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-08-05T05:08:13.317Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-08-05T05:08:13.318Z [DEBUG] autocompact: tokens=73079 threshold=167000 effectiveWindow=180000
+2026-08-05T05:08:13.318Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-08-05T05:08:13.320Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.89.4fa; cc_entrypoint=sdk-cli; cch=00000;
+2026-08-05T05:08:13.321Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:08:13.322Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:08:13.322Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-08-05T05:08:13.322Z [DEBUG] [API:auth] OAuth token check starting
+2026-08-05T05:08:13.323Z [DEBUG] [API:auth] OAuth token check complete
+2026-08-05T05:08:13.323Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:08:13.327Z [DEBUG] [API REQUEST] /v1/messages source=sdk
+2026-08-05T05:08:14.016Z [DEBUG] Stream started - received first chunk
+2026-08-05T05:08:27.798Z [ERROR] "Error: Error: 1P event logging: 24 events failed to export (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\n    at pN1.queueFailedEvents (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:2546)\n    at async pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1465)"
+2026-08-05T05:08:27.798Z [ERROR] "Error: Error: {\"stack\":\"Error: Failed to export 24 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\\n    at pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1640)\",\"message\":\"Failed to export 24 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\",\"name\":\"Error\"}\n    at MQ1.error (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:2087:4337)\n    at dk1.error (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:10507)\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:36853\n    at Gq_ (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:37399)\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:472:24943"
+2026-08-05T05:08:27.799Z [ERROR] [3P telemetry] OTEL diag error: {"stack":"Error: Failed to export 24 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\n    at pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1640)","message":"Failed to export 24 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)","name":"Error"}
+2026-08-05T05:08:52.827Z [DEBUG] No session environment scripts found
+2026-08-05T05:08:52.828Z [DEBUG] Spawning shell without login (-l flag skipped)
+2026-08-05T05:08:52.881Z [DEBUG] Invalidating session environment cache
+2026-08-05T05:08:52.883Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-08-05T05:08:52.883Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-08-05T05:08:52.883Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-08-05T05:08:52.884Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-08-05T05:08:52.884Z [DEBUG] autocompact: tokens=60307 threshold=167000 effectiveWindow=180000
+2026-08-05T05:08:52.884Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-08-05T05:08:52.886Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.89.4fa; cc_entrypoint=sdk-cli; cch=00000;
+2026-08-05T05:08:52.886Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:08:52.886Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:08:52.886Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-08-05T05:08:52.886Z [DEBUG] [API:auth] OAuth token check starting
+2026-08-05T05:08:52.887Z [DEBUG] [API:auth] OAuth token check complete
+2026-08-05T05:08:52.887Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:08:52.890Z [DEBUG] [API REQUEST] /v1/messages source=sdk
+2026-08-05T05:08:53.308Z [DEBUG] Stream started - received first chunk
+2026-08-05T05:09:07.814Z [ERROR] "Error: Error: 1P event logging: 22 events failed to export (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\n    at pN1.queueFailedEvents (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:2546)\n    at async pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1465)"
+2026-08-05T05:09:07.815Z [ERROR] "Error: Error: {\"stack\":\"Error: Failed to export 22 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\\n    at pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1640)\",\"message\":\"Failed to export 22 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\",\"name\":\"Error\"}\n    at MQ1.error (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:2087:4337)\n    at dk1.error (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:10507)\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:36853\n    at Gq_ (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:37399)\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:472:24943"
+2026-08-05T05:09:07.815Z [ERROR] [3P telemetry] OTEL diag error: {"stack":"Error: Failed to export 22 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\n    at pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1640)","message":"Failed to export 22 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)","name":"Error"}
+2026-08-05T05:09:22.477Z [DEBUG] No session environment scripts found
+2026-08-05T05:09:22.477Z [DEBUG] Spawning shell without login (-l flag skipped)
+2026-08-05T05:09:22.500Z [DEBUG] Invalidating session environment cache
+2026-08-05T05:09:22.502Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-08-05T05:09:22.503Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-08-05T05:09:22.503Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-08-05T05:09:22.503Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-08-05T05:09:22.503Z [DEBUG] autocompact: tokens=62826 threshold=167000 effectiveWindow=180000
+2026-08-05T05:09:22.503Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-08-05T05:09:22.505Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.89.4fa; cc_entrypoint=sdk-cli; cch=00000;
+2026-08-05T05:09:22.505Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:09:22.505Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:09:22.506Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-08-05T05:09:22.506Z [DEBUG] [API:auth] OAuth token check starting
+2026-08-05T05:09:22.506Z [DEBUG] [API:auth] OAuth token check complete
+2026-08-05T05:09:22.507Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:09:22.511Z [DEBUG] [API REQUEST] /v1/messages source=sdk
+2026-08-05T05:09:22.964Z [DEBUG] Stream started - received first chunk
+2026-08-05T05:09:36.659Z [DEBUG] No session environment scripts found
+2026-08-05T05:09:36.660Z [DEBUG] Spawning shell without login (-l flag skipped)
+2026-08-05T05:09:36.701Z [DEBUG] Invalidating session environment cache
+2026-08-05T05:09:36.703Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-08-05T05:09:36.703Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-08-05T05:09:36.703Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-08-05T05:09:36.703Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-08-05T05:09:36.705Z [DEBUG] autocompact: tokens=64497 threshold=167000 effectiveWindow=180000
+2026-08-05T05:09:36.705Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-08-05T05:09:36.706Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.89.4fa; cc_entrypoint=sdk-cli; cch=00000;
+2026-08-05T05:09:36.707Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:09:36.707Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:09:36.707Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-08-05T05:09:36.707Z [DEBUG] [API:auth] OAuth token check starting
+2026-08-05T05:09:36.708Z [DEBUG] [API:auth] OAuth token check complete
+2026-08-05T05:09:36.708Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:09:36.712Z [DEBUG] [API REQUEST] /v1/messages source=sdk
+2026-08-05T05:09:37.172Z [DEBUG] Stream started - received first chunk
+2026-08-05T05:09:39.079Z [ERROR] "Error: Error: 1P event logging: 21 events failed to export (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\n    at pN1.queueFailedEvents (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:2546)\n    at async pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1465)"
+2026-08-05T05:09:39.080Z [ERROR] "Error: Error: {\"stack\":\"Error: Failed to export 21 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\\n    at pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1640)\",\"message\":\"Failed to export 21 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\",\"name\":\"Error\"}\n    at MQ1.error (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:2087:4337)\n    at dk1.error (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:10507)\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:36853\n    at Gq_ (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:37399)\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:472:24943"
+2026-08-05T05:09:39.080Z [ERROR] [3P telemetry] OTEL diag error: {"stack":"Error: Failed to export 21 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\n    at pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1640)","message":"Failed to export 21 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)","name":"Error"}
+2026-08-05T05:09:53.486Z [DEBUG] No session environment scripts found
+2026-08-05T05:09:53.487Z [DEBUG] Spawning shell without login (-l flag skipped)
+2026-08-05T05:09:53.510Z [DEBUG] Invalidating session environment cache
+2026-08-05T05:09:53.512Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-08-05T05:09:53.512Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-08-05T05:09:53.512Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-08-05T05:09:53.513Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-08-05T05:09:53.513Z [DEBUG] autocompact: tokens=66486 threshold=167000 effectiveWindow=180000
+2026-08-05T05:09:53.513Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-08-05T05:09:53.515Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.89.4fa; cc_entrypoint=sdk-cli; cch=00000;
+2026-08-05T05:09:53.515Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:09:53.515Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:09:53.516Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-08-05T05:09:53.516Z [DEBUG] [API:auth] OAuth token check starting
+2026-08-05T05:09:53.516Z [DEBUG] [API:auth] OAuth token check complete
+2026-08-05T05:09:53.516Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:09:53.520Z [DEBUG] [API REQUEST] /v1/messages source=sdk
+2026-08-05T05:09:54.089Z [ERROR] "Error: Error: 1P event logging: 22 events failed to export (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\n    at pN1.queueFailedEvents (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:2546)\n    at async pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1465)"
+2026-08-05T05:09:54.089Z [ERROR] "Error: Error: {\"stack\":\"Error: Failed to export 22 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\\n    at pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1640)\",\"message\":\"Failed to export 22 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\",\"name\":\"Error\"}\n    at MQ1.error (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:2087:4337)\n    at dk1.error (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:10507)\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:36853\n    at Gq_ (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:37399)\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:472:24943"
+2026-08-05T05:09:54.090Z [ERROR] [3P telemetry] OTEL diag error: {"stack":"Error: Failed to export 22 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\n    at pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1640)","message":"Failed to export 22 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)","name":"Error"}
+2026-08-05T05:09:54.172Z [DEBUG] Stream started - received first chunk
+2026-08-05T05:09:59.085Z [DEBUG] No session environment scripts found
+2026-08-05T05:09:59.086Z [DEBUG] Spawning shell without login (-l flag skipped)
+2026-08-05T05:09:59.621Z [DEBUG] Invalidating session environment cache
+2026-08-05T05:09:59.623Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-08-05T05:09:59.623Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-08-05T05:09:59.623Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-08-05T05:09:59.623Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-08-05T05:09:59.624Z [DEBUG] autocompact: tokens=66971 threshold=167000 effectiveWindow=180000
+2026-08-05T05:09:59.624Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-08-05T05:09:59.626Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.89.4fa; cc_entrypoint=sdk-cli; cch=00000;
+2026-08-05T05:09:59.626Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:09:59.626Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:09:59.626Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-08-05T05:09:59.626Z [DEBUG] [API:auth] OAuth token check starting
+2026-08-05T05:09:59.627Z [DEBUG] [API:auth] OAuth token check complete
+2026-08-05T05:09:59.627Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:09:59.630Z [DEBUG] [API REQUEST] /v1/messages source=sdk
+2026-08-05T05:10:00.098Z [DEBUG] Stream started - received first chunk
+2026-08-05T05:10:04.496Z [DEBUG] No session environment scripts found
+2026-08-05T05:10:04.497Z [DEBUG] Spawning shell without login (-l flag skipped)
+2026-08-05T05:10:09.102Z [ERROR] "Error: Error: 1P event logging: 46 events failed to export (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\n    at pN1.queueFailedEvents (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:2546)\n    at async pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1465)"
+2026-08-05T05:10:09.103Z [ERROR] "Error: Error: {\"stack\":\"Error: Failed to export 46 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\\n    at pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1640)\",\"message\":\"Failed to export 46 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\",\"name\":\"Error\"}\n    at MQ1.error (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:2087:4337)\n    at dk1.error (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:10507)\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:36853\n    at Gq_ (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:37399)\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:472:24943"
+2026-08-05T05:10:09.105Z [ERROR] [3P telemetry] OTEL diag error: {"stack":"Error: Failed to export 46 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\n    at pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1640)","message":"Failed to export 46 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)","name":"Error"}
+2026-08-05T05:10:10.646Z [DEBUG] Invalidating session environment cache
+2026-08-05T05:10:10.651Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-08-05T05:10:10.651Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-08-05T05:10:10.651Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-08-05T05:10:10.651Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-08-05T05:10:10.652Z [DEBUG] autocompact: tokens=67283 threshold=167000 effectiveWindow=180000
+2026-08-05T05:10:10.653Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-08-05T05:10:10.655Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.89.4fa; cc_entrypoint=sdk-cli; cch=00000;
+2026-08-05T05:10:10.656Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:10:10.656Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:10:10.656Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-08-05T05:10:10.656Z [DEBUG] [API:auth] OAuth token check starting
+2026-08-05T05:10:10.657Z [DEBUG] [API:auth] OAuth token check complete
+2026-08-05T05:10:10.657Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:10:10.662Z [DEBUG] [API REQUEST] /v1/messages source=sdk
+2026-08-05T05:10:11.146Z [DEBUG] Stream started - received first chunk
+2026-08-05T05:10:14.647Z [DEBUG] No session environment scripts found
+2026-08-05T05:10:14.647Z [DEBUG] Spawning shell without login (-l flag skipped)
+2026-08-05T05:10:24.892Z [ERROR] "Error: Error: 1P event logging: 35 events failed to export (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\n    at pN1.queueFailedEvents (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:2546)\n    at async pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1465)"
+2026-08-05T05:10:24.892Z [ERROR] "Error: Error: {\"stack\":\"Error: Failed to export 35 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\\n    at pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1640)\",\"message\":\"Failed to export 35 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\",\"name\":\"Error\"}\n    at MQ1.error (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:2087:4337)\n    at dk1.error (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:10507)\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:36853\n    at Gq_ (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:37399)\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:472:24943"
+2026-08-05T05:10:24.892Z [ERROR] [3P telemetry] OTEL diag error: {"stack":"Error: Failed to export 35 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\n    at pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1640)","message":"Failed to export 35 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)","name":"Error"}
+2026-08-05T05:10:27.662Z [DEBUG] Invalidating session environment cache
+2026-08-05T05:10:27.664Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-08-05T05:10:27.664Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-08-05T05:10:27.665Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-08-05T05:10:27.665Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-08-05T05:10:27.666Z [DEBUG] autocompact: tokens=67868 threshold=167000 effectiveWindow=180000
+2026-08-05T05:10:27.666Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-08-05T05:10:27.669Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.89.4fa; cc_entrypoint=sdk-cli; cch=00000;
+2026-08-05T05:10:27.669Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:10:27.669Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:10:27.669Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-08-05T05:10:27.669Z [DEBUG] [API:auth] OAuth token check starting
+2026-08-05T05:10:27.670Z [DEBUG] [API:auth] OAuth token check complete
+2026-08-05T05:10:27.670Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:10:27.674Z [DEBUG] [API REQUEST] /v1/messages source=sdk
+2026-08-05T05:10:28.152Z [DEBUG] Stream started - received first chunk
+2026-08-05T05:10:30.204Z [DEBUG] No session environment scripts found
+2026-08-05T05:10:30.204Z [DEBUG] Spawning shell without login (-l flag skipped)
+2026-08-05T05:10:35.809Z [DEBUG] Invalidating session environment cache
+2026-08-05T05:10:35.812Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-08-05T05:10:35.812Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-08-05T05:10:35.812Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-08-05T05:10:35.812Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-08-05T05:10:35.813Z [DEBUG] autocompact: tokens=67981 threshold=167000 effectiveWindow=180000
+2026-08-05T05:10:35.813Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-08-05T05:10:35.815Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.89.4fa; cc_entrypoint=sdk-cli; cch=00000;
+2026-08-05T05:10:35.815Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:10:35.815Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:10:35.815Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-08-05T05:10:35.815Z [DEBUG] [API:auth] OAuth token check starting
+2026-08-05T05:10:35.816Z [DEBUG] [API:auth] OAuth token check complete
+2026-08-05T05:10:35.817Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:10:35.820Z [DEBUG] [API REQUEST] /v1/messages source=sdk
+2026-08-05T05:10:36.299Z [DEBUG] Stream started - received first chunk
+2026-08-05T05:10:39.461Z [DEBUG] No session environment scripts found
+2026-08-05T05:10:39.461Z [DEBUG] Spawning shell without login (-l flag skipped)
+2026-08-05T05:10:40.180Z [ERROR] "Error: Error: 1P event logging: 37 events failed to export (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\n    at pN1.queueFailedEvents (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:2546)\n    at async pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1465)"
+2026-08-05T05:10:40.180Z [ERROR] "Error: Error: {\"stack\":\"Error: Failed to export 37 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\\n    at pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1640)\",\"message\":\"Failed to export 37 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\",\"name\":\"Error\"}\n    at MQ1.error (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:2087:4337)\n    at dk1.error (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:10507)\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:36853\n    at Gq_ (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:37399)\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:472:24943"
+2026-08-05T05:10:40.180Z [ERROR] [3P telemetry] OTEL diag error: {"stack":"Error: Failed to export 37 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)\n    at pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1640)","message":"Failed to export 37 events (code=ENOTFOUND, getaddrinfo ENOTFOUND api.anthropic.com)","name":"Error"}
+2026-08-05T05:10:40.216Z [DEBUG] Invalidating session environment cache
+2026-08-05T05:10:40.219Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-08-05T05:10:40.219Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-08-05T05:10:40.219Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-08-05T05:10:40.219Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-08-05T05:10:40.219Z [DEBUG] autocompact: tokens=68371 threshold=167000 effectiveWindow=180000
+2026-08-05T05:10:40.220Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-08-05T05:10:40.222Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.89.4fa; cc_entrypoint=sdk-cli; cch=00000;
+2026-08-05T05:10:40.222Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:10:40.222Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:10:40.222Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-08-05T05:10:40.222Z [DEBUG] [API:auth] OAuth token check starting
+2026-08-05T05:10:40.223Z [DEBUG] [API:auth] OAuth token check complete
+2026-08-05T05:10:40.223Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:10:40.226Z [DEBUG] [API REQUEST] /v1/messages source=sdk
+2026-08-05T05:10:40.690Z [DEBUG] Stream started - received first chunk
+2026-08-05T05:10:50.182Z [ERROR] "Error: Error: {\"stack\":\"Error: Dropped 38 events: max attempts (8) reached\\n    at pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1305)\\n    at pN1.export (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:811)\\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:111099\\n    at sxq.with (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:16539)\\n    at $V1.with (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:17115)\\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:111039\\n    at new Promise (<anonymous>)\\n    at Object.iw_ [as _export] (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:111005)\\n    at K (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:472:24841)\\n    at mrq._export (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:472:25144)\",\"message\":\"Dropped 38 events: max attempts (8) reached\",\"name\":\"Error\"}\n    at MQ1.error (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:2087:4337)\n    at dk1.error (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:10507)\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:36853\n    at Gq_ (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:37399)\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:472:24943"
+2026-08-05T05:10:50.182Z [ERROR] [3P telemetry] OTEL diag error: {"stack":"Error: Dropped 38 events: max attempts (8) reached\n    at pN1.doExport (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:1305)\n    at pN1.export (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:498:811)\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:111099\n    at sxq.with (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:16539)\n    at $V1.with (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:17115)\n    at file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:111039\n    at new Promise (<anonymous>)\n    at Object.iw_ [as _export] (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:471:111005)\n    at K (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:472:24841)\n    at mrq._export (file:///usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js:472:25144)","message":"Dropped 38 events: max attempts (8) reached","name":"Error"}
+2026-08-05T05:11:17.328Z [DEBUG] No session environment scripts found
+2026-08-05T05:11:17.328Z [DEBUG] Spawning shell without login (-l flag skipped)
+2026-08-05T05:11:17.351Z [DEBUG] Invalidating session environment cache
+2026-08-05T05:11:17.352Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-08-05T05:11:17.352Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-08-05T05:11:17.353Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-08-05T05:11:17.353Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-08-05T05:11:17.353Z [DEBUG] autocompact: tokens=71686 threshold=167000 effectiveWindow=180000
+2026-08-05T05:11:17.353Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-08-05T05:11:17.355Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.89.4fa; cc_entrypoint=sdk-cli; cch=00000;
+2026-08-05T05:11:17.355Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:11:17.355Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:11:17.355Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-08-05T05:11:17.355Z [DEBUG] [API:auth] OAuth token check starting
+2026-08-05T05:11:17.356Z [DEBUG] [API:auth] OAuth token check complete
+2026-08-05T05:11:17.356Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:11:17.359Z [DEBUG] [API REQUEST] /v1/messages source=sdk
+2026-08-05T05:11:17.879Z [DEBUG] Stream started - received first chunk
+2026-08-05T05:11:20.171Z [DEBUG] No session environment scripts found
+2026-08-05T05:11:20.171Z [DEBUG] Spawning shell without login (-l flag skipped)
+2026-08-05T05:11:20.193Z [DEBUG] Invalidating session environment cache
+2026-08-05T05:11:20.196Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2026-08-05T05:11:20.196Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2026-08-05T05:11:20.196Z [DEBUG] Hooks: Found 0 total hooks in registry
+2026-08-05T05:11:20.196Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2026-08-05T05:11:20.198Z [DEBUG] autocompact: tokens=72289 threshold=167000 effectiveWindow=180000
+2026-08-05T05:11:20.198Z [DEBUG] Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).
+2026-08-05T05:11:20.202Z [DEBUG] attribution header x-anthropic-billing-header: cc_version=2.1.89.4fa; cc_entrypoint=sdk-cli; cch=00000;
+2026-08-05T05:11:20.203Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:11:20.203Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:11:20.203Z [DEBUG] [API:request] Creating client, ANTHROPIC_CUSTOM_HEADERS present: false, has Authorization header: false
+2026-08-05T05:11:20.203Z [DEBUG] [API:auth] OAuth token check starting
+2026-08-05T05:11:20.204Z [DEBUG] [API:auth] OAuth token check complete
+2026-08-05T05:11:20.204Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:11:20.209Z [DEBUG] [API REQUEST] /v1/messages source=sdk
+2026-08-05T05:11:20.704Z [DEBUG] Stream started - received first chunk
+2026-08-05T05:11:27.773Z [DEBUG] Fast mode unavailable: Fast mode is not available in the Agent SDK
+2026-08-05T05:11:27.778Z [DEBUG] LSP server manager shut down successfully
+2026-08-05T05:11:27.780Z [DEBUG] Metrics export disabled by organization setting
+2026-08-05T05:11:27.781Z [DEBUG] BigQuery metrics exporter flush complete
+2026-08-05T05:11:27.781Z [DEBUG] BigQuery metrics exporter flush complete
+2026-08-05T05:11:27.781Z [DEBUG] BigQuery metrics exporter shutdown complete
+2026-08-05T05:11:27.782Z [DEBUG] Cleaned up session snapshot: /root/.claude/shell-snapshots/snapshot-bash-1785906146056-mf0fow.sh

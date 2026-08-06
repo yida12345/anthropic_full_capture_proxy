@@ -67,8 +67,8 @@ pip install -r requirements.txt
 python proxy.py \
   --listen-host 0.0.0.0 \
   --listen-port 30303 \
-  --upstream-url http://10.17.10.67:31542 \
-  --log-dir ./capture_logs/run_20260806 \
+  --upstream-url http://36.138.156.38:35991 \
+  --log-dir ./capture_logs/run_20260806_1 \
   --timeout-seconds 300
 ```
 
@@ -90,7 +90,7 @@ python proxy.py
 健康检查：
 
 ```bash
-curl http://代理IP:30303/healthz
+curl http://10.0.0.1:30303/healthz
 ```
 
 ### 认证和模型配置
@@ -150,8 +150,8 @@ capture_logs/run_20260806/raw/
 ```bash
 python finalize.py \
   --capture-dir ./capture_logs/run_20260806 \
-  --harbor-run-dir /path/to/harbor/output/run_directory \
-  --output-dir ./dataset_output/run_20260806
+  --harbor-run-dir /data1/nfs/ztr/run/jobs/2026-08-06__11-18-33/cve-2010-5312__WitBjmd/ \
+  --output-dir ./dataset_output/run_20260806/test3
 ```
 
 `--harbor-run-dir` 支持：
@@ -224,9 +224,9 @@ prompt 内容都不参与关联。
 
 ```bash
 python finalize-harbor.py \
-  --capture-dir ./capture_logs/run_20260803 \
-  --harbor-run-dir /data1/nfs/ztr/run/jobs/2026-08-03__10-38-16 \
-  --output-dir ./dataset_output/run_20260803
+  --capture-dir /data1/nfs/ztr/anthropic_full_capture_proxy/capture_logs/run_20260806_1 \
+  --harbor-run-dir /data1/nfs/ztr/run/jobs/2026-08-06__16-10-23/ \
+  --output-dir ./dataset_output/2026-08-06__16-10-23
 ```
 
 job 根目录的每个直接子目录名会被完整用作 task ID，例如

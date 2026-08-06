@@ -1,0 +1,828 @@
+---current output---
+/bin/bash: 第 18 行：23721 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=0509e80afb379d16560e9e47bdd7d888bebdebc6.ttf after=5 rc=134
+/bin/bash: 第 18 行：23722 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=0509e80afb379d16560e9e47bdd7d888bebdebc6.ttf after=10 rc=139
+/bin/bash: 第 18 行：23737 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=051d92f8bc6ff724511b296c27623f824de256e9.ttf after=5 rc=134
+/bin/bash: 第 18 行：23738 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=051d92f8bc6ff724511b296c27623f824de256e9.ttf after=10 rc=134
+/bin/bash: 第 18 行：23739 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=051d92f8bc6ff724511b296c27623f824de256e9.ttf after=15 rc=139
+/bin/bash: 第 18 行：23740 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=051d92f8bc6ff724511b296c27623f824de256e9.ttf after=20 rc=139
+/bin/bash: 第 18 行：23741 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=051d92f8bc6ff724511b296c27623f824de256e9.ttf after=25 rc=139
+/bin/bash: 第 18 行：23742 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=051d92f8bc6ff724511b296c27623f824de256e9.ttf after=30 rc=139
+/bin/bash: 第 18 行：23753 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=07f054357ff8638bac3711b422a1e31180bba863.ttf after=5 rc=134
+/bin/bash: 第 18 行：23754 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=07f054357ff8638bac3711b422a1e31180bba863.ttf after=10 rc=139
+/bin/bash: 第 18 行：23755 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=07f054357ff8638bac3711b422a1e31180bba863.ttf after=15 rc=139
+/bin/bash: 第 18 行：23756 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=07f054357ff8638bac3711b422a1e31180bba863.ttf after=20 rc=139
+/bin/bash: 第 18 行：23757 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=07f054357ff8638bac3711b422a1e31180bba863.ttf after=25 rc=139
+/bin/bash: 第 18 行：23758 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=07f054357ff8638bac3711b422a1e31180bba863.ttf after=30 rc=139
+/bin/bash: 第 18 行：23769 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=15dfc433a135a658b9f4b1a861b5cdd9658ccbb9.ttf after=5 rc=134
+/bin/bash: 第 18 行：23770 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=15dfc433a135a658b9f4b1a861b5cdd9658ccbb9.ttf after=10 rc=134
+/bin/bash: 第 18 行：23771 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=15dfc433a135a658b9f4b1a861b5cdd9658ccbb9.ttf after=15 rc=139
+/bin/bash: 第 18 行：23772 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=15dfc433a135a658b9f4b1a861b5cdd9658ccbb9.ttf after=20 rc=139
+/bin/bash: 第 18 行：23773 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=15dfc433a135a658b9f4b1a861b5cdd9658ccbb9.ttf after=25 rc=139
+/bin/bash: 第 18 行：23774 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=15dfc433a135a658b9f4b1a861b5cdd9658ccbb9.ttf after=30 rc=139
+/bin/bash: 第 18 行：23785 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=191826b9643e3f124d865d617ae609db6a2ce203.ttf after=5 rc=134
+/bin/bash: 第 18 行：23786 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=191826b9643e3f124d865d617ae609db6a2ce203.ttf after=10 rc=134
+/bin/bash: 第 18 行：23787 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=191826b9643e3f124d865d617ae609db6a2ce203.ttf after=15 rc=139
+/bin/bash: 第 18 行：23788 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=191826b9643e3f124d865d617ae609db6a2ce203.ttf after=20 rc=139
+/bin/bash: 第 18 行：23789 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=191826b9643e3f124d865d617ae609db6a2ce203.ttf after=25 rc=139
+/bin/bash: 第 18 行：23790 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=191826b9643e3f124d865d617ae609db6a2ce203.ttf after=30 rc=139
+/bin/bash: 第 18 行：23801 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=1a6f1687b7a221f9f2c834b0b360d3c8463b6daf.ttf after=5 rc=134
+/bin/bash: 第 18 行：23802 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=1a6f1687b7a221f9f2c834b0b360d3c8463b6daf.ttf after=10 rc=139
+/bin/bash: 第 18 行：23817 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=1c04a16f32a39c26c851b7fc014d2e8d298ba2b8.ttf after=5 rc=134
+/bin/bash: 第 18 行：23818 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=1c04a16f32a39c26c851b7fc014d2e8d298ba2b8.ttf after=10 rc=139
+/bin/bash: 第 18 行：23819 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=1c04a16f32a39c26c851b7fc014d2e8d298ba2b8.ttf after=15 rc=139
+/bin/bash: 第 18 行：23820 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=1c04a16f32a39c26c851b7fc014d2e8d298ba2b8.ttf after=20 rc=139
+/bin/bash: 第 18 行：23821 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=1c04a16f32a39c26c851b7fc014d2e8d298ba2b8.ttf after=25 rc=139
+/bin/bash: 第 18 行：23822 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=1c04a16f32a39c26c851b7fc014d2e8d298ba2b8.ttf after=30 rc=139
+/bin/bash: 第 18 行：23833 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=1c2c3fc37b2d4c3cb2ef726c6cdaaabd4b7f3eb9.ttf after=5 rc=134
+/bin/bash: 第 18 行：23834 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=1c2c3fc37b2d4c3cb2ef726c6cdaaabd4b7f3eb9.ttf after=10 rc=139
+/bin/bash: 第 18 行：23835 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=1c2c3fc37b2d4c3cb2ef726c6cdaaabd4b7f3eb9.ttf after=15 rc=139
+/bin/bash: 第 18 行：23836 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=1c2c3fc37b2d4c3cb2ef726c6cdaaabd4b7f3eb9.ttf after=20 rc=139
+/bin/bash: 第 18 行：23837 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=1c2c3fc37b2d4c3cb2ef726c6cdaaabd4b7f3eb9.ttf after=25 rc=139
+/bin/bash: 第 18 行：23838 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=1c2c3fc37b2d4c3cb2ef726c6cdaaabd4b7f3eb9.ttf after=30 rc=139
+/bin/bash: 第 18 行：23849 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=1c2fb74c1b2aa173262734c1f616148f1648cfd6.ttf after=5 rc=134
+/bin/bash: 第 18 行：23850 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=1c2fb74c1b2aa173262734c1f616148f1648cfd6.ttf after=10 rc=134
+/bin/bash: 第 18 行：23851 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=1c2fb74c1b2aa173262734c1f616148f1648cfd6.ttf after=15 rc=139
+/bin/bash: 第 18 行：23852 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=1c2fb74c1b2aa173262734c1f616148f1648cfd6.ttf after=20 rc=139
+/bin/bash: 第 18 行：23853 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=1c2fb74c1b2aa173262734c1f616148f1648cfd6.ttf after=25 rc=139
+/bin/bash: 第 18 行：23854 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=1c2fb74c1b2aa173262734c1f616148f1648cfd6.ttf after=30 rc=139
+/bin/bash: 第 18 行：23865 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=205edd09bd3d141cc9580f650109556cc28b22cb.ttf after=5 rc=134
+/bin/bash: 第 18 行：23866 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=205edd09bd3d141cc9580f650109556cc28b22cb.ttf after=10 rc=134
+/bin/bash: 第 18 行：23867 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=205edd09bd3d141cc9580f650109556cc28b22cb.ttf after=15 rc=139
+/bin/bash: 第 18 行：23868 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=205edd09bd3d141cc9580f650109556cc28b22cb.ttf after=20 rc=139
+/bin/bash: 第 18 行：23869 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=205edd09bd3d141cc9580f650109556cc28b22cb.ttf after=25 rc=139
+/bin/bash: 第 18 行：23870 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=205edd09bd3d141cc9580f650109556cc28b22cb.ttf after=30 rc=139
+/bin/bash: 第 18 行：23881 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=217a934cfe15c548b572c203dceb2befdf026462.ttf after=5 rc=134
+/bin/bash: 第 18 行：23882 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=217a934cfe15c548b572c203dceb2befdf026462.ttf after=10 rc=134
+/bin/bash: 第 18 行：23883 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=217a934cfe15c548b572c203dceb2befdf026462.ttf after=15 rc=139
+/bin/bash: 第 18 行：23884 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=217a934cfe15c548b572c203dceb2befdf026462.ttf after=20 rc=139
+/bin/bash: 第 18 行：23885 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=217a934cfe15c548b572c203dceb2befdf026462.ttf after=25 rc=139
+/bin/bash: 第 18 行：23886 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=217a934cfe15c548b572c203dceb2befdf026462.ttf after=30 rc=139
+/bin/bash: 第 18 行：23897 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=226bc2deab3846f1a682085f70c67d0421014144.ttf after=5 rc=134
+/bin/bash: 第 18 行：23898 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=226bc2deab3846f1a682085f70c67d0421014144.ttf after=10 rc=134
+/bin/bash: 第 18 行：23899 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=226bc2deab3846f1a682085f70c67d0421014144.ttf after=15 rc=139
+/bin/bash: 第 18 行：23900 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=226bc2deab3846f1a682085f70c67d0421014144.ttf after=20 rc=139
+/bin/bash: 第 18 行：23901 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=226bc2deab3846f1a682085f70c67d0421014144.ttf after=25 rc=139
+/bin/bash: 第 18 行：23902 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=226bc2deab3846f1a682085f70c67d0421014144.ttf after=30 rc=139
+/bin/bash: 第 18 行：23913 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=270b89df543a7e48e206a2d830c0e10e5265c630.ttf after=5 rc=134
+/bin/bash: 第 18 行：23914 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=270b89df543a7e48e206a2d830c0e10e5265c630.ttf after=10 rc=134
+/bin/bash: 第 18 行：23915 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=270b89df543a7e48e206a2d830c0e10e5265c630.ttf after=15 rc=139
+/bin/bash: 第 18 行：23916 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=270b89df543a7e48e206a2d830c0e10e5265c630.ttf after=20 rc=139
+/bin/bash: 第 18 行：23917 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=270b89df543a7e48e206a2d830c0e10e5265c630.ttf after=25 rc=139
+/bin/bash: 第 18 行：23918 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=270b89df543a7e48e206a2d830c0e10e5265c630.ttf after=30 rc=139
+/bin/bash: 第 18 行：23929 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=298c9e1d955f10f6f72c6915c3c6ff9bf9695cec.ttf after=5 rc=134
+/bin/bash: 第 18 行：23930 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=298c9e1d955f10f6f72c6915c3c6ff9bf9695cec.ttf after=10 rc=134
+/bin/bash: 第 18 行：23931 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=298c9e1d955f10f6f72c6915c3c6ff9bf9695cec.ttf after=15 rc=139
+/bin/bash: 第 18 行：23932 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=298c9e1d955f10f6f72c6915c3c6ff9bf9695cec.ttf after=20 rc=139
+/bin/bash: 第 18 行：23933 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=298c9e1d955f10f6f72c6915c3c6ff9bf9695cec.ttf after=25 rc=139
+/bin/bash: 第 18 行：23934 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=298c9e1d955f10f6f72c6915c3c6ff9bf9695cec.ttf after=30 rc=139
+/bin/bash: 第 18 行：23945 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=3493e92eaded2661cadde752a39f9d58b11f0326.ttf after=5 rc=134
+/bin/bash: 第 18 行：23946 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=3493e92eaded2661cadde752a39f9d58b11f0326.ttf after=10 rc=134
+/bin/bash: 第 18 行：23947 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=3493e92eaded2661cadde752a39f9d58b11f0326.ttf after=15 rc=139
+/bin/bash: 第 18 行：23948 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=3493e92eaded2661cadde752a39f9d58b11f0326.ttf after=20 rc=139
+/bin/bash: 第 18 行：23949 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=3493e92eaded2661cadde752a39f9d58b11f0326.ttf after=25 rc=139
+/bin/bash: 第 18 行：23950 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=3493e92eaded2661cadde752a39f9d58b11f0326.ttf after=30 rc=139
+/bin/bash: 第 18 行：23961 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=3511ff5c1647150595846ac414c595cccac34f18.ttf after=5 rc=134
+/bin/bash: 第 18 行：23962 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=3511ff5c1647150595846ac414c595cccac34f18.ttf after=10 rc=134
+/bin/bash: 第 18 行：23963 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=3511ff5c1647150595846ac414c595cccac34f18.ttf after=15 rc=139
+/bin/bash: 第 18 行：23964 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=3511ff5c1647150595846ac414c595cccac34f18.ttf after=20 rc=139
+/bin/bash: 第 18 行：23965 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=3511ff5c1647150595846ac414c595cccac34f18.ttf after=25 rc=139
+/bin/bash: 第 18 行：23966 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=3511ff5c1647150595846ac414c595cccac34f18.ttf after=30 rc=139
+/bin/bash: 第 18 行：23977 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=37033cc5cf37bb223d7355153016b6ccece93b28.ttf after=5 rc=134
+/bin/bash: 第 18 行：23978 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=37033cc5cf37bb223d7355153016b6ccece93b28.ttf after=10 rc=134
+/bin/bash: 第 18 行：23979 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=37033cc5cf37bb223d7355153016b6ccece93b28.ttf after=15 rc=139
+/bin/bash: 第 18 行：23980 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=37033cc5cf37bb223d7355153016b6ccece93b28.ttf after=20 rc=139
+/bin/bash: 第 18 行：23981 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=37033cc5cf37bb223d7355153016b6ccece93b28.ttf after=25 rc=139
+/bin/bash: 第 18 行：23982 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=37033cc5cf37bb223d7355153016b6ccece93b28.ttf after=30 rc=139
+/bin/bash: 第 18 行：23993 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=375d6ae32a3cbe52fbf81a4e5777e3377675d5a3.ttf after=5 rc=134
+/bin/bash: 第 18 行：23994 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=375d6ae32a3cbe52fbf81a4e5777e3377675d5a3.ttf after=10 rc=134
+/bin/bash: 第 18 行：23995 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=375d6ae32a3cbe52fbf81a4e5777e3377675d5a3.ttf after=15 rc=139
+/bin/bash: 第 18 行：23996 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=375d6ae32a3cbe52fbf81a4e5777e3377675d5a3.ttf after=20 rc=139
+/bin/bash: 第 18 行：23997 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=375d6ae32a3cbe52fbf81a4e5777e3377675d5a3.ttf after=25 rc=139
+/bin/bash: 第 18 行：23998 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=375d6ae32a3cbe52fbf81a4e5777e3377675d5a3.ttf after=30 rc=139
+/bin/bash: 第 18 行：24009 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=43979b90b2dd929723cf4fe1715990bcb9c9a56b.ttf after=5 rc=134
+/bin/bash: 第 18 行：24010 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=43979b90b2dd929723cf4fe1715990bcb9c9a56b.ttf after=10 rc=134
+/bin/bash: 第 18 行：24011 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=43979b90b2dd929723cf4fe1715990bcb9c9a56b.ttf after=15 rc=139
+/bin/bash: 第 18 行：24012 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=43979b90b2dd929723cf4fe1715990bcb9c9a56b.ttf after=20 rc=139
+/bin/bash: 第 18 行：24013 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=43979b90b2dd929723cf4fe1715990bcb9c9a56b.ttf after=25 rc=139
+/bin/bash: 第 18 行：24014 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=43979b90b2dd929723cf4fe1715990bcb9c9a56b.ttf after=30 rc=139
+/bin/bash: 第 18 行：24025 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=43ef465752be9af900745f72fe29cb853a1401a5.ttf after=5 rc=134
+/bin/bash: 第 18 行：24026 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=43ef465752be9af900745f72fe29cb853a1401a5.ttf after=10 rc=134
+/bin/bash: 第 18 行：24027 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=43ef465752be9af900745f72fe29cb853a1401a5.ttf after=15 rc=139
+/bin/bash: 第 18 行：24028 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=43ef465752be9af900745f72fe29cb853a1401a5.ttf after=20 rc=139
+/bin/bash: 第 18 行：24029 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=43ef465752be9af900745f72fe29cb853a1401a5.ttf after=25 rc=139
+/bin/bash: 第 18 行：24030 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=43ef465752be9af900745f72fe29cb853a1401a5.ttf after=30 rc=139
+/bin/bash: 第 18 行：24041 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=45855bc8d46332b39c4ab9e2ee1a26b1f896da6b.ttf after=5 rc=134
+/bin/bash: 第 18 行：24042 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=45855bc8d46332b39c4ab9e2ee1a26b1f896da6b.ttf after=10 rc=134
+/bin/bash: 第 18 行：24043 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=45855bc8d46332b39c4ab9e2ee1a26b1f896da6b.ttf after=15 rc=139
+/bin/bash: 第 18 行：24044 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=45855bc8d46332b39c4ab9e2ee1a26b1f896da6b.ttf after=20 rc=139
+/bin/bash: 第 18 行：24045 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=45855bc8d46332b39c4ab9e2ee1a26b1f896da6b.ttf after=25 rc=139
+/bin/bash: 第 18 行：24046 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=45855bc8d46332b39c4ab9e2ee1a26b1f896da6b.ttf after=30 rc=139
+/bin/bash: 第 18 行：24057 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=49c9f7485c1392fa09a1b801bc2ffea79275f22e.ttf after=5 rc=134
+/bin/bash: 第 18 行：24058 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=49c9f7485c1392fa09a1b801bc2ffea79275f22e.ttf after=10 rc=134
+/bin/bash: 第 18 行：24059 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=49c9f7485c1392fa09a1b801bc2ffea79275f22e.ttf after=15 rc=139
+/bin/bash: 第 18 行：24060 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=49c9f7485c1392fa09a1b801bc2ffea79275f22e.ttf after=20 rc=139
+/bin/bash: 第 18 行：24061 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=49c9f7485c1392fa09a1b801bc2ffea79275f22e.ttf after=25 rc=139
+/bin/bash: 第 18 行：24062 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=49c9f7485c1392fa09a1b801bc2ffea79275f22e.ttf after=30 rc=139
+/bin/bash: 第 18 行：24073 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=4cce528e99f600ed9c25a2b69e32eb94a03b4ae8.ttf after=5 rc=134
+/bin/bash: 第 18 行：24074 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=4cce528e99f600ed9c25a2b69e32eb94a03b4ae8.ttf after=10 rc=134
+/bin/bash: 第 18 行：24075 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=4cce528e99f600ed9c25a2b69e32eb94a03b4ae8.ttf after=15 rc=139
+/bin/bash: 第 18 行：24076 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=4cce528e99f600ed9c25a2b69e32eb94a03b4ae8.ttf after=20 rc=139
+/bin/bash: 第 18 行：24077 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=4cce528e99f600ed9c25a2b69e32eb94a03b4ae8.ttf after=25 rc=139
+/bin/bash: 第 18 行：24078 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=4cce528e99f600ed9c25a2b69e32eb94a03b4ae8.ttf after=30 rc=139
+/bin/bash: 第 18 行：24089 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=5028afb650b1bb718ed2131e872fbcce57828fff.ttf after=5 rc=134
+/bin/bash: 第 18 行：24090 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=5028afb650b1bb718ed2131e872fbcce57828fff.ttf after=10 rc=134
+/bin/bash: 第 18 行：24091 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=5028afb650b1bb718ed2131e872fbcce57828fff.ttf after=15 rc=139
+/bin/bash: 第 18 行：24092 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=5028afb650b1bb718ed2131e872fbcce57828fff.ttf after=20 rc=139
+/bin/bash: 第 18 行：24093 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=5028afb650b1bb718ed2131e872fbcce57828fff.ttf after=25 rc=139
+/bin/bash: 第 18 行：24094 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=5028afb650b1bb718ed2131e872fbcce57828fff.ttf after=30 rc=139
+/bin/bash: 第 18 行：24105 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=558661aa659912f4d30ecd27bd09835171a8e2b0.ttf after=5 rc=134
+/bin/bash: 第 18 行：24106 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=558661aa659912f4d30ecd27bd09835171a8e2b0.ttf after=10 rc=134
+/bin/bash: 第 18 行：24107 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=558661aa659912f4d30ecd27bd09835171a8e2b0.ttf after=15 rc=139
+/bin/bash: 第 18 行：24108 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=558661aa659912f4d30ecd27bd09835171a8e2b0.ttf after=20 rc=139
+/bin/bash: 第 18 行：24109 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=558661aa659912f4d30ecd27bd09835171a8e2b0.ttf after=25 rc=139
+/bin/bash: 第 18 行：24110 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=558661aa659912f4d30ecd27bd09835171a8e2b0.ttf after=30 rc=139
+/bin/bash: 第 18 行：24121 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=56cfd0e18d07f41c38e9598545a6d369127fc6f9.ttf after=5 rc=134
+/bin/bash: 第 18 行：24122 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=56cfd0e18d07f41c38e9598545a6d369127fc6f9.ttf after=10 rc=134
+/bin/bash: 第 18 行：24123 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=56cfd0e18d07f41c38e9598545a6d369127fc6f9.ttf after=15 rc=139
+/bin/bash: 第 18 行：24124 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=56cfd0e18d07f41c38e9598545a6d369127fc6f9.ttf after=20 rc=139
+/bin/bash: 第 18 行：24125 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=56cfd0e18d07f41c38e9598545a6d369127fc6f9.ttf after=25 rc=139
+/bin/bash: 第 18 行：24126 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=56cfd0e18d07f41c38e9598545a6d369127fc6f9.ttf after=30 rc=139
+/bin/bash: 第 18 行：24137 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=57a9d9f83020155cbb1d2be1f43d82388cbecc88.ttf after=5 rc=134
+/bin/bash: 第 18 行：24138 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=57a9d9f83020155cbb1d2be1f43d82388cbecc88.ttf after=10 rc=134
+/bin/bash: 第 18 行：24139 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=57a9d9f83020155cbb1d2be1f43d82388cbecc88.ttf after=15 rc=139
+/bin/bash: 第 18 行：24140 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=57a9d9f83020155cbb1d2be1f43d82388cbecc88.ttf after=20 rc=139
+/bin/bash: 第 18 行：24141 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=57a9d9f83020155cbb1d2be1f43d82388cbecc88.ttf after=25 rc=139
+/bin/bash: 第 18 行：24142 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=57a9d9f83020155cbb1d2be1f43d82388cbecc88.ttf after=30 rc=139
+/bin/bash: 第 18 行：24153 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=5a5daf5eb5a4db77a2baa3ad9c7a6ed6e0655fa8.ttf after=5 rc=134
+/bin/bash: 第 18 行：24154 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=5a5daf5eb5a4db77a2baa3ad9c7a6ed6e0655fa8.ttf after=10 rc=139
+/bin/bash: 第 18 行：24169 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=5dfad7735c6a67085f1b90d4d497e32907db4c78.ttf after=5 rc=134
+/bin/bash: 第 18 行：24170 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=5dfad7735c6a67085f1b90d4d497e32907db4c78.ttf after=10 rc=134
+/bin/bash: 第 18 行：24171 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=5dfad7735c6a67085f1b90d4d497e32907db4c78.ttf after=15 rc=139
+/bin/bash: 第 18 行：24172 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=5dfad7735c6a67085f1b90d4d497e32907db4c78.ttf after=20 rc=139
+/bin/bash: 第 18 行：24173 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=5dfad7735c6a67085f1b90d4d497e32907db4c78.ttf after=25 rc=139
+/bin/bash: 第 18 行：24174 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=5dfad7735c6a67085f1b90d4d497e32907db4c78.ttf after=30 rc=139
+/bin/bash: 第 18 行：24175 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=5dfad7735c6a67085f1b90d4d497e32907db4c78.ttf after=40 rc=139
+/bin/bash: 第 18 行：24185 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=641bd9db850193064d17575053ae2bf8ec149ddc.ttf after=5 rc=134
+/bin/bash: 第 18 行：24186 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=641bd9db850193064d17575053ae2bf8ec149ddc.ttf after=10 rc=139
+/bin/bash: 第 18 行：24187 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=641bd9db850193064d17575053ae2bf8ec149ddc.ttf after=15 rc=139
+/bin/bash: 第 18 行：24188 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=641bd9db850193064d17575053ae2bf8ec149ddc.ttf after=20 rc=139
+/bin/bash: 第 18 行：24189 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=641bd9db850193064d17575053ae2bf8ec149ddc.ttf after=25 rc=139
+/bin/bash: 第 18 行：24201 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=6466d38c62e73a39202435a4f73bf5d6acbb73c0.ttf after=5 rc=134
+/bin/bash: 第 18 行：24202 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=6466d38c62e73a39202435a4f73bf5d6acbb73c0.ttf after=10 rc=139
+/bin/bash: 第 18 行：24203 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=6466d38c62e73a39202435a4f73bf5d6acbb73c0.ttf after=15 rc=139
+/bin/bash: 第 18 行：24204 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=6466d38c62e73a39202435a4f73bf5d6acbb73c0.ttf after=20 rc=139
+/bin/bash: 第 18 行：24205 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=6466d38c62e73a39202435a4f73bf5d6acbb73c0.ttf after=25 rc=139
+/bin/bash: 第 18 行：24206 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=6466d38c62e73a39202435a4f73bf5d6acbb73c0.ttf after=30 rc=139
+/bin/bash: 第 18 行：24217 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=6991b13ce889466be6de3f66e891de2bc0f117ee.ttf after=5 rc=134
+/bin/bash: 第 18 行：24218 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=6991b13ce889466be6de3f66e891de2bc0f117ee.ttf after=10 rc=134
+/bin/bash: 第 18 行：24219 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=6991b13ce889466be6de3f66e891de2bc0f117ee.ttf after=15 rc=139
+/bin/bash: 第 18 行：24220 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=6991b13ce889466be6de3f66e891de2bc0f117ee.ttf after=20 rc=139
+/bin/bash: 第 18 行：24221 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=6991b13ce889466be6de3f66e891de2bc0f117ee.ttf after=25 rc=139
+/bin/bash: 第 18 行：24222 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=6991b13ce889466be6de3f66e891de2bc0f117ee.ttf after=30 rc=139
+/bin/bash: 第 18 行：24233 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=6ff0fbead4462d9f229167b4e6839eceb8465058.ttf after=5 rc=134
+/bin/bash: 第 18 行：24234 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=6ff0fbead4462d9f229167b4e6839eceb8465058.ttf after=10 rc=134
+/bin/bash: 第 18 行：24235 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=6ff0fbead4462d9f229167b4e6839eceb8465058.ttf after=15 rc=139
+/bin/bash: 第 18 行：24236 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=6ff0fbead4462d9f229167b4e6839eceb8465058.ttf after=20 rc=139
+/bin/bash: 第 18 行：24237 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=6ff0fbead4462d9f229167b4e6839eceb8465058.ttf after=25 rc=139
+/bin/bash: 第 18 行：24238 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=6ff0fbead4462d9f229167b4e6839eceb8465058.ttf after=30 rc=139
+/bin/bash: 第 18 行：24249 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=706c5d7b625f207bc0d874c67237aad6f1e9cd6f.ttf after=5 rc=134
+/bin/bash: 第 18 行：24250 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=706c5d7b625f207bc0d874c67237aad6f1e9cd6f.ttf after=10 rc=134
+/bin/bash: 第 18 行：24251 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=706c5d7b625f207bc0d874c67237aad6f1e9cd6f.ttf after=15 rc=139
+/bin/bash: 第 18 行：24252 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=706c5d7b625f207bc0d874c67237aad6f1e9cd6f.ttf after=20 rc=139
+/bin/bash: 第 18 行：24253 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=706c5d7b625f207bc0d874c67237aad6f1e9cd6f.ttf after=25 rc=139
+/bin/bash: 第 18 行：24254 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=706c5d7b625f207bc0d874c67237aad6f1e9cd6f.ttf after=30 rc=139
+/bin/bash: 第 18 行：24265 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=757ebd573617a24aa9dfbf0b885c54875c6fe06b.ttf after=5 rc=134
+/bin/bash: 第 18 行：24266 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=757ebd573617a24aa9dfbf0b885c54875c6fe06b.ttf after=10 rc=134
+/bin/bash: 第 18 行：24267 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=757ebd573617a24aa9dfbf0b885c54875c6fe06b.ttf after=15 rc=139
+/bin/bash: 第 18 行：24268 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=757ebd573617a24aa9dfbf0b885c54875c6fe06b.ttf after=20 rc=139
+/bin/bash: 第 18 行：24269 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=757ebd573617a24aa9dfbf0b885c54875c6fe06b.ttf after=25 rc=139
+/bin/bash: 第 18 行：24270 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=757ebd573617a24aa9dfbf0b885c54875c6fe06b.ttf after=30 rc=139
+/bin/bash: 第 18 行：24281 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=7a37dc4d5bf018456aea291cee06daf004c0221c.ttf after=5 rc=134
+/bin/bash: 第 18 行：24282 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=7a37dc4d5bf018456aea291cee06daf004c0221c.ttf after=10 rc=134
+/bin/bash: 第 18 行：24283 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=7a37dc4d5bf018456aea291cee06daf004c0221c.ttf after=15 rc=139
+/bin/bash: 第 18 行：24284 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=7a37dc4d5bf018456aea291cee06daf004c0221c.ttf after=20 rc=139
+/bin/bash: 第 18 行：24285 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=7a37dc4d5bf018456aea291cee06daf004c0221c.ttf after=25 rc=139
+/bin/bash: 第 18 行：24286 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=7a37dc4d5bf018456aea291cee06daf004c0221c.ttf after=30 rc=139
+/bin/bash: 第 18 行：24297 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=7e14e7883ed152baa158b80e207b66114c823a8b.ttf after=5 rc=134
+/bin/bash: 第 18 行：24298 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=7e14e7883ed152baa158b80e207b66114c823a8b.ttf after=10 rc=134
+/bin/bash: 第 18 行：24299 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=7e14e7883ed152baa158b80e207b66114c823a8b.ttf after=15 rc=139
+/bin/bash: 第 18 行：24300 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=7e14e7883ed152baa158b80e207b66114c823a8b.ttf after=20 rc=139
+/bin/bash: 第 18 行：24301 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=7e14e7883ed152baa158b80e207b66114c823a8b.ttf after=25 rc=139
+/bin/bash: 第 18 行：24302 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=7e14e7883ed152baa158b80e207b66114c823a8b.ttf after=30 rc=139
+/bin/bash: 第 18 行：24313 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=7ef276fc886ea502a03b9b0e5c8b547d5dc2b61c.ttf after=5 rc=134
+/bin/bash: 第 18 行：24314 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=7ef276fc886ea502a03b9b0e5c8b547d5dc2b61c.ttf after=10 rc=139
+/bin/bash: 第 18 行：24315 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=7ef276fc886ea502a03b9b0e5c8b547d5dc2b61c.ttf after=15 rc=139
+/bin/bash: 第 18 行：24316 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=7ef276fc886ea502a03b9b0e5c8b547d5dc2b61c.ttf after=20 rc=139
+/bin/bash: 第 18 行：24317 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=7ef276fc886ea502a03b9b0e5c8b547d5dc2b61c.ttf after=25 rc=139
+/bin/bash: 第 18 行：24318 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=7ef276fc886ea502a03b9b0e5c8b547d5dc2b61c.ttf after=30 rc=139
+/bin/bash: 第 18 行：24329 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=8099955657a54e9ee38a6ba1d6f950ce58e3cc25.ttf after=5 rc=134
+/bin/bash: 第 18 行：24330 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=8099955657a54e9ee38a6ba1d6f950ce58e3cc25.ttf after=10 rc=134
+/bin/bash: 第 18 行：24331 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=8099955657a54e9ee38a6ba1d6f950ce58e3cc25.ttf after=15 rc=139
+/bin/bash: 第 18 行：24332 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=8099955657a54e9ee38a6ba1d6f950ce58e3cc25.ttf after=20 rc=139
+/bin/bash: 第 18 行：24333 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=8099955657a54e9ee38a6ba1d6f950ce58e3cc25.ttf after=25 rc=139
+/bin/bash: 第 18 行：24334 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=8099955657a54e9ee38a6ba1d6f950ce58e3cc25.ttf after=30 rc=139
+/bin/bash: 第 18 行：24345 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=813c2f8e5512187fd982417a7fb4286728e6f4a8.ttf after=5 rc=134
+/bin/bash: 第 18 行：24346 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=813c2f8e5512187fd982417a7fb4286728e6f4a8.ttf after=10 rc=134
+/bin/bash: 第 18 行：24347 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=813c2f8e5512187fd982417a7fb4286728e6f4a8.ttf after=15 rc=139
+/bin/bash: 第 18 行：24348 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=813c2f8e5512187fd982417a7fb4286728e6f4a8.ttf after=20 rc=139
+/bin/bash: 第 18 行：24349 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=813c2f8e5512187fd982417a7fb4286728e6f4a8.ttf after=25 rc=139
+/bin/bash: 第 18 行：24350 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=813c2f8e5512187fd982417a7fb4286728e6f4a8.ttf after=30 rc=139
+/bin/bash: 第 18 行：24361 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=8240789f6d12d4cfc4b5e8e6f246c3701bcf861f.ttf after=5 rc=134
+/bin/bash: 第 18 行：24362 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=8240789f6d12d4cfc4b5e8e6f246c3701bcf861f.ttf after=10 rc=139
+/bin/bash: 第 18 行：24363 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=8240789f6d12d4cfc4b5e8e6f246c3701bcf861f.ttf after=15 rc=139
+/bin/bash: 第 18 行：24364 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=8240789f6d12d4cfc4b5e8e6f246c3701bcf861f.ttf after=20 rc=139
+/bin/bash: 第 18 行：24365 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=8240789f6d12d4cfc4b5e8e6f246c3701bcf861f.ttf after=25 rc=139
+/bin/bash: 第 18 行：24366 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=8240789f6d12d4cfc4b5e8e6f246c3701bcf861f.ttf after=30 rc=139
+/bin/bash: 第 18 行：24377 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=8454d22037f892e76614e1645d066689a0200e61.ttf after=5 rc=134
+/bin/bash: 第 18 行：24378 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=8454d22037f892e76614e1645d066689a0200e61.ttf after=10 rc=134
+/bin/bash: 第 18 行：24379 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=8454d22037f892e76614e1645d066689a0200e61.ttf after=15 rc=139
+/bin/bash: 第 18 行：24380 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=8454d22037f892e76614e1645d066689a0200e61.ttf after=20 rc=139
+/bin/bash: 第 18 行：24381 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=8454d22037f892e76614e1645d066689a0200e61.ttf after=25 rc=139
+/bin/bash: 第 18 行：24382 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=8454d22037f892e76614e1645d066689a0200e61.ttf after=30 rc=139
+/bin/bash: 第 18 行：24393 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=85414f2552b654585b7a8d13dcc3e8fd9f7970a3.ttf after=5 rc=134
+/bin/bash: 第 18 行：24394 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=85414f2552b654585b7a8d13dcc3e8fd9f7970a3.ttf after=10 rc=134
+/bin/bash: 第 18 行：24395 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=85414f2552b654585b7a8d13dcc3e8fd9f7970a3.ttf after=15 rc=134
+/bin/bash: 第 18 行：24396 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=85414f2552b654585b7a8d13dcc3e8fd9f7970a3.ttf after=20 rc=139
+/bin/bash: 第 18 行：24397 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=85414f2552b654585b7a8d13dcc3e8fd9f7970a3.ttf after=25 rc=139
+/bin/bash: 第 18 行：24398 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=85414f2552b654585b7a8d13dcc3e8fd9f7970a3.ttf after=30 rc=139
+/bin/bash: 第 18 行：24399 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=85414f2552b654585b7a8d13dcc3e8fd9f7970a3.ttf after=40 rc=139
+/bin/bash: 第 18 行：24409 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=8a9fea2a7384f2116e5b84a9b31f83be7850ce21.ttf after=5 rc=134
+/bin/bash: 第 18 行：24410 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=8a9fea2a7384f2116e5b84a9b31f83be7850ce21.ttf after=10 rc=134
+/bin/bash: 第 18 行：24411 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=8a9fea2a7384f2116e5b84a9b31f83be7850ce21.ttf after=15 rc=139
+/bin/bash: 第 18 行：24412 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=8a9fea2a7384f2116e5b84a9b31f83be7850ce21.ttf after=20 rc=139
+/bin/bash: 第 18 行：24413 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=8a9fea2a7384f2116e5b84a9b31f83be7850ce21.ttf after=25 rc=139
+/bin/bash: 第 18 行：24414 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=8a9fea2a7384f2116e5b84a9b31f83be7850ce21.ttf after=30 rc=139
+/bin/bash: 第 18 行：24425 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=a34a7b00f22ffb5fd7eef6933b81c7e71bc2cdfb.ttf after=5 rc=134
+/bin/bash: 第 18 行：24426 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=a34a7b00f22ffb5fd7eef6933b81c7e71bc2cdfb.ttf after=10 rc=134
+/bin/bash: 第 18 行：24427 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=a34a7b00f22ffb5fd7eef6933b81c7e71bc2cdfb.ttf after=15 rc=139
+/bin/bash: 第 18 行：24428 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=a34a7b00f22ffb5fd7eef6933b81c7e71bc2cdfb.ttf after=20 rc=139
+/bin/bash: 第 18 行：24429 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=a34a7b00f22ffb5fd7eef6933b81c7e71bc2cdfb.ttf after=25 rc=139
+/bin/bash: 第 18 行：24430 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=a34a7b00f22ffb5fd7eef6933b81c7e71bc2cdfb.ttf after=30 rc=139
+/bin/bash: 第 18 行：24441 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=a34a9191d9376bda419836effeef7e75c1386016.ttf after=5 rc=134
+/bin/bash: 第 18 行：24442 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=a34a9191d9376bda419836effeef7e75c1386016.ttf after=10 rc=134
+/bin/bash: 第 18 行：24443 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=a34a9191d9376bda419836effeef7e75c1386016.ttf after=15 rc=139
+/bin/bash: 第 18 行：24444 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=a34a9191d9376bda419836effeef7e75c1386016.ttf after=20 rc=139
+/bin/bash: 第 18 行：24445 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=a34a9191d9376bda419836effeef7e75c1386016.ttf after=25 rc=139
+/bin/bash: 第 18 行：24446 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=a34a9191d9376bda419836effeef7e75c1386016.ttf after=30 rc=139
+/bin/bash: 第 18 行：24457 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=a69118c2c2ada48ff803d9149daa54c9ebdae30e.ttf after=5 rc=134
+/bin/bash: 第 18 行：24458 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=a69118c2c2ada48ff803d9149daa54c9ebdae30e.ttf after=10 rc=139
+/bin/bash: 第 18 行：24459 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=a69118c2c2ada48ff803d9149daa54c9ebdae30e.ttf after=15 rc=139
+/bin/bash: 第 18 行：24460 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=a69118c2c2ada48ff803d9149daa54c9ebdae30e.ttf after=20 rc=139
+/bin/bash: 第 18 行：24461 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=a69118c2c2ada48ff803d9149daa54c9ebdae30e.ttf after=25 rc=139
+/bin/bash: 第 18 行：24462 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=a69118c2c2ada48ff803d9149daa54c9ebdae30e.ttf after=30 rc=139
+/bin/bash: 第 18 行：24473 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=a919b33197965846f21074b24e30250d67277bce.ttf after=5 rc=134
+/bin/bash: 第 18 行：24474 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=a919b33197965846f21074b24e30250d67277bce.ttf after=10 rc=134
+/bin/bash: 第 18 行：24475 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=a919b33197965846f21074b24e30250d67277bce.ttf after=15 rc=139
+/bin/bash: 第 18 行：24476 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=a919b33197965846f21074b24e30250d67277bce.ttf after=20 rc=139
+/bin/bash: 第 18 行：24477 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=a919b33197965846f21074b24e30250d67277bce.ttf after=25 rc=139
+/bin/bash: 第 18 行：24478 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=a919b33197965846f21074b24e30250d67277bce.ttf after=30 rc=139
+/bin/bash: 第 18 行：24479 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=a919b33197965846f21074b24e30250d67277bce.ttf after=40 rc=139
+/bin/bash: 第 18 行：24489 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=a98e908e2ed21b22228ea59ebcc0f05034c86f2e.ttf after=5 rc=134
+/bin/bash: 第 18 行：24490 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=a98e908e2ed21b22228ea59ebcc0f05034c86f2e.ttf after=10 rc=134
+/bin/bash: 第 18 行：24491 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=a98e908e2ed21b22228ea59ebcc0f05034c86f2e.ttf after=15 rc=139
+/bin/bash: 第 18 行：24492 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=a98e908e2ed21b22228ea59ebcc0f05034c86f2e.ttf after=20 rc=139
+/bin/bash: 第 18 行：24493 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=a98e908e2ed21b22228ea59ebcc0f05034c86f2e.ttf after=25 rc=139
+/bin/bash: 第 18 行：24494 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=a98e908e2ed21b22228ea59ebcc0f05034c86f2e.ttf after=30 rc=139
+/bin/bash: 第 18 行：24505 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=b6acef662e0beb8d5fcf5b61c6b0ca69537b7402.ttf after=5 rc=134
+/bin/bash: 第 18 行：24506 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=b6acef662e0beb8d5fcf5b61c6b0ca69537b7402.ttf after=10 rc=134
+/bin/bash: 第 18 行：24507 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=b6acef662e0beb8d5fcf5b61c6b0ca69537b7402.ttf after=15 rc=139
+/bin/bash: 第 18 行：24508 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=b6acef662e0beb8d5fcf5b61c6b0ca69537b7402.ttf after=20 rc=139
+/bin/bash: 第 18 行：24509 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=b6acef662e0beb8d5fcf5b61c6b0ca69537b7402.ttf after=25 rc=139
+/bin/bash: 第 18 行：24510 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=b6acef662e0beb8d5fcf5b61c6b0ca69537b7402.ttf after=30 rc=139
+/bin/bash: 第 18 行：24521 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=b9e2aaa0d75fcef6971ec3a96d806ba4a6b31fe2.ttf after=5 rc=134
+/bin/bash: 第 18 行：24522 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=b9e2aaa0d75fcef6971ec3a96d806ba4a6b31fe2.ttf after=10 rc=134
+/bin/bash: 第 18 行：24523 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=b9e2aaa0d75fcef6971ec3a96d806ba4a6b31fe2.ttf after=15 rc=139
+/bin/bash: 第 18 行：24524 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=b9e2aaa0d75fcef6971ec3a96d806ba4a6b31fe2.ttf after=20 rc=139
+/bin/bash: 第 18 行：24525 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=b9e2aaa0d75fcef6971ec3a96d806ba4a6b31fe2.ttf after=25 rc=139
+/bin/bash: 第 18 行：24526 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=b9e2aaa0d75fcef6971ec3a96d806ba4a6b31fe2.ttf after=30 rc=139
+/bin/bash: 第 18 行：24527 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=b9e2aaa0d75fcef6971ec3a96d806ba4a6b31fe2.ttf after=40 rc=139
+/bin/bash: 第 18 行：24537 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=bb0c53752e85c3d28973ebc913287b8987d3dfe8.ttf after=5 rc=134
+/bin/bash: 第 18 行：24538 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=bb0c53752e85c3d28973ebc913287b8987d3dfe8.ttf after=10 rc=134
+/bin/bash: 第 18 行：24539 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=bb0c53752e85c3d28973ebc913287b8987d3dfe8.ttf after=15 rc=139
+/bin/bash: 第 18 行：24540 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=bb0c53752e85c3d28973ebc913287b8987d3dfe8.ttf after=20 rc=139
+/bin/bash: 第 18 行：24541 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=bb0c53752e85c3d28973ebc913287b8987d3dfe8.ttf after=25 rc=139
+/bin/bash: 第 18 行：24542 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=bb0c53752e85c3d28973ebc913287b8987d3dfe8.ttf after=30 rc=139
+/bin/bash: 第 18 行：24553 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=bb29ce50df2bdba2d10726427c6b7609bf460e04.ttf after=5 rc=134
+/bin/bash: 第 18 行：24554 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=bb29ce50df2bdba2d10726427c6b7609bf460e04.ttf after=10 rc=134
+/bin/bash: 第 18 行：24555 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=bb29ce50df2bdba2d10726427c6b7609bf460e04.ttf after=15 rc=134
+/bin/bash: 第 18 行：24556 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=bb29ce50df2bdba2d10726427c6b7609bf460e04.ttf after=20 rc=139
+/bin/bash: 第 18 行：24557 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=bb29ce50df2bdba2d10726427c6b7609bf460e04.ttf after=25 rc=139
+/bin/bash: 第 18 行：24558 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=bb29ce50df2bdba2d10726427c6b7609bf460e04.ttf after=30 rc=139
+/bin/bash: 第 18 行：24559 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=bb29ce50df2bdba2d10726427c6b7609bf460e04.ttf after=40 rc=139
+/bin/bash: 第 18 行：24569 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=bb9473d2403488714043bcfb946c9f78b86ad627.ttf after=5 rc=134
+/bin/bash: 第 18 行：24570 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=bb9473d2403488714043bcfb946c9f78b86ad627.ttf after=10 rc=134
+/bin/bash: 第 18 行：24571 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=bb9473d2403488714043bcfb946c9f78b86ad627.ttf after=15 rc=139
+/bin/bash: 第 18 行：24572 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=bb9473d2403488714043bcfb946c9f78b86ad627.ttf after=20 rc=139
+/bin/bash: 第 18 行：24573 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=bb9473d2403488714043bcfb946c9f78b86ad627.ttf after=25 rc=139
+/bin/bash: 第 18 行：24574 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=bb9473d2403488714043bcfb946c9f78b86ad627.ttf after=30 rc=139
+/bin/bash: 第 18 行：24585 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=c4e48b0886ef460f532fb49f00047ec92c432ec0.ttf after=5 rc=134
+/bin/bash: 第 18 行：24586 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=c4e48b0886ef460f532fb49f00047ec92c432ec0.ttf after=10 rc=134
+/bin/bash: 第 18 行：24587 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=c4e48b0886ef460f532fb49f00047ec92c432ec0.ttf after=15 rc=139
+/bin/bash: 第 18 行：24588 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=c4e48b0886ef460f532fb49f00047ec92c432ec0.ttf after=20 rc=139
+/bin/bash: 第 18 行：24589 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=c4e48b0886ef460f532fb49f00047ec92c432ec0.ttf after=25 rc=139
+/bin/bash: 第 18 行：24590 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=c4e48b0886ef460f532fb49f00047ec92c432ec0.ttf after=30 rc=139
+/bin/bash: 第 18 行：24601 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=cc5f3d2d717fb6bd4dfae1c16d48a2cb8e12233b.ttf after=5 rc=134
+/bin/bash: 第 18 行：24602 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=cc5f3d2d717fb6bd4dfae1c16d48a2cb8e12233b.ttf after=10 rc=134
+/bin/bash: 第 18 行：24603 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=cc5f3d2d717fb6bd4dfae1c16d48a2cb8e12233b.ttf after=15 rc=139
+/bin/bash: 第 18 行：24604 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=cc5f3d2d717fb6bd4dfae1c16d48a2cb8e12233b.ttf after=20 rc=139
+/bin/bash: 第 18 行：24605 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=cc5f3d2d717fb6bd4dfae1c16d48a2cb8e12233b.ttf after=25 rc=139
+/bin/bash: 第 18 行：24606 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=cc5f3d2d717fb6bd4dfae1c16d48a2cb8e12233b.ttf after=30 rc=139
+/bin/bash: 第 18 行：24617 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=d629e7fedc0b350222d7987345fe61613fa3929a.ttf after=5 rc=134
+/bin/bash: 第 18 行：24618 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=d629e7fedc0b350222d7987345fe61613fa3929a.ttf after=10 rc=134
+/bin/bash: 第 18 行：24619 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=d629e7fedc0b350222d7987345fe61613fa3929a.ttf after=15 rc=139
+/bin/bash: 第 18 行：24620 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=d629e7fedc0b350222d7987345fe61613fa3929a.ttf after=20 rc=139
+/bin/bash: 第 18 行：24621 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=d629e7fedc0b350222d7987345fe61613fa3929a.ttf after=25 rc=139
+/bin/bash: 第 18 行：24622 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=d629e7fedc0b350222d7987345fe61613fa3929a.ttf after=30 rc=139
+/bin/bash: 第 18 行：24633 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=df768b9c257e0c9c35786c47cae15c46571d56be.ttf after=5 rc=134
+/bin/bash: 第 18 行：24634 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=df768b9c257e0c9c35786c47cae15c46571d56be.ttf after=10 rc=134
+/bin/bash: 第 18 行：24635 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=df768b9c257e0c9c35786c47cae15c46571d56be.ttf after=15 rc=139
+/bin/bash: 第 18 行：24636 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=df768b9c257e0c9c35786c47cae15c46571d56be.ttf after=20 rc=139
+/bin/bash: 第 18 行：24637 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=df768b9c257e0c9c35786c47cae15c46571d56be.ttf after=25 rc=139
+/bin/bash: 第 18 行：24638 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=df768b9c257e0c9c35786c47cae15c46571d56be.ttf after=30 rc=139
+/bin/bash: 第 18 行：24649 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=e207635780b42f898d58654b65098763e340f5c7.ttf after=5 rc=134
+/bin/bash: 第 18 行：24650 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=e207635780b42f898d58654b65098763e340f5c7.ttf after=10 rc=134
+/bin/bash: 第 18 行：24651 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=e207635780b42f898d58654b65098763e340f5c7.ttf after=15 rc=139
+/bin/bash: 第 18 行：24652 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=e207635780b42f898d58654b65098763e340f5c7.ttf after=20 rc=139
+/bin/bash: 第 18 行：24653 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=e207635780b42f898d58654b65098763e340f5c7.ttf after=25 rc=139
+/bin/bash: 第 18 行：24654 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=e207635780b42f898d58654b65098763e340f5c7.ttf after=30 rc=139
+/bin/bash: 第 18 行：24665 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=e88c339237f52d21e01c55f01b9c1b4cc14a0467.ttf after=5 rc=134
+/bin/bash: 第 18 行：24666 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=e88c339237f52d21e01c55f01b9c1b4cc14a0467.ttf after=10 rc=139
+/bin/bash: 第 18 行：24667 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=e88c339237f52d21e01c55f01b9c1b4cc14a0467.ttf after=15 rc=139
+/bin/bash: 第 18 行：24668 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=e88c339237f52d21e01c55f01b9c1b4cc14a0467.ttf after=20 rc=139
+/bin/bash: 第 18 行：24669 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=e88c339237f52d21e01c55f01b9c1b4cc14a0467.ttf after=25 rc=139
+/bin/bash: 第 18 行：24670 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=e88c339237f52d21e01c55f01b9c1b4cc14a0467.ttf after=30 rc=139
+/bin/bash: 第 18 行：24681 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=ee39587d13b2afa5499cc79e45780aa79293bbd4.ttf after=5 rc=134
+/bin/bash: 第 18 行：24682 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=ee39587d13b2afa5499cc79e45780aa79293bbd4.ttf after=10 rc=134
+/bin/bash: 第 18 行：24683 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=ee39587d13b2afa5499cc79e45780aa79293bbd4.ttf after=15 rc=139
+/bin/bash: 第 18 行：24684 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=ee39587d13b2afa5499cc79e45780aa79293bbd4.ttf after=20 rc=139
+/bin/bash: 第 18 行：24685 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=ee39587d13b2afa5499cc79e45780aa79293bbd4.ttf after=25 rc=139
+/bin/bash: 第 18 行：24686 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=ee39587d13b2afa5499cc79e45780aa79293bbd4.ttf after=30 rc=139
+/bin/bash: 第 18 行：24697 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=ef86fe710cfea877bbe0dbb6946a1f88d0661031.ttf after=5 rc=134
+/bin/bash: 第 18 行：24698 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=ef86fe710cfea877bbe0dbb6946a1f88d0661031.ttf after=10 rc=134
+/bin/bash: 第 18 行：24699 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=ef86fe710cfea877bbe0dbb6946a1f88d0661031.ttf after=15 rc=139
+/bin/bash: 第 18 行：24700 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=ef86fe710cfea877bbe0dbb6946a1f88d0661031.ttf after=20 rc=139
+/bin/bash: 第 18 行：24701 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=ef86fe710cfea877bbe0dbb6946a1f88d0661031.ttf after=25 rc=139
+/bin/bash: 第 18 行：24702 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=ef86fe710cfea877bbe0dbb6946a1f88d0661031.ttf after=30 rc=139
+/bin/bash: 第 18 行：24713 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=f22416c692720a7d46fadf4af99f4c9e094f00b9.ttf after=5 rc=134
+/bin/bash: 第 18 行：24714 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=f22416c692720a7d46fadf4af99f4c9e094f00b9.ttf after=10 rc=134
+/bin/bash: 第 18 行：24715 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=f22416c692720a7d46fadf4af99f4c9e094f00b9.ttf after=15 rc=139
+/bin/bash: 第 18 行：24716 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=f22416c692720a7d46fadf4af99f4c9e094f00b9.ttf after=20 rc=139
+/bin/bash: 第 18 行：24717 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=f22416c692720a7d46fadf4af99f4c9e094f00b9.ttf after=25 rc=139
+/bin/bash: 第 18 行：24718 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=f22416c692720a7d46fadf4af99f4c9e094f00b9.ttf after=30 rc=139
+/bin/bash: 第 18 行：24719 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=f22416c692720a7d46fadf4af99f4c9e094f00b9.ttf after=40 rc=139
+/bin/bash: 第 18 行：24729 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=f499fbc23865022234775c43503bba2e63978fe1.ttf after=5 rc=134
+/bin/bash: 第 18 行：24730 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=f499fbc23865022234775c43503bba2e63978fe1.ttf after=10 rc=134
+/bin/bash: 第 18 行：24731 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=f499fbc23865022234775c43503bba2e63978fe1.ttf after=15 rc=139
+/bin/bash: 第 18 行：24732 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=f499fbc23865022234775c43503bba2e63978fe1.ttf after=20 rc=139
+/bin/bash: 第 18 行：24733 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=f499fbc23865022234775c43503bba2e63978fe1.ttf after=25 rc=139
+/bin/bash: 第 18 行：24734 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=f499fbc23865022234775c43503bba2e63978fe1.ttf after=30 rc=139
+/bin/bash: 第 18 行：24745 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=f518eb6f6b5eec2946c9fbbbde44e45d46f5e2ac.ttf after=5 rc=134
+/bin/bash: 第 18 行：24746 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=f518eb6f6b5eec2946c9fbbbde44e45d46f5e2ac.ttf after=10 rc=134
+/bin/bash: 第 18 行：24747 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=f518eb6f6b5eec2946c9fbbbde44e45d46f5e2ac.ttf after=15 rc=139
+/bin/bash: 第 18 行：24748 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=f518eb6f6b5eec2946c9fbbbde44e45d46f5e2ac.ttf after=20 rc=139
+/bin/bash: 第 18 行：24749 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=f518eb6f6b5eec2946c9fbbbde44e45d46f5e2ac.ttf after=25 rc=139
+/bin/bash: 第 18 行：24750 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=f518eb6f6b5eec2946c9fbbbde44e45d46f5e2ac.ttf after=30 rc=139
+/bin/bash: 第 18 行：24761 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=f9b1dd4dcb515e757789a22cb4241107746fd3d0.ttf after=5 rc=134
+/bin/bash: 第 18 行：24762 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=f9b1dd4dcb515e757789a22cb4241107746fd3d0.ttf after=10 rc=134
+/bin/bash: 第 18 行：24763 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=f9b1dd4dcb515e757789a22cb4241107746fd3d0.ttf after=15 rc=139
+/bin/bash: 第 18 行：24764 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=f9b1dd4dcb515e757789a22cb4241107746fd3d0.ttf after=20 rc=139
+/bin/bash: 第 18 行：24765 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=f9b1dd4dcb515e757789a22cb4241107746fd3d0.ttf after=25 rc=139
+/bin/bash: 第 18 行：24766 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=f9b1dd4dcb515e757789a22cb4241107746fd3d0.ttf after=30 rc=139
+/bin/bash: 第 18 行：24777 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=fab39d60d758cb586db5a504f218442cd1395725.ttf after=5 rc=134
+/bin/bash: 第 18 行：24799 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=fab39d60d758cb586db5a504f218442cd1395725.ttf after=10 rc=134
+/bin/bash: 第 18 行：24800 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=fab39d60d758cb586db5a504f218442cd1395725.ttf after=15 rc=139
+/bin/bash: 第 18 行：24801 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=fab39d60d758cb586db5a504f218442cd1395725.ttf after=20 rc=139
+/bin/bash: 第 18 行：24802 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=fab39d60d758cb586db5a504f218442cd1395725.ttf after=25 rc=139
+/bin/bash: 第 18 行：24803 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=fab39d60d758cb586db5a504f218442cd1395725.ttf after=30 rc=139
+/bin/bash: 第 18 行：24814 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=fbb6c84c9e1fe0c39e152fbe845e51fd81f6748e.ttf after=5 rc=134
+/bin/bash: 第 18 行：24815 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=fbb6c84c9e1fe0c39e152fbe845e51fd81f6748e.ttf after=10 rc=134
+/bin/bash: 第 18 行：24816 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=fbb6c84c9e1fe0c39e152fbe845e51fd81f6748e.ttf after=15 rc=139
+/bin/bash: 第 18 行：24817 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=fbb6c84c9e1fe0c39e152fbe845e51fd81f6748e.ttf after=20 rc=139
+/bin/bash: 第 18 行：24818 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=fbb6c84c9e1fe0c39e152fbe845e51fd81f6748e.ttf after=25 rc=139
+/bin/bash: 第 18 行：24819 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=fbb6c84c9e1fe0c39e152fbe845e51fd81f6748e.ttf after=30 rc=139
+/bin/bash: 第 18 行：24830 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=fcdcffbdf1c4c97c05308d7600e4c283eb47dbca.ttf after=5 rc=134
+/bin/bash: 第 18 行：24831 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=fcdcffbdf1c4c97c05308d7600e4c283eb47dbca.ttf after=10 rc=134
+/bin/bash: 第 18 行：24832 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=fcdcffbdf1c4c97c05308d7600e4c283eb47dbca.ttf after=15 rc=139
+/bin/bash: 第 18 行：24833 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=fcdcffbdf1c4c97c05308d7600e4c283eb47dbca.ttf after=20 rc=139
+/bin/bash: 第 18 行：24834 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=fcdcffbdf1c4c97c05308d7600e4c283eb47dbca.ttf after=25 rc=139
+/bin/bash: 第 18 行：24835 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=fcdcffbdf1c4c97c05308d7600e4c283eb47dbca.ttf after=30 rc=139
+/bin/bash: 第 18 行：24846 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=ffa0f5d2d9025486d8469d8b1fdd983e7632499b.ttf after=5 rc=134
+/bin/bash: 第 18 行：24847 已放弃               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=ffa0f5d2d9025486d8469d8b1fdd983e7632499b.ttf after=10 rc=134
+/bin/bash: 第 18 行：24848 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=ffa0f5d2d9025486d8469d8b1fdd983e7632499b.ttf after=15 rc=139
+/bin/bash: 第 18 行：24849 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=ffa0f5d2d9025486d8469d8b1fdd983e7632499b.ttf after=20 rc=139
+/bin/bash: 第 18 行：24850 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=ffa0f5d2d9025486d8469d8b1fdd983e7632499b.ttf after=25 rc=139
+/bin/bash: 第 18 行：24851 段错误               （核心已转储）OOM_FAIL_AFTER=$af /workspace/hb-fuzzer-standalone "/tmp/corpus/$f" > /dev/null 2>&1
+CRASH f=ffa0f5d2d9025486d8469d8b1fdd983e7632499b.ttf after=30 rc=139
+total crashes: 413
