@@ -1,5 +1,19 @@
 from __future__ import annotations
 
+"""把代理的 HTTP 采集结果与 Harbor/Claude Code session 日志关联起来。
+
+这个脚本是离线后处理器，不参与在线请求转发。它有两个输入：
+
+1. ``capture_root``：proxy.py 的 ``--log-dir``，或该目录下面的 ``raw`` 目录；
+2. ``harbor_root``：Harbor run 根目录、tasks 目录、单个 task 目录，或一个 session JSONL。
+
+关联时不使用请求时间、客户端 IP、prompt hash 等模糊信息。唯一的主要关联键是：
+
+    capture 的 response.json.message_id == session 中 assistant.message.id
+
+这样即使多个 Claude Code/agent 并发请求，也不会靠时间邻近关系误配。
+"""
+
 import argparse
 import json
 import re
@@ -98,11 +112,25 @@ def jsonl_records(path: Path) -> Iterator[tuple[int, dict[str, Any]]]:
 
 
 def is_probable_session_file(path: Path) -> bool:
+    """限制 JSONL 搜索范围，避免把 Harbor 中其他用途的 JSONL 当成 session。
+
+    Claude Code 的主 session 通常位于 ``.claude/projects/.../*.jsonl``，子 agent
+    session 通常位于 ``.../<session-id>/subagents/agent-*.jsonl``。因此，只接受
+    路径组件中出现 ``projects`` 或 ``subagents`` 的 JSONL。
+    """
     lower_parts = {part.lower() for part in path.parts}
     return "projects" in lower_parts or "subagents" in lower_parts
 
 
 def discover_session_files(harbor_root: Path) -> list[Path]:
+    """根据 --harbor-run-dir 的形态发现 session 文件。
+
+    * 参数本身是文件：直接把它当作唯一 session 文件，不检查目录名；
+    * 参数是目录：递归查找 ``*.jsonl``，再由 is_probable_session_file 过滤。
+
+    所以传入 Harbor run、tasks、单 task 三种目录时都不要求固定的中间层级，
+    只要 session 最终位于 Claude Code 常见的 projects/subagents 路径下即可。
+    """
     if harbor_root.is_file():
         return [harbor_root]
     return sorted(
@@ -113,7 +141,18 @@ def discover_session_files(harbor_root: Path) -> list[Path]:
 
 
 def task_context(path: Path, harbor_root: Path) -> tuple[str, Path]:
-    """从 Harbor 的 tasks/<task_id>/... 路径提取任务，避免依赖代理 URL。"""
+    """从 session 路径提取 ``task_id`` 和 task 根目录。
+
+    支持的入口形态及结果：
+
+    * ``<run>/``：若相对路径含 ``tasks/<id>/...``，取 ``<id>``；
+    * ``<run>/tasks/``：相对路径第一段就是 task id；
+    * ``<run>/tasks/<id>/``：用目录名作为 task id，要求该目录有
+      ``final_status.json``；
+    * 单独的 JSONL 或无法识别的目录：task id 退化为 ``unknown_task``。
+
+    task 不是从代理 URL、请求时间或 prompt 推断的，而是从 Harbor 目录结构恢复。
+    """
     try:
         relative = path.resolve().relative_to(harbor_root.resolve())
     except ValueError:
@@ -137,6 +176,12 @@ def task_context(path: Path, harbor_root: Path) -> tuple[str, Path]:
 
 
 def find_harbor_agent_id(task_dir: Path) -> Optional[str]:
+    """查找 Harbor 为整个 task 启动的 agent id（不是 Claude 子 agent id）。
+
+    优先读取 ``final_status.json.agent_id``；如果没有，则尝试扫描
+    ``persisted_workspaces/*/agent_id.txt``。后者必须只有一个唯一值才采用，
+    多个候选值时返回 None，避免猜测。
+    """
     final_status = read_json(task_dir / "final_status.json")
     value = final_status.get("agent_id")
     if isinstance(value, str) and value:
@@ -158,11 +203,13 @@ def find_harbor_agent_id(task_dir: Path) -> Optional[str]:
 
 
 def read_subagent_metadata(path: Path) -> dict[str, Any]:
+    """读取与 agent-*.jsonl 同名的可选 .meta.json（agentType/description）。"""
     metadata_path = path.with_suffix(".meta.json")
     return read_json(metadata_path) if metadata_path.exists() else {}
 
 
 def subagent_id_from_path(path: Path) -> Optional[str]:
+    """从 ``subagents/agent-<id>.jsonl`` 提取 ``<id>``。"""
     if path.parent.name.lower() != "subagents":
         return None
     stem = path.stem
@@ -172,6 +219,21 @@ def subagent_id_from_path(path: Path) -> Optional[str]:
 def build_session_index(
     harbor_root: Path,
 ) -> tuple[dict[str, SessionLocation], dict[str, list[SessionLocation]], dict[str, int]]:
+    """扫描 session，建立 ``message.id -> 语义位置`` 索引。
+
+    只索引同时满足以下条件的 JSONL 行：
+
+    * 行本身是合法 JSON object；
+    * ``type == "assistant"``；
+    * ``message`` 是 object；
+    * ``message.id`` 是非空字符串。
+
+    主/子 agent 的判断来源按可靠性组合：文件是否位于 subagents、记录中的
+    ``agentId``/``agent_id``、以及 ``isSidechain``/``is_sidechain``。位于
+    subagents 目录本身就足以判定为子 agent。
+
+    返回值分别是：正常索引、同一 message id 的语义冲突候选、扫描统计。
+    """
     index: dict[str, SessionLocation] = {}
     conflicts: dict[str, list[SessionLocation]] = {}
     stats = {"session_files": 0, "records": 0, "assistant_fragments": 0}
@@ -199,6 +261,7 @@ def build_session_index(
             stats["assistant_fragments"] += 1
 
             record_agent_id = record.get("agentId") or record.get("agent_id")
+            # 行内 agentId 优先；旧版/部分 session 没写时，再从 agent-*.jsonl 文件名取。
             agent_id = (
                 record_agent_id
                 if isinstance(record_agent_id, str) and record_agent_id
@@ -211,6 +274,7 @@ def build_session_index(
                 or record.get("is_sidechain")
             )
             session_id_value = record.get("sessionId") or record.get("session_id")
+            # sessionId 缺失时使用文件名，保证仍有稳定的分组键。
             session_id = (
                 session_id_value
                 if isinstance(session_id_value, str) and session_id_value
@@ -261,6 +325,7 @@ def build_session_index(
                 continue
 
             candidates = conflicts.setdefault(message_id, [previous])
+            # 同一 message id 落在不同 task/session/agent 时绝不覆盖，交给 conflicts 输出。
             if location.semantic_key() not in {item.semantic_key() for item in candidates}:
                 candidates.append(location)
 
@@ -268,11 +333,17 @@ def build_session_index(
 
 
 def resolve_raw_root(capture_root: Path) -> Path:
+    """兼容传入 ``--log-dir`` 和直接传入其 ``raw`` 子目录两种用法。"""
     nested = capture_root / "raw"
     return nested if nested.is_dir() else capture_root
 
 
 def load_captures(capture_root: Path) -> tuple[list[CaptureRecord], int]:
+    """读取完成的 capture，并统计尚未结束的 inflight 请求。
+
+    只有 ``completed/<capture-id>/`` 会进入最终分类；inflight 不会被伪装成完成
+    round，仅将数量写入 finalization_report.json，供操作者检查代理是否异常中断。
+    """
     raw_root = resolve_raw_root(capture_root)
     records: list[CaptureRecord] = []
     completed_root = raw_root / "completed"
@@ -422,6 +493,17 @@ def finalize_dataset(
     harbor_root: Path,
     output_root: Path,
 ) -> dict[str, Any]:
+    """执行关联、分类、round 排序和最终文件写出。
+
+    分类规则：
+
+    * 有唯一 message id 且在 session 索引中唯一命中 -> tasks；
+    * Messages 请求缺少/找不到 message id -> unmatched；
+    * 非 Messages 辅助请求缺少匹配 -> auxiliary；
+    * session 语义冲突或多个 capture 共用 message id -> conflicts。
+
+    输出目录必须为空，这是为了防止不同 Harbor run 的旧 round 被静默混入。
+    """
     ensure_empty_output(output_root)
     session_index, session_conflicts, session_stats = build_session_index(harbor_root)
     captures, inflight_count = load_captures(capture_root)
@@ -456,6 +538,7 @@ def finalize_dataset(
             (unmatched if is_messages else auxiliary).append(capture)
             continue
         actor_id = location.agent_id or "main"
+        # 先按 task + actor 类型 + agent id 分组，再在每个 agent 内部编号 round。
         key = (location.task_id, location.actor_type, actor_id)
         matched.setdefault(key, []).append((capture, location))
 
@@ -464,6 +547,7 @@ def finalize_dataset(
     matched_count = 0
 
     for (task_id, actor_type, actor_id), items in sorted(matched.items()):
+        # round 首选 session assistant 记录时间排序，缺失时再使用文件/行号和采集时间。
         items.sort(key=round_sort_key)
         task_folder = tasks_root / safe_component(task_id)
         actor_folder_name = (

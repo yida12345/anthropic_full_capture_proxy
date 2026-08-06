@@ -276,7 +276,11 @@ class AnthropicMessageAggregator:
 
 
 class SSEDecoder:
-    """增量解析 SSE；能够处理事件行和 JSON 数据跨网络 chunk 的情况。"""
+    """增量解析 SSE；能够处理事件行和 JSON 数据跨网络 chunk 的情况。
+
+    网络 chunk 只是传输层分片，既不保证按行结束，也不保证一个 chunk 对应一个
+    SSE event。因此 feed() 只按换行拆行，直到空行才 dispatch 完整事件。
+    """
 
     def __init__(self, aggregator: AnthropicMessageAggregator) -> None:
         self.aggregator = aggregator
@@ -404,6 +408,8 @@ class RequestCapture:
         client_host: Optional[str],
         client_port: Optional[int],
     ) -> None:
+        # 先进入 inflight。只有 finalize() 完成元数据写入后，整个目录才原子移动到
+        # completed；因此目录位置本身也表达了请求是否已经收尾。
         self.paths.inflight_dir.mkdir(parents=True, exist_ok=False)
         (self.paths.inflight_dir / "request.body").write_bytes(raw_body)
         request_json = parse_json_object(raw_body)
@@ -500,6 +506,8 @@ class RequestCapture:
         transport_error: Optional[str] = None,
         client_disconnected: bool = False,
     ) -> None:
+        # finalize 设计为幂等，流式生成器的 finally 和其他异常清理路径即使重复调用
+        # 也不会重复关闭句柄或第二次移动目录。
         if self._finalized:
             return
         self._finalized = True

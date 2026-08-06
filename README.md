@@ -161,6 +161,52 @@ python finalize.py \
 - 单个 task 目录
 - 单个 session JSONL 文件
 
+### `finalize.py` 如何寻找 session
+
+传入目录时，脚本会从该目录开始递归搜索 `*.jsonl`，但只保留路径组件中包含
+`projects` 或 `subagents` 的文件，以避开 Harbor 中其他用途的 JSONL。例如：
+
+```text
+<run>/tasks/task_a/logs/run/cc_session/.claude/projects/-workspace/session-1.jsonl
+<run>/tasks/task_a/logs/run/cc_session/.claude/projects/-workspace/
+  session-1/subagents/agent-sub1.jsonl
+```
+
+第一类通常是主 agent session；位于 `subagents/` 的第二类会被识别为子 agent。
+如果直接把一个 JSONL 文件传给 `--harbor-run-dir`，脚本会直接读取该文件，
+不会再应用 `projects/subagents` 路径过滤。
+
+目录入口的解析方式如下：
+
+```text
+传 <run>/
+  -> 从相对路径 tasks/<task_id>/... 提取 task_id
+
+传 <run>/tasks/
+  -> 用 session 相对路径的第一层目录名作为 task_id
+
+传 <run>/tasks/<task_id>/
+  -> 当目录内存在 final_status.json 时，用当前目录名作为 task_id
+
+传单个 session JSONL
+  -> 能关联 message.id，但因没有上层 task 路径，task_id 为 unknown_task
+```
+
+因此，如果希望最终数据保留真实 task ID，建议至少传单个 task 目录，而不是单独
+传 session 文件。
+
+扫描每个 session JSONL 时，只索引满足以下条件的行：
+
+- 该行是合法 JSON object
+- `type` 等于 `assistant`
+- `message` 是 object
+- `message.id` 是非空字符串
+
+主/子 agent 由 session 文件位置、`agentId`/`agent_id` 和
+`isSidechain`/`is_sidechain` 联合判断。子 agent ID 优先取记录内的 `agentId`，
+缺失时从 `subagents/agent-<id>.jsonl` 文件名提取。相邻时间、客户端 IP 和
+prompt 内容都不参与关联。
+
 输出目录必须不存在或为空，防止旧轮次残留导致数据混合。
 
 最终结构：

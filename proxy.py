@@ -10,6 +10,10 @@ from typing import Any, AsyncIterator, Iterable, Optional
 from capture_core import RequestCapture, initialize_capture_root
 
 
+# 逐跳 header 只对当前 TCP/HTTP 连接有效，代理不能把它们直接传给下一跳。
+# Host 和 Content-Length 由 httpx 根据新的上游 URL/body 重新生成。
+
+
 HOP_BY_HOP_HEADERS = {
     "connection",
     "keep-alive",
@@ -102,6 +106,8 @@ def create_app(settings: Settings, upstream_transport: Any = None) -> Any:
         methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS", "HEAD"],
     )
     async def transparent_proxy(path: str, request: Request) -> Response:
+        # 请求 body 先完整读取一次：同一份原始 bytes 同时用于落盘和上游转发，
+        # 不重新 json.dumps，因此不会改变字段顺序、空白或模型参数。
         raw_body = await request.body()
         incoming_headers = request_header_items(request)
         upstream_url = build_upstream_url(settings.upstream_url, request)
@@ -159,6 +165,7 @@ def create_app(settings: Settings, upstream_transport: Any = None) -> Any:
         )
 
         if not is_sse:
+            # 非流式响应必须收齐后才能构造普通 Response；仍按 chunk 逐段写入事实源文件。
             try:
                 response_chunks: list[bytes] = []
                 async for chunk in upstream_response.aiter_raw():
@@ -182,6 +189,8 @@ def create_app(settings: Settings, upstream_transport: Any = None) -> Any:
             return apply_raw_response_headers(response, client_response_headers)
 
         async def relay() -> AsyncIterator[bytes]:
+            # relay 是单个请求独享的异步生成器，capture 也是局部变量；并发请求之间
+            # 不共享 response.body 文件句柄或 SSE 聚合状态。
             transport_error: Optional[str] = None
             client_disconnected = False
             try:
