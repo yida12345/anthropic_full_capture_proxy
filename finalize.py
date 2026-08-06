@@ -19,9 +19,33 @@ import json
 import re
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Iterator, Optional
+from typing import Any, Callable, Iterator, Optional
 
 from capture_core import SCHEMA_VERSION, body_representation, utc_timestamp, write_json
+
+
+# 转换后的 request.json 顶层部分。列表既是输出结构说明，也方便下游程序检查字段。
+FINAL_REQUEST_PARTS = [
+    "schema_version",  # 数据格式版本
+    "capture_id",  # 代理为本次 HTTP 请求生成的唯一采集 ID
+    "association",  # task、session、主/子 agent、round 的关联信息
+    "transport",  # 请求方法、URL、header、时间、客户端等 HTTP 元数据
+    "body",  # 请求原始 body 的 JSON/UTF-8/Base64 表示、大小和 SHA-256
+    "provenance",  # 本记录对应的原始 capture 目录和 body 文件
+]
+
+# 转换后的 response.json 顶层部分。SSE 原文在 body，解析事件和聚合 Message 分开保存。
+FINAL_RESPONSE_PARTS = [
+    "schema_version",  # 数据格式版本
+    "capture_id",  # 与 request.json 相同的唯一采集 ID
+    "association",  # task、session、主/子 agent、round 的关联信息
+    "transport",  # 状态码、header、耗时、流式状态、聚合状态等响应元数据
+    "message",  # 非流式 JSON 或由 Anthropic SSE 聚合得到的完整 Message
+    "sse_events",  # 按接收顺序解析出的 SSE 事件；非流式响应为空列表
+    "body",  # 原始响应 body（流式时是原始 SSE）的可逆表示和 SHA-256
+    "state",  # complete/partial、传输错误、客户端断开等采集状态
+    "provenance",  # 本记录对应的原始 capture 目录和 body 文件
+]
 
 
 @dataclass
@@ -218,6 +242,9 @@ def subagent_id_from_path(path: Path) -> Optional[str]:
 
 def build_session_index(
     harbor_root: Path,
+    *,
+    session_files: Optional[list[Path]] = None,
+    task_context_resolver: Optional[Callable[[Path, Path], tuple[str, Path]]] = None,
 ) -> tuple[dict[str, SessionLocation], dict[str, list[SessionLocation]], dict[str, int]]:
     """扫描 session，建立 ``message.id -> 语义位置`` 索引。
 
@@ -232,6 +259,10 @@ def build_session_index(
     ``agentId``/``agent_id``、以及 ``isSidechain``/``is_sidechain``。位于
     subagents 目录本身就足以判定为子 agent。
 
+    ``session_files`` 和 ``task_context_resolver`` 是目录布局适配点。默认使用本文件
+    的旧 Harbor/Claude Code 目录规则；其他布局可以显式传入已经发现的 session
+    文件和 task 解析函数，而不用复制 message.id 索引逻辑。
+
     返回值分别是：正常索引、同一 message id 的语义冲突候选、扫描统计。
     """
     index: dict[str, SessionLocation] = {}
@@ -239,9 +270,16 @@ def build_session_index(
     stats = {"session_files": 0, "records": 0, "assistant_fragments": 0}
     agent_id_cache: dict[Path, Optional[str]] = {}
 
-    for session_file in discover_session_files(harbor_root):
+    files_to_scan = (
+        sorted(session_files)
+        if session_files is not None
+        else discover_session_files(harbor_root)
+    )
+    resolve_task_context = task_context_resolver or task_context
+
+    for session_file in files_to_scan:
         stats["session_files"] += 1
-        task_id, task_dir = task_context(session_file, harbor_root)
+        task_id, task_dir = resolve_task_context(session_file, harbor_root)
         if task_dir not in agent_id_cache:
             agent_id_cache[task_dir] = find_harbor_agent_id(task_dir)
         harbor_agent_id = agent_id_cache[task_dir]
@@ -492,6 +530,10 @@ def finalize_dataset(
     capture_root: Path,
     harbor_root: Path,
     output_root: Path,
+    *,
+    session_files: Optional[list[Path]] = None,
+    task_context_resolver: Optional[Callable[[Path, Path], tuple[str, Path]]] = None,
+    location_filter: Optional[Callable[[SessionLocation], bool]] = None,
 ) -> dict[str, Any]:
     """执行关联、分类、round 排序和最终文件写出。
 
@@ -502,10 +544,19 @@ def finalize_dataset(
     * 非 Messages 辅助请求缺少匹配 -> auxiliary；
     * session 语义冲突或多个 capture 共用 message id -> conflicts。
 
+    ``session_files``/``task_context_resolver`` 用于适配不同的 Harbor 目录布局。
+    ``location_filter`` 在 capture 已通过 message.id 精确关联到 task 后执行；返回
+    False 的轨迹不会写入 tasks、unmatched 或 conflicts。这一点适合实现“只保留
+    reward=1 的成功轨迹”，且不会把已知的失败轨迹伪装成 unmatched。
+
     输出目录必须为空，这是为了防止不同 Harbor run 的旧 round 被静默混入。
     """
     ensure_empty_output(output_root)
-    session_index, session_conflicts, session_stats = build_session_index(harbor_root)
+    session_index, session_conflicts, session_stats = build_session_index(
+        harbor_root,
+        session_files=session_files,
+        task_context_resolver=task_context_resolver,
+    )
     captures, inflight_count = load_captures(capture_root)
 
     captures_by_message: dict[str, list[CaptureRecord]] = {}
@@ -522,6 +573,7 @@ def finalize_dataset(
     unmatched: list[CaptureRecord] = []
     auxiliary: list[CaptureRecord] = []
     conflict_records: list[tuple[CaptureRecord, list[SessionLocation]]] = []
+    filtered_count = 0
 
     for capture in captures:
         message_id = capture.message_id
@@ -529,13 +581,36 @@ def finalize_dataset(
         if not message_id:
             (unmatched if is_messages else auxiliary).append(capture)
             continue
-        if message_id in session_conflicts or message_id in duplicate_capture_ids:
-            candidates = session_conflicts.get(message_id, [])
+        normal_location = session_index.get(message_id)
+        candidates = session_conflicts.get(message_id, [])
+        if candidates and location_filter is not None:
+            candidates = [candidate for candidate in candidates if location_filter(candidate)]
+            if not candidates:
+                filtered_count += 1
+                continue
+        elif (
+            not candidates
+            and normal_location is not None
+            and location_filter is not None
+            and not location_filter(normal_location)
+        ):
+            # 在检查 duplicate capture 之前过滤失败 task，保证失败轨迹不会因为重复
+            # message id 被写到 conflicts/。
+            filtered_count += 1
+            continue
+
+        if message_id in duplicate_capture_ids or len(candidates) > 1:
             conflict_records.append((capture, candidates))
             continue
-        location = session_index.get(message_id)
+
+        # 如果原 session 索引有冲突，但过滤后只剩一个合格 task，可以安全使用该候选；
+        # 否则使用正常的唯一索引项。
+        location = candidates[0] if len(candidates) == 1 else normal_location
         if location is None:
             (unmatched if is_messages else auxiliary).append(capture)
+            continue
+        if location_filter is not None and not location_filter(location):
+            filtered_count += 1
             continue
         actor_id = location.agent_id or "main"
         # 先按 task + actor 类型 + agent id 分组，再在每个 agent 内部编号 round。
@@ -636,6 +711,7 @@ def finalize_dataset(
         "unmatched": len(unmatched),
         "auxiliary": len(auxiliary),
         "conflicts": len(conflict_records),
+        "filtered_captures": filtered_count,
         "inflight": inflight_count,
         "tasks": len(task_summary),
         "session_message_ids": len(session_index),

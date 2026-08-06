@@ -207,6 +207,41 @@ python finalize.py \
 缺失时从 `subagents/agent-<id>.jsonl` 文件名提取。相邻时间、客户端 IP 和
 prompt 内容都不参与关联。
 
+### Harbor jobs 目录使用 `finalize-harbor.py`
+
+如果 Harbor 输出没有 `tasks/` 中间层，而是以下结构：
+
+```text
+<job-root>/
+├── <task_id>/
+│   ├── agent/sessions/projects/**/*.jsonl
+│   └── verifier/reward.txt
+├── config.json
+└── result.json
+```
+
+使用专用脚本：
+
+```bash
+python finalize-harbor.py \
+  --capture-dir ./capture_logs/run_20260803 \
+  --harbor-run-dir /data1/nfs/ztr/run/jobs/2026-08-03__10-38-16 \
+  --output-dir ./dataset_output/run_20260803
+```
+
+job 根目录的每个直接子目录名会被完整用作 task ID，例如
+`cve-2010-5312__oGPeD8H`。脚本只在每个 task 的
+`agent/sessions/projects/` 下递归寻找主 session 和 subagent JSONL。
+
+如果只需要 verifier 成功的轨迹，增加：
+
+```bash
+--only-successful
+```
+
+启用后，仅保留 `<task_id>/verifier/reward.txt` 去除首尾空白后等于 `1` 的 task；
+内容为 `0`、文件缺失、无法读取或其他内容时均不转换该 task 的轨迹。
+
 输出目录必须不存在或为空，防止旧轮次残留导致数据混合。
 
 最终结构：
