@@ -14,6 +14,10 @@ python export_sharegpt.py \
 
 输出目录必须不存在或为空。
 
+每个 ShareGPT 文件使用 UTF-8 紧凑单行 JSON，与 `shili/sharegpt.json` 一致；
+文件末尾保留一个换行符。缩进和换行只影响文件展示，不改变 JSON 数据结构。
+修改位置在export_sharegpt的652 compact=True/False
+
 ## 输出结构
 
 ```text

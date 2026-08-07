@@ -647,7 +647,9 @@ def export_sharegpt(
                     reasoning_mode,
                     standard_structure,
                 )
-                write_json(task_output / f"{file_stem}.json", record)
+                # SFT 文件使用与 shili/sharegpt.json 相同的紧凑单行 JSON；代理原始
+                # 采集和 finalize 产物仍保持默认的缩进格式，便于人工审计。
+                write_json(task_output / f"{file_stem}.json", record, compact=True)
                 file_count += 1
 
     return {

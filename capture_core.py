@@ -33,12 +33,20 @@ def sha256_bytes(value: bytes) -> str:
     return "sha256:" + hashlib.sha256(value).hexdigest()
 
 
-def write_json(path: Path, value: Any) -> None:
-    """先写临时文件再替换，避免进程中断后留下半个 JSON。"""
+def write_json(path: Path, value: Any, *, compact: bool = False) -> None:
+    """先写临时文件再替换，避免进程中断后留下半个 JSON。
+
+    默认使用缩进格式，便于人工检查代理和 finalize 产物；``compact=True`` 时使用
+    无额外空白的单行 JSON，适合 ShareGPT/JSONL 风格的训练数据文件。两种模式都
+    保留 UTF-8 中文原文，并在文件末尾写一个换行符。
+    """
     path.parent.mkdir(parents=True, exist_ok=True)
     temporary = path.with_name(path.name + f".tmp-{uuid.uuid4().hex}")
     with temporary.open("w", encoding="utf-8", newline="\n") as handle:
-        json.dump(value, handle, ensure_ascii=False, indent=2)
+        if compact:
+            json.dump(value, handle, ensure_ascii=False, separators=(",", ":"))
+        else:
+            json.dump(value, handle, ensure_ascii=False, indent=2)
         handle.write("\n")
     os.replace(temporary, path)
 
