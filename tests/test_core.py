@@ -14,6 +14,13 @@ from capture_core import (
     write_json,
 )
 from finalize import CaptureRecord, final_request, final_response, finalize_dataset
+from export_sharegpt import (
+    RoundRecord,
+    build_sharegpt_record,
+    context_continues,
+    validate_hybrid_tool_call,
+    validate_hybrid_tool_definition,
+)
 from proxy import parse_args
 
 
@@ -404,6 +411,147 @@ class OutputPartsTests(unittest.TestCase):
             final_request(self.record, None, output_parts=["capture_id", "unknown"])
         with self.assertRaisesRegex(ValueError, "重复的顶层字段"):
             final_response(self.record, None, output_parts=["state", "state"])
+
+
+class ShareGPTExportTests(unittest.TestCase):
+    def _rounds(self):
+        tool = {
+            "name": "Bash",
+            "description": "执行命令",
+            "input_schema": {
+                "type": "object",
+                "properties": {"command": {"type": "string"}},
+            },
+        }
+        first_user = {
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "检查项目",
+                    "cache_control": {"type": "ephemeral"},
+                }
+            ],
+        }
+        first_response_content = [
+            {"type": "thinking", "thinking": "先查看目录"},
+            {
+                "type": "tool_use",
+                "id": "call_1",
+                "name": "Bash",
+                "input": {"command": "pwd"},
+            },
+        ]
+        first = RoundRecord(
+            number=1,
+            round_dir=Path("round_000001"),
+            request_body={
+                "model": "test-model",
+                "system": [
+                    {"type": "text", "text": "x-anthropic-billing-header: cch=aaa;"},
+                    {"type": "text", "text": "你是编码助手"},
+                ],
+                "tools": [dict(tool, cache_control={"type": "ephemeral"})],
+                "messages": [first_user],
+            },
+            response_message={"role": "assistant", "content": first_response_content},
+        )
+        second = RoundRecord(
+            number=2,
+            round_dir=Path("round_000002"),
+            request_body={
+                "model": "test-model",
+                "system": [
+                    {"type": "text", "text": "x-anthropic-billing-header: cch=bbb;"},
+                    {"type": "text", "text": "你是编码助手"},
+                ],
+                "tools": [tool],
+                "messages": [
+                    {"role": "user", "content": [{"type": "text", "text": "检查项目"}]},
+                    {
+                        "role": "assistant",
+                        "content": [
+                            {
+                                "type": "thinking",
+                                "thinking": "先查看目录",
+                                "signature": "",
+                            },
+                            first_response_content[1],
+                        ],
+                    },
+                    {
+                        "role": "user",
+                        "content": [
+                            {
+                                "type": "tool_result",
+                                "tool_use_id": "call_1",
+                                "content": "/workspace",
+                            }
+                        ],
+                    },
+                ],
+            },
+            response_message={
+                "role": "assistant",
+                "content": [
+                    {"type": "thinking", "thinking": "目录正确"},
+                    {"type": "text", "text": "检查完成"},
+                ],
+            },
+        )
+        return first, second
+
+    def test_nonsemantic_metadata_does_not_split_context(self):
+        first, second = self._rounds()
+        self.assertTrue(context_continues(first, second))
+        changed = RoundRecord(
+            number=second.number,
+            round_dir=second.round_dir,
+            request_body=dict(second.request_body, system="不同的系统提示"),
+            response_message=second.response_message,
+        )
+        self.assertFalse(context_continues(first, changed))
+
+    def test_hybrid_format_and_reasoning_modes(self):
+        first, second = self._rounds()
+        separate = build_sharegpt_record(
+            [first, second], "task__main__1", "separate"
+        )
+        inline = build_sharegpt_record([first, second], "task__main__1", "inline")
+
+        assistant_call = next(
+            message
+            for message in separate["messages"]
+            if message.get("tool_calls")
+        )
+        tool_call = assistant_call["tool_calls"][0]
+        self.assertEqual(tool_call["name"], tool_call["function"]["name"])
+        self.assertEqual(tool_call["arguments"], tool_call["function"]["arguments"])
+        validate_hybrid_tool_call(tool_call)
+        validate_hybrid_tool_definition(separate["tools"][0])
+
+        self.assertTrue(
+            any("reasoning_content" in message for message in separate["messages"])
+        )
+        self.assertFalse(
+            any("<think>" in message.get("content", "") for message in separate["messages"])
+        )
+        self.assertFalse(
+            any("reasoning_content" in message for message in inline["messages"])
+        )
+        self.assertTrue(
+            any("<think>" in message.get("content", "") for message in inline["messages"])
+        )
+
+    def test_conflicting_flat_alias_is_rejected(self):
+        bad_call = {
+            "type": "function",
+            "name": "Bash",
+            "arguments": {"command": "pwd"},
+            "function": {"name": "Bash", "arguments": {"command": "ls"}},
+        }
+        with self.assertRaisesRegex(ValueError, "arguments.*不一致"):
+            validate_hybrid_tool_call(bad_call)
 
 
 class ProxyIntegrationTests(unittest.IsolatedAsyncioTestCase):

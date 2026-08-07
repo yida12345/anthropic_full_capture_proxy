@@ -242,6 +242,87 @@ job 根目录的每个直接子目录名会被完整用作 task ID，例如
 启用后，仅保留 `<task_id>/verifier/reward.txt` 去除首尾空白后等于 `1` 的 task；
 内容为 `0`、文件缺失、无法读取或其他内容时均不转换该 task 的轨迹。
 
+## 导出混合兼容 ShareGPT SFT 文件
+
+`export_sharegpt.py` 接收 `finalize.py`、`finalize-harbor.py` 或
+`finalize-node.py` 的最终 `--output-dir`，读取其中的 `tasks/<task_id>/<agent>/round_*`：
+
+```bash
+python export_sharegpt.py \
+  --input-dir ./dataset_output/run_20260803 \
+  --output-dir ./sharegpt_output/run_20260803 \
+  --reasoning-mode separate
+```
+
+输出结构：
+
+```text
+sharegpt_output/run_20260803/
+└── <task_id>/
+    ├── main_agent_1.json
+    ├── main_agent_2.json
+    └── subagent_<agent_id>_1.json
+```
+
+同一个 agent 的相邻 round 在 model、实质 system、tools 和消息历史连续时合并；
+billing cch、`cache_control` 和 thinking `signature` 的变化不会误触发切分。发生真正
+的上下文压缩、历史替换或 system/tools/model 变化时，从该 round 开始生成下一个文件。
+
+工具调用同时包含两套等价字段：
+
+- Hugging Face/TRL 标准的 `type/function` 嵌套结构；
+- `shili/sharegpt.json` 使用的扁平 `name/arguments` 兼容别名。
+
+标准嵌套字段是事实源，程序在写出前检查两套字段完全一致。工具定义同样同时包含
+标准 `function.name/description/parameters` 和扁平别名。
+
+`--reasoning-mode` 支持：
+
+- `separate`（默认）：thinking 写入 assistant 的 `reasoning_content`，最终文本写入
+  `content`；适合明确读取该字段的 chat template。
+- `inline`：thinking 写成 `<think>...</think>` 并拼到 `content` 前面，不再输出
+  `reasoning_content`；适合使用 think token 的模型模板。
+
+输出目录必须不存在或为空。遇到 partial 响应、缺少 `body.json`/`message`、无法
+关联的 tool result、未知或非文本 content block 时会报错，不会静默生成有损 SFT 数据。
+
+### Node/worker 目录使用 `finalize-node.py`
+
+如果采集任务采用下面的 node/worker 布局：
+
+```text
+<node>/
+└── worker*/
+    ├── logs/
+    │   └── <task_id>/logs/projects/**/*.jsonl
+    └── result/
+        └── <task-prefix>_<run-hash>.log
+```
+
+把单个 node 目录传给专用脚本：
+
+```bash
+python finalize-node.py \
+  --capture-dir ./capture_logs/run_20260805 \
+  --harbor-run-dir /path/to/node0 \
+  --output-dir ./dataset_output/node0
+```
+
+例如任务目录 `arvo_10013-b4800b5cb2eb4314bff374befc95bd55` 对应 result 日志
+`arvo_10013_b4800b5cb2eb4314bff374befc95bd55.log`。脚本与
+`shili/print_result.py` 一样，从 result 文件名最后一个下划线处分隔并用连字符
+还原任务目录名。
+
+只转换正确轨迹时增加：
+
+```bash
+--only-successful
+```
+
+正误判定严格使用 `print_result.py` 的状态码逻辑：忽略 `vul_exit_code == 0`
+的记录后取最后一次提交；漏洞版退出码不在 `{0, 71, 300}` 且修复版退出码为
+`0` 时才是 `correct`。result 缺失、状态码缺失及其他分类都不会作为成功轨迹输出。
+
 输出目录必须不存在或为空，防止旧轮次残留导致数据混合。
 
 最终结构：
