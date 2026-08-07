@@ -8,7 +8,8 @@
 python export_sharegpt.py \
   --input-dir ./dataset_output/run_20260803 \
   --output-dir ./sharegpt_output/run_20260803 \
-  --reasoning-mode separate
+  --reasoning-mode separate \
+  --standard-structure
 ```
 
 输出目录必须不存在或为空。
@@ -33,6 +34,17 @@ sharegpt_output/run_20260803/
 - `shili/sharegpt.json` 使用的扁平 `name/arguments` 兼容别名
 
 标准嵌套字段是事实源，程序在写出前检查两套字段完全一致。工具定义同样同时包含标准 `function.name/description/parameters` 和扁平别名。
+
+标准结构默认开启，也可以明确传入 `--standard-structure`。如果下游只接受
+`shili/sharegpt.json` 的示例扁平格式，使用：
+
+```bash
+--no-standard-structure
+```
+
+关闭后，`tool_calls` 只包含扁平 `name/arguments`，tools 只包含扁平
+`name/description/parameters`，tool 消息只包含 `role/content`。Reasoning 格式仍由
+独立的 `--reasoning-mode` 控制。
 
 ## reasoning 模式
 

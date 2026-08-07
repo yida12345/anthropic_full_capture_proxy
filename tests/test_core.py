@@ -553,6 +553,32 @@ class ShareGPTExportTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "arguments.*不一致"):
             validate_hybrid_tool_call(bad_call)
 
+    def test_standard_structure_can_be_disabled(self):
+        first, second = self._rounds()
+        flat = build_sharegpt_record(
+            [first, second],
+            "task__main__1",
+            "separate",
+            standard_structure=False,
+        )
+        assistant_call = next(
+            message
+            for message in flat["messages"]
+            if message.get("tool_calls")
+        )
+        self.assertEqual(
+            set(assistant_call["tool_calls"][0]),
+            {"name", "arguments"},
+        )
+        self.assertEqual(
+            set(flat["tools"][0]),
+            {"name", "description", "parameters"},
+        )
+        tool_result = next(
+            message for message in flat["messages"] if message["role"] == "tool"
+        )
+        self.assertEqual(set(tool_result), {"role", "content"})
+
 
 class ProxyIntegrationTests(unittest.IsolatedAsyncioTestCase):
     async def test_proxy_forwards_auth_stream_and_duplicate_headers(self):

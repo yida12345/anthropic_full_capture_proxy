@@ -2,8 +2,9 @@ from __future__ import annotations
 
 """把 finalize.py 生成的 task/agent/round 数据集导出为 SFT 对话文件。
 
-输出采用 Hugging Face/TRL 推荐的标准工具调用层级，同时保留示例 sharegpt.json
-使用的扁平 ``name/arguments`` 和 ``name/description/parameters`` 别名：
+默认输出 Hugging Face/TRL 推荐的标准工具调用层级，同时保留示例 sharegpt.json
+使用的扁平 ``name/arguments`` 和 ``name/description/parameters`` 别名。使用
+``--no-standard-structure`` 时，只生成示例扁平结构：
 
 * 标准读取端使用 ``tool_call.function`` 和 ``tool.function``；
 * 示例读取端继续使用对象外层的扁平字段；
@@ -230,7 +231,9 @@ def validate_hybrid_tool_call(tool_call: dict[str, Any]) -> None:
         raise ValueError("tool_call.arguments 与 tool_call.function.arguments 不一致")
 
 
-def make_hybrid_tool_call(block: dict[str, Any], description: str) -> dict[str, Any]:
+def make_tool_call(
+    block: dict[str, Any], description: str, standard_structure: bool
+) -> dict[str, Any]:
     call_id = block.get("id")
     name = block.get("name")
     arguments = block.get("input")
@@ -241,20 +244,25 @@ def make_hybrid_tool_call(block: dict[str, Any], description: str) -> dict[str, 
     if not isinstance(arguments, dict):
         raise ValueError(f"{description} 的 tool_use.input 必须是 JSON object")
 
-    canonical_arguments = copy.deepcopy(arguments)
-    tool_call = {
-        "id": call_id,
-        "type": "function",
-        # 以下两个扁平字段兼容 shili/sharegpt.json 的读取方式。
+    # 扁平字段始终存在，兼容 shili/sharegpt.json 的读取方式。
+    tool_call: dict[str, Any] = {
         "name": name,
-        "arguments": copy.deepcopy(canonical_arguments),
-        # function 是 Hugging Face/TRL 推荐的标准结构，也是事实源。
-        "function": {
-            "name": name,
-            "arguments": canonical_arguments,
-        },
+        "arguments": copy.deepcopy(arguments),
     }
-    validate_hybrid_tool_call(tool_call)
+    if standard_structure:
+        canonical_arguments = copy.deepcopy(arguments)
+        tool_call.update(
+            {
+                "id": call_id,
+                "type": "function",
+                # function 是 Hugging Face/TRL 推荐的标准结构，也是事实源。
+                "function": {
+                    "name": name,
+                    "arguments": canonical_arguments,
+                },
+            }
+        )
+        validate_hybrid_tool_call(tool_call)
     return tool_call
 
 
@@ -267,7 +275,9 @@ def validate_hybrid_tool_definition(tool: dict[str, Any]) -> None:
             raise ValueError(f"tool.{key} 与 tool.function.{key} 不一致")
 
 
-def make_hybrid_tool_definition(tool: dict[str, Any], index: int) -> dict[str, Any]:
+def make_tool_definition(
+    tool: dict[str, Any], index: int, standard_structure: bool
+) -> dict[str, Any]:
     name = tool.get("name")
     if not isinstance(name, str) or not name:
         raise ValueError(f"request.tools[{index}].name 必须是非空字符串")
@@ -280,21 +290,26 @@ def make_hybrid_tool_definition(tool: dict[str, Any], index: int) -> dict[str, A
     if not isinstance(parameters, dict):
         raise ValueError(f"request.tools[{index}] 的 input_schema/parameters 必须是对象")
 
-    canonical_parameters = copy.deepcopy(parameters)
-    result = {
-        "type": "function",
-        # 扁平字段兼容示例格式。
+    # 扁平字段始终存在，兼容示例格式。
+    result: dict[str, Any] = {
         "name": name,
         "description": description,
-        "parameters": copy.deepcopy(canonical_parameters),
-        # 标准嵌套字段是事实源。
-        "function": {
-            "name": name,
-            "description": description,
-            "parameters": canonical_parameters,
-        },
+        "parameters": copy.deepcopy(parameters),
     }
-    validate_hybrid_tool_definition(result)
+    if standard_structure:
+        canonical_parameters = copy.deepcopy(parameters)
+        result.update(
+            {
+                "type": "function",
+                # 标准嵌套字段是事实源。
+                "function": {
+                    "name": name,
+                    "description": description,
+                    "parameters": canonical_parameters,
+                },
+            }
+        )
+        validate_hybrid_tool_definition(result)
     return result
 
 
@@ -321,6 +336,7 @@ def text_from_blocks(value: Any, description: str) -> str:
 def convert_assistant_content(
     content: Any,
     reasoning_mode: str,
+    standard_structure: bool,
     tool_names_by_id: dict[str, str],
     description: str,
 ) -> dict[str, Any]:
@@ -350,9 +366,15 @@ def convert_assistant_content(
             has_thinking_block = True
             thinking_parts.append(thinking)
         elif block_type == "tool_use":
-            tool_call = make_hybrid_tool_call(block, f"{description}[{index}]")
-            call_id = tool_call["id"]
-            name = tool_call["function"]["name"]
+            tool_call = make_tool_call(
+                block,
+                f"{description}[{index}]",
+                standard_structure,
+            )
+            # 即使关闭标准结构，原始 id 仍在转换过程中用于关联 tool_result；
+            # 只是最终示例格式不把该 id 写入 JSON。
+            call_id = block["id"]
+            name = block["name"]
             previous_name = tool_names_by_id.get(call_id)
             if previous_name is not None and previous_name != name:
                 raise ValueError(f"同一 tool call id 对应不同工具名: {call_id}")
@@ -388,6 +410,7 @@ def convert_tool_result(
     block: dict[str, Any],
     tool_names_by_id: dict[str, str],
     description: str,
+    standard_structure: bool,
 ) -> dict[str, Any]:
     call_id = block.get("tool_use_id")
     if not isinstance(call_id, str) or not call_id:
@@ -396,6 +419,9 @@ def convert_tool_result(
     if name is None:
         raise ValueError(f"{description} 找不到对应的 tool_use: {call_id}")
     content = text_from_blocks(block.get("content", ""), f"{description}.content")
+    if not standard_structure:
+        # 严格保持 shili/sharegpt.json 的 tool 消息形态。
+        return {"role": "tool", "content": content}
     return {
         "role": "tool",
         "name": name,
@@ -409,6 +435,7 @@ def convert_user_content(
     content: Any,
     tool_names_by_id: dict[str, str],
     description: str,
+    standard_structure: bool,
 ) -> list[dict[str, Any]]:
     """保留 user text 与一个或多个 tool_result block 的原始先后顺序。"""
 
@@ -439,6 +466,7 @@ def convert_user_content(
                     block,
                     tool_names_by_id,
                     f"{description}[{index}]",
+                    standard_structure,
                 )
             )
         else:
@@ -448,7 +476,7 @@ def convert_user_content(
 
 
 def convert_history_messages(
-    messages: Any, reasoning_mode: str
+    messages: Any, reasoning_mode: str, standard_structure: bool
 ) -> tuple[list[dict[str, Any]], dict[str, str]]:
     """转换 request.messages，并返回已知 tool call id 到工具名的映射。"""
 
@@ -466,6 +494,7 @@ def convert_history_messages(
                     content,
                     tool_names_by_id,
                     f"request.messages[{index}].content",
+                    standard_structure,
                 )
             )
         elif role == "assistant":
@@ -473,6 +502,7 @@ def convert_history_messages(
                 convert_assistant_content(
                     content,
                     reasoning_mode,
+                    standard_structure,
                     tool_names_by_id,
                     f"request.messages[{index}].content",
                 )
@@ -508,6 +538,7 @@ def build_sharegpt_record(
     segment: list[RoundRecord],
     record_id: str,
     reasoning_mode: str,
+    standard_structure: bool = True,
 ) -> dict[str, Any]:
     """用连续 segment 最后一轮 request 历史加最后 response 构建完整对话。"""
 
@@ -522,13 +553,14 @@ def build_sharegpt_record(
         messages.append({"role": "system", "content": converted_system})
 
     history, tool_names_by_id = convert_history_messages(
-        request.get("messages"), reasoning_mode
+        request.get("messages"), reasoning_mode, standard_structure
     )
     messages.extend(history)
     messages.append(
         convert_assistant_content(
             last_round.response_message.get("content"),
             reasoning_mode,
+            standard_structure,
             tool_names_by_id,
             f"{last_round.round_dir}/response.message.content",
         )
@@ -536,7 +568,11 @@ def build_sharegpt_record(
 
     source_tools = request.get("tools", [])
     tools = [
-        make_hybrid_tool_definition(require_dict(tool, f"request.tools[{index}]"), index)
+        make_tool_definition(
+            require_dict(tool, f"request.tools[{index}]"),
+            index,
+            standard_structure,
+        )
         for index, tool in enumerate(require_list(source_tools, "request.tools"))
     ]
     return {
@@ -573,6 +609,7 @@ def export_sharegpt(
     input_dir: Path,
     output_dir: Path,
     reasoning_mode: str,
+    standard_structure: bool = True,
 ) -> dict[str, Any]:
     if reasoning_mode not in REASONING_MODES:
         raise ValueError(
@@ -608,6 +645,7 @@ def export_sharegpt(
                     segment,
                     record_id,
                     reasoning_mode,
+                    standard_structure,
                 )
                 write_json(task_output / f"{file_stem}.json", record)
                 file_count += 1
@@ -616,12 +654,17 @@ def export_sharegpt(
         "input_dir": str(input_dir.resolve()),
         "output_dir": str(output_dir.resolve()),
         "reasoning_mode": reasoning_mode,
+        "standard_structure": standard_structure,
         "tasks": task_count,
         "agents": agent_count,
         "rounds": round_count,
         "sharegpt_files": file_count,
         "context_splits": split_count,
-        "format": "hf-tool-calling-with-flat-aliases",
+        "format": (
+            "hf-tool-calling-with-flat-aliases"
+            if standard_structure
+            else "example-flat-tool-calling"
+        ),
     }
 
 
@@ -650,6 +693,20 @@ def parse_args(argv: Optional[list[str]] = None) -> argparse.Namespace:
             "inline: 使用 <think>...</think> 拼到 assistant.content；默认 separate"
         ),
     )
+    standard_group = parser.add_mutually_exclusive_group()
+    standard_group.add_argument(
+        "--standard-structure",
+        dest="standard_structure",
+        action="store_true",
+        help="生成标准 type/function 结构并同时保留示例扁平别名（默认）",
+    )
+    standard_group.add_argument(
+        "--no-standard-structure",
+        dest="standard_structure",
+        action="store_false",
+        help="关闭标准结构，只生成 shili/sharegpt.json 使用的示例扁平格式",
+    )
+    parser.set_defaults(standard_structure=True)
     return parser.parse_args(argv)
 
 
@@ -659,6 +716,7 @@ def main() -> None:
         input_dir=args.input_dir,
         output_dir=args.output_dir,
         reasoning_mode=args.reasoning_mode,
+        standard_structure=args.standard_structure,
     )
     print(json.dumps(report, ensure_ascii=False, indent=2))
 
