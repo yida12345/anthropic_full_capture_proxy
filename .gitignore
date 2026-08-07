@@ -2,5 +2,6 @@
 __pycache__/
 *.py[cod]
 capture_logs/
+sharegpt_output/
 dataset_output/
 .test_tmp/
