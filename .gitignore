@@ -4,4 +4,5 @@ __pycache__/
 capture_logs/
 sharegpt_output/
 dataset_output/
+shili/
 .test_tmp/
