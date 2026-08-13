@@ -597,6 +597,7 @@ def finalize_dataset(
     session_files: Optional[list[Path]] = None,
     task_context_resolver: Optional[Callable[[Path, Path], tuple[str, Path]]] = None,
     location_filter: Optional[Callable[[SessionLocation], bool]] = None,
+    task_output_group_resolver: Optional[Callable[[SessionLocation], str]] = None,
     request_output_parts: Optional[list[str]] = None,
     response_output_parts: Optional[list[str]] = None,
 ) -> dict[str, Any]:
@@ -613,6 +614,11 @@ def finalize_dataset(
     ``location_filter`` 在 capture 已通过 message.id 精确关联到 task 后执行；返回
     False 的轨迹不会写入 tasks、unmatched 或 conflicts。这一点适合实现“只保留
     reward=1 的成功轨迹”，且不会把已知的失败轨迹伪装成 unmatched。
+
+    ``task_output_group_resolver`` 可把已匹配的 task 写入输出根目录下的
+    指定分组目录，例如 ``successful/<task_id>`` 和 ``failed/<task_id>``。
+    分组名会经过与 task ID 相同的文件名安全处理。未传入时保持
+    原有的 ``tasks/<task_id>`` 布局。
 
     ``request_output_parts`` 和 ``response_output_parts`` 是实际输出白名单。未传时
     使用文件开头的 FINAL_REQUEST_PARTS / FINAL_RESPONSE_PARTS；未知或重复字段
@@ -703,14 +709,22 @@ def finalize_dataset(
         key = (location.task_id, location.actor_type, actor_id)
         matched.setdefault(key, []).append((capture, location))
 
-    tasks_root = output_root / "tasks"
     task_summary: dict[str, dict[str, Any]] = {}
+    task_folders: dict[str, Path] = {}
+    output_group_counts: dict[str, int] = {}
     matched_count = 0
 
     for (task_id, actor_type, actor_id), items in sorted(matched.items()):
         # round 首选 session assistant 记录时间排序，缺失时再使用文件/行号和采集时间。
         items.sort(key=round_sort_key)
-        task_folder = tasks_root / safe_component(task_id)
+        if task_output_group_resolver is None:
+            output_group = "tasks"
+        else:
+            output_group = safe_component(task_output_group_resolver(items[0][1]))
+        task_folder = output_root / output_group / safe_component(task_id)
+        previous_task_folder = task_folders.setdefault(task_id, task_folder)
+        if previous_task_folder != task_folder:
+            raise ValueError(f"同一 task 被分配到不同输出分组: {task_id}")
         actor_folder_name = (
             "main_agent"
             if actor_type == "main"
@@ -752,16 +766,16 @@ def finalize_dataset(
             )
             matched_count += 1
 
-        task_info = task_summary.setdefault(
-            task_id,
-            {
-                "task_id": task_id,
-                "task_dir": first_location.task_dir,
-                "harbor_agent_id": first_location.harbor_agent_id,
-                "agents": [],
-                "round_count": 0,
-            },
-        )
+        initial_task_info = {
+            "task_id": task_id,
+            "task_dir": first_location.task_dir,
+            "harbor_agent_id": first_location.harbor_agent_id,
+            "agents": [],
+            "round_count": 0,
+        }
+        if task_output_group_resolver is not None:
+            initial_task_info["output_group"] = output_group
+        task_info = task_summary.setdefault(task_id, initial_task_info)
         task_info["agents"].append(
             {
                 "actor_type": actor_type,
@@ -773,7 +787,10 @@ def finalize_dataset(
         task_info["round_count"] += len(items)
 
     for task_id, task_info in task_summary.items():
-        write_json(tasks_root / safe_component(task_id) / "task.json", task_info)
+        write_json(task_folders[task_id] / "task.json", task_info)
+        if task_output_group_resolver is not None:
+            group = task_info["output_group"]
+            output_group_counts[group] = output_group_counts.get(group, 0) + 1
 
     for capture in unmatched:
         write_capture_pair(
@@ -830,6 +847,8 @@ def finalize_dataset(
         "duplicate_capture_message_ids": len(duplicate_capture_ids),
         "session_scan": session_stats,
     }
+    if task_output_group_resolver is not None:
+        report["task_output_groups"] = output_group_counts
     write_json(output_root / "finalization_report.json", report)
     return report
 

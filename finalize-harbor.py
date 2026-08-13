@@ -5,7 +5,7 @@ from __future__ import annotations
 本脚本适配下面这种目录布局，其中 job 根目录的直接子目录名就是 task_id：
 
     <job-root>/<task_id>/agent/sessions/projects/**/*.jsonl
-    <job-root>/<task_id>/verifier/reward.txt
+    <job-root>/result.json
 
 HTTP capture 与 session 的关联算法复用 finalize.py，仍然只通过 message.id 精确匹配。
 """
@@ -46,30 +46,47 @@ FINAL_RESPONSE_PARTS = [
 ]
 
 
-def reward_content_is_success(reward_content: str) -> bool:
-    """把 reward.txt 的字符串内容转换为任务是否成功。
+def load_result_reward_task_ids(result_path: Path) -> tuple[set[str], set[str]]:
+    """从 job 根目录的 result.json 读取 reward=1.0/0.0 的 task ID。"""
 
-    Harbor verifier 当前写入 ``0`` 或 ``1``。读取文件产生的首尾空白和换行会被
-    忽略；去除空白后严格等于 ``1`` 才返回 True，``0``、空内容和其他值均返回
-    False。将判断单独封装后，也可以直接对已读取的字符串做单元测试。
-    """
-
-    return reward_content.strip() == "1"
-
-
-def read_task_success(task_dir: Path) -> bool:
-    """读取 ``<task_id>/verifier/reward.txt`` 并判断该 task 是否成功。
-
-    reward 文件不存在或无法读取时按失败处理。这样启用 ``--only-successful`` 后，
-    不会因为 verifier 结果缺失而错误保留轨迹。
-    """
-
-    reward_path = task_dir / "verifier" / "reward.txt"
     try:
-        reward_content = reward_path.read_text(encoding="utf-8")
-    except OSError:
-        return False
-    return reward_content_is_success(reward_content)
+        result = json.loads(result_path.read_text(encoding="utf-8"))
+    except OSError as exc:
+        raise ValueError(f"无法读取 Harbor result.json: {result_path}") from exc
+    except json.JSONDecodeError as exc:
+        raise ValueError(f"Harbor result.json 不是有效 JSON: {result_path}: {exc}") from exc
+
+    evals = result.get("stats", {}).get("evals")
+    if not isinstance(evals, dict):
+        raise ValueError(f"Harbor result.json 缺少 stats.evals: {result_path}")
+
+    successful: set[str] = set()
+    failed: set[str] = set()
+    found_reward = False
+    for eval_name, eval_result in evals.items():
+        if not isinstance(eval_result, dict):
+            continue
+        reward = eval_result.get("reward_stats", {}).get("reward")
+        if not isinstance(reward, dict):
+            continue
+        found_reward = True
+        for reward_key, destination in (("1.0", successful), ("0.0", failed)):
+            task_ids = reward.get(reward_key, [])
+            if not isinstance(task_ids, list) or not all(
+                isinstance(task_id, str) for task_id in task_ids
+            ):
+                raise ValueError(
+                    f"stats.evals.{eval_name}.reward_stats.reward.{reward_key} "
+                    "必须是 task ID 字符串数组"
+                )
+            destination.update(task_ids)
+
+    if not found_reward:
+        raise ValueError(f"Harbor result.json 中没有 reward_stats.reward: {result_path}")
+    # 成功只由 1.0 集合决定。即使 result.json 的聚合数据异常，导致某个
+    # task 同时出现在 1.0 和 0.0 中，也保留 1.0 的成功结论。
+    failed.difference_update(successful)
+    return successful, failed
 
 
 def discover_harbor_job_session_files(harbor_root: Path) -> list[Path]:
@@ -120,18 +137,22 @@ def harbor_job_task_context(path: Path, harbor_root: Path) -> tuple[str, Path]:
     return task_id, harbor_root / task_id
 
 
-def make_successful_location_filter() -> Callable[[SessionLocation], bool]:
-    """创建带缓存的成功 task 过滤器，避免每个 round 重复读取 reward.txt。"""
+def make_successful_location_filter(
+    successful_task_ids: set[str],
+) -> Callable[[SessionLocation], bool]:
+    """只保留 result.json 中 reward=1.0 的 task。"""
 
-    success_cache: dict[Path, bool] = {}
+    return lambda location: location.task_id in successful_task_ids
 
-    def is_successful(location: SessionLocation) -> bool:
-        task_dir = Path(location.task_dir)
-        if task_dir not in success_cache:
-            success_cache[task_dir] = read_task_success(task_dir)
-        return success_cache[task_dir]
 
-    return is_successful
+def make_result_output_group_resolver(
+    successful_task_ids: set[str],
+) -> Callable[[SessionLocation], str]:
+    """已关联 session 的 task 中，1.0 输出到 successful，其他输出到 failed。"""
+
+    return lambda location: (
+        "successful" if location.task_id in successful_task_ids else "failed"
+    )
 
 
 def parse_args(argv: Optional[list[str]] = None) -> argparse.Namespace:
@@ -162,7 +183,7 @@ def parse_args(argv: Optional[list[str]] = None) -> argparse.Namespace:
     parser.add_argument(
         "--only-successful",
         action="store_true",
-        help="只转换 verifier/reward.txt 内容为 1 的成功 task 轨迹",
+        help="只转换 result.json 中 reward=1.0 的成功 task 轨迹",
     )
     return parser.parse_args(argv)
 
@@ -170,8 +191,13 @@ def parse_args(argv: Optional[list[str]] = None) -> argparse.Namespace:
 def main() -> None:
     args = parse_args()
     session_files = discover_harbor_job_session_files(args.harbor_run_dir)
+    successful_task_ids, failed_task_ids = load_result_reward_task_ids(
+        args.harbor_run_dir / "result.json"
+    )
     location_filter = (
-        make_successful_location_filter() if args.only_successful else None
+        make_successful_location_filter(successful_task_ids)
+        if args.only_successful
+        else None
     )
     report = finalize_dataset(
         capture_root=args.capture_dir,
@@ -180,6 +206,9 @@ def main() -> None:
         session_files=session_files,
         task_context_resolver=harbor_job_task_context,
         location_filter=location_filter,
+        task_output_group_resolver=make_result_output_group_resolver(
+            successful_task_ids
+        ),
         # 显式传入本文件的白名单，使 finalize-harbor.py 可以独立控制输出字段。
         request_output_parts=FINAL_REQUEST_PARTS,
         response_output_parts=FINAL_RESPONSE_PARTS,
@@ -189,8 +218,24 @@ def main() -> None:
             "harbor_layout": "jobs/<task_id>/agent/sessions/projects",
             "only_successful": args.only_successful,
             "discovered_session_files": len(session_files),
+            # 这两项只是 result.json 中的分类清单大小，不是导出
+            # 轨迹数。实际轨迹数以 task_output_groups 为准；无 session
+            # 的异常 task 不会进入该统计。
+            "result_reward_catalog": {
+                "1.0": len(successful_task_ids),
+                "0.0": len(failed_task_ids),
+            },
+            "exported_trajectory_tasks": {
+                "successful": report.get("task_output_groups", {}).get(
+                    "successful", 0
+                ),
+                "failed": report.get("task_output_groups", {}).get("failed", 0),
+            },
         }
     )
+    # 即使某一类没有轨迹，也保持稳定的两目录输出结构。
+    (args.output_dir / "successful").mkdir(exist_ok=True)
+    (args.output_dir / "failed").mkdir(exist_ok=True)
     write_json(args.output_dir / "finalization_report.json", report)
     print(json.dumps(report, ensure_ascii=False, indent=2))
 
