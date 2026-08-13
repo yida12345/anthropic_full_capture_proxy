@@ -6,10 +6,10 @@
 
 ```bash
 python export_sharegpt.py \
-  --input-dir ./dataset_output/run_20260803 \
-  --output-dir ./sharegpt_output/run_20260803 \
+  --input-dir ./dataset_output/2026-08-06__16-10-23 \
+  --output-dir ./sharegpt_output/2026-08-06__16-10-23-shili-jincou \
   --reasoning-mode separate \
-  --standard-structure
+  --no-standard-structure
 ```
 
 输出目录必须不存在或为空。
