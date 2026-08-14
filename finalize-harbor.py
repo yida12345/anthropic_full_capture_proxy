@@ -151,7 +151,9 @@ def make_result_output_group_resolver(
     """已关联 session 的 task 中，1.0 输出到 successful，其他输出到 failed。"""
 
     return lambda location: (
-        "successful" if location.task_id in successful_task_ids else "failed"
+        "successful/tasks"
+        if location.task_id in successful_task_ids
+        else "failed/tasks"
     )
 
 
@@ -227,15 +229,17 @@ def main() -> None:
             },
             "exported_trajectory_tasks": {
                 "successful": report.get("task_output_groups", {}).get(
-                    "successful", 0
+                    "successful/tasks", 0
                 ),
-                "failed": report.get("task_output_groups", {}).get("failed", 0),
+                "failed": report.get("task_output_groups", {}).get(
+                    "failed/tasks", 0
+                ),
             },
         }
     )
     # 即使某一类没有轨迹，也保持稳定的两目录输出结构。
-    (args.output_dir / "successful").mkdir(exist_ok=True)
-    (args.output_dir / "failed").mkdir(exist_ok=True)
+    (args.output_dir / "successful" / "tasks").mkdir(parents=True, exist_ok=True)
+    (args.output_dir / "failed" / "tasks").mkdir(parents=True, exist_ok=True)
     write_json(args.output_dir / "finalization_report.json", report)
     print(json.dumps(report, ensure_ascii=False, indent=2))
 

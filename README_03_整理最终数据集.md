@@ -82,11 +82,18 @@ python finalize-harbor.py \
 
 job 根目录的每个直接子目录名会被完整用作 task ID，例如 `cve-2010-5312__oGPeD8H`。脚本只在每个 task 的 `agent/sessions/projects/` 下递归寻找主 session 和 subagent JSONL。
 
-成功判定使用 job 根目录 `result.json` 中 `stats.evals.*.reward_stats.reward`：只要 task ID 在 `"1.0"` 数组中就是成功，输出到 `successful/`；已关联 session 但不在 `"1.0"` 中的 task（包括 `"0.0"` 和运行异常）输出到 `failed/`。不再依赖 `<task_id>/verifier/reward.txt`。
+成功判定使用 job 根目录 `result.json` 中 `stats.evals.*.reward_stats.reward`：只要 task ID 在 `"1.0"` 数组中就是成功，输出到 `successful/tasks/`；已关联 session 但不在 `"1.0"` 中的 task（包括 `"0.0"` 和运行异常）输出到 `failed/tasks/`。不再依赖 `<task_id>/verifier/reward.txt`。
 
 `result.json` 不会用来凭 task ID 生成轨迹。异常 task 如果不存在 session，就无法与 capture 按 `message.id` 关联，因此不会导出，也不计入成功或失败轨迹数。
 
 如果只需要成功轨迹，增加 `--only-successful`；启用后只保留 `result.json` 中 reward 为 `1.0` 的 task。
+
+两个分组目录内都保留 `export_sharegpt.py` 要求的 `tasks/` 层级，因此可分别导出：
+
+```bash
+python export_sharegpt.py --input-dir <output-dir>/successful --output-dir <sharegpt-successful> --reasoning-mode separate
+python export_sharegpt.py --input-dir <output-dir>/failed --output-dir <sharegpt-failed> --reasoning-mode separate
+```
 
 ## 方案 C：node/worker 目录
 

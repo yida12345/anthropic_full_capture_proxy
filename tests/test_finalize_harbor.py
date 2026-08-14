@@ -62,8 +62,8 @@ class HarborResultClassificationTests(unittest.TestCase):
         )()
         unknown_location = type("Location", (), {"task_id": "no-reward"})()
 
-        self.assertEqual(resolver(success_location), "successful")
-        self.assertEqual(resolver(unknown_location), "failed")
+        self.assertEqual(resolver(success_location), "successful/tasks")
+        self.assertEqual(resolver(unknown_location), "failed/tasks")
 
     def test_task_without_session_is_not_exported_or_counted(self):
         with tempfile.TemporaryDirectory(dir=TEST_TMP_ROOT) as temporary:

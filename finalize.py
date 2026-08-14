@@ -720,8 +720,16 @@ def finalize_dataset(
         if task_output_group_resolver is None:
             output_group = "tasks"
         else:
-            output_group = safe_component(task_output_group_resolver(items[0][1]))
-        task_folder = output_root / output_group / safe_component(task_id)
+            raw_output_group = task_output_group_resolver(items[0][1])
+            output_group_parts = Path(raw_output_group).parts
+            if not output_group_parts or any(
+                part in ("", ".", "..") for part in output_group_parts
+            ):
+                raise ValueError(f"输出分组路径不合法: {raw_output_group!r}")
+            output_group = "/".join(
+                safe_component(part) for part in output_group_parts
+            )
+        task_folder = output_root.joinpath(*output_group.split("/"), safe_component(task_id))
         previous_task_folder = task_folders.setdefault(task_id, task_folder)
         if previous_task_folder != task_folder:
             raise ValueError(f"同一 task 被分配到不同输出分组: {task_id}")
