@@ -18,6 +18,7 @@ from export_sharegpt import (
     RoundRecord,
     build_sharegpt_record,
     context_continues,
+    export_sharegpt,
     validate_hybrid_tool_call,
     validate_hybrid_tool_definition,
 )
@@ -578,6 +579,41 @@ class ShareGPTExportTests(unittest.TestCase):
             message for message in flat["messages"] if message["role"] == "tool"
         )
         self.assertEqual(set(tool_result), {"role", "content"})
+
+    def test_incomplete_agent_is_skipped_and_reported(self):
+        with workspace_temporary_directory() as temporary:
+            root = Path(temporary)
+            input_root = root / "dataset"
+            output_root = root / "sharegpt"
+            round_dir = input_root / "tasks/task_a/main_agent/round_000001"
+            write_json(
+                round_dir / "request.json",
+                {"body": {"json": {"messages": []}}},
+            )
+            write_json(
+                round_dir / "response.json",
+                {
+                    "transport": {
+                        "aggregation_complete": False,
+                        "transport_error": "CancelledError: client disconnected",
+                        "client_disconnected": True,
+                        "aggregation_errors": [],
+                    },
+                    "message": {"content": []},
+                },
+            )
+
+            report = export_sharegpt(input_root, output_root, "separate")
+            errors = json.loads(
+                (output_root / "export_errors.json").read_text(encoding="utf-8")
+            )
+
+            self.assertEqual(report["skipped_agents"], 1)
+            self.assertEqual(report["sharegpt_files"], 0)
+            self.assertEqual(errors["error_count"], 1)
+            self.assertEqual(errors["errors"][0]["task"], "task_a")
+            self.assertTrue(errors["errors"][0]["details"]["client_disconnected"])
+            self.assertIn("CancelledError", errors["errors"][0]["details"]["transport_error"])
 
 
 class ProxyIntegrationTests(unittest.IsolatedAsyncioTestCase):

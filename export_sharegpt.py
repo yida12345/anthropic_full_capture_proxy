@@ -40,6 +40,15 @@ class RoundRecord:
     response_message: dict[str, Any]
 
 
+class IncompleteResponseError(ValueError):
+    """响应采集不完整；该 agent 可以跳过并记录到导出错误报告。"""
+
+    def __init__(self, message: str, path: Path, details: dict[str, Any]) -> None:
+        super().__init__(message)
+        self.path = path
+        self.details = details
+
+
 def read_json_object(path: Path) -> dict[str, Any]:
     """严格读取 JSON object；SFT 导出不静默跳过损坏数据。"""
 
@@ -70,14 +79,35 @@ def validate_completed_response(response: dict[str, Any], path: Path) -> None:
     """在完整性字段存在时拒绝 partial 或聚合未完成的响应。"""
 
     state = response.get("state")
+    transport = response.get("transport")
+    details = {
+        "state": state.get("state") if isinstance(state, dict) else None,
+        "aggregation_complete": (
+            transport.get("aggregation_complete") if isinstance(transport, dict) else None
+        ),
+        "transport_error": (
+            transport.get("transport_error") if isinstance(transport, dict) else None
+        ),
+        "client_disconnected": (
+            transport.get("client_disconnected") if isinstance(transport, dict) else None
+        ),
+        "aggregation_errors": (
+            transport.get("aggregation_errors") if isinstance(transport, dict) else []
+        ),
+    }
     if isinstance(state, dict):
         state_value = state.get("state")
         if isinstance(state_value, str) and state_value != "complete":
-            raise ValueError(f"响应不是 complete，不能用于 SFT: {path}: {state_value}")
+            raise IncompleteResponseError(
+                f"响应不是 complete，不能用于 SFT: {path}: {state_value}",
+                path,
+                details,
+            )
 
-    transport = response.get("transport")
     if isinstance(transport, dict) and transport.get("aggregation_complete") is False:
-        raise ValueError(f"SSE 聚合未完成，不能用于 SFT: {path}")
+        raise IncompleteResponseError(
+            f"SSE 聚合未完成，不能用于 SFT: {path}", path, details
+        )
 
 
 def load_round(round_dir: Path, number: int) -> RoundRecord:
@@ -623,6 +653,7 @@ def export_sharegpt(
     round_count = 0
     file_count = 0
     split_count = 0
+    errors: list[dict[str, Any]] = []
 
     for task_dir in sorted(path for path in tasks_root.iterdir() if path.is_dir()):
         agent_dirs = discover_agent_dirs(task_dir)
@@ -634,7 +665,19 @@ def export_sharegpt(
 
         for agent_dir in agent_dirs:
             agent_count += 1
-            rounds = load_agent_rounds(agent_dir)
+            try:
+                rounds = load_agent_rounds(agent_dir)
+            except IncompleteResponseError as exc:
+                errors.append(
+                    {
+                        "task": task_dir.name,
+                        "agent": agent_dir.name,
+                        "response_path": str(exc.path),
+                        "reason": str(exc),
+                        "details": exc.details,
+                    }
+                )
+                continue
             round_count += len(rounds)
             segments = split_rounds_by_context(rounds)
             split_count += max(0, len(segments) - 1)
@@ -652,6 +695,12 @@ def export_sharegpt(
                 write_json(task_output / f"{file_stem}.json", record, compact=True)
                 file_count += 1
 
+    error_report_path = output_dir / "export_errors.json"
+    write_json(
+        error_report_path,
+        {"error_count": len(errors), "errors": errors},
+    )
+
     return {
         "input_dir": str(input_dir.resolve()),
         "output_dir": str(output_dir.resolve()),
@@ -662,6 +711,8 @@ def export_sharegpt(
         "rounds": round_count,
         "sharegpt_files": file_count,
         "context_splits": split_count,
+        "skipped_agents": len(errors),
+        "error_report": str(error_report_path.resolve()),
         "format": (
             "hf-tool-calling-with-flat-aliases"
             if standard_structure
