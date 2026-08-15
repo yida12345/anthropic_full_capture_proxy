@@ -14,6 +14,36 @@ python export_sharegpt.py \
 
 输出目录必须不存在或为空。
 
+默认优先使用 `export_sharegpt.py`。它是严格导出器：只接受自身已经完整、结构合法的响应，适合正常采集的数据。
+
+如果上游流式 SSE 存在缺少 `content_block_start`、中途断流、空 content block 或幽灵 `tool_use` 等聚合异常，但客户端随后成功重试，或者后续请求历史保存了客户端实际接受的 assistant 消息，可以改用 `export_sharegpt_recovered.py`：
+
+```bash
+python export_sharegpt_recovered.py \
+  --input-dir ./dataset_output/2026-08-06__16-10-23 \
+  --output-dir ./sharegpt_output/2026-08-06__16-10-23-recovered \
+  --reasoning-mode separate
+```
+
+恢复版复用严格导出器的 ShareGPT 格式、上下文切分、reasoning 模式和工具调用校验，并额外生成 `recovery_report.json`。该报告逐条记录 task、agent、被处理的 round、恢复动作以及作为证据的下一 round；无法安全恢复的不完整响应仍按严格导出器的方式写入 `export_errors.json`，其他结构错误仍会直接终止导出。
+
+## 恢复版的证据和边界
+
+恢复版不是根据残缺 SSE 猜测缺失内容，只执行以下有事实证据支持的操作：
+
+- 相邻两个请求除 `stream` 和已知非语义元数据外完全相同，且后一个响应完整、可转换时，将前一个视为失败重试并丢弃，保留后一个成功响应。
+- 下一请求在相同 model、实质 system 和 tools 配置下完整保留了当前请求的消息前缀，并紧接着保存了 assistant 消息时，以这份客户端实际接受的 assistant 历史替换错误的流式聚合结果。
+- 响应已经收到 `message_stop`、`aggregation_complete=true`、`stop_reason=end_turn`，且包含非空正文时，可以删除与 `end_turn` 明确矛盾的空块或幽灵 `tool_use`，只保留合法的 text/thinking 块。
+
+以下情况不会恢复，仍按错误处理：
+
+- 残缺响应之后没有相邻成功重试，也没有后续请求历史可以证明其真实内容。
+- 相邻请求的模型、system、tools 或已有消息历史发生实质变化，无法证明它们属于同一次重试或同一上下文。
+- 后续重试本身仍不完整，或者证据中的 assistant content 不能通过严格导出器的结构校验。
+- `tool_use` 结束、没有非空正文或没有收到完整停止事件的末轮；恢复版不会自行补造工具名、参数、文本或停止原因。
+
+因此，恢复版恢复的是客户端最终接受并继续执行的有效轨迹，不保证还原已断流响应中从未到达代理或从未进入后续请求历史的原始内容。
+
 每个 ShareGPT 文件使用 UTF-8 紧凑单行 JSON，与 `shili/sharegpt.json` 一致；
 文件末尾保留一个换行符。缩进和换行只影响文件展示，不改变 JSON 数据结构。
 修改位置在export_sharegpt的652 compact=True/False

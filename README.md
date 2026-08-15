@@ -39,8 +39,11 @@ finalize.py / finalize-harbor.py / finalize-node.py
         │
         │ 可选
         ▼
-export_sharegpt.py
-  └─ 生成混合兼容 ShareGPT SFT 文件
+export_sharegpt.py / export_sharegpt_recovered.py
+  ├─ 严格导出完整响应
+  └─ 有重试或后续历史证据时恢复异常流式聚合
 ```
 
 代理只负责保证每个 HTTP 请求和它自己的响应不串。task、主 agent、子 agent 的语义归属由整理脚本在运行结束后从 Harbor session 精确恢复，因此不需要修改带任务前缀的 LLM 地址。
+
+恢复版导出器的适用场景、证据要求和不可恢复边界见[导出 ShareGPT SFT 数据](README_04_导出_ShareGPT.md#恢复版的证据和边界)。
