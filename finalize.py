@@ -15,6 +15,7 @@ from __future__ import annotations
 """
 
 import argparse
+import hashlib
 import json
 import re
 from dataclasses import dataclass, field
@@ -119,6 +120,9 @@ class SessionLocation:
     session_file: str
     source_files: list[str] = field(default_factory=list)
     fragment_count: int = 1
+    # Claude Code 的自动压缩会把同一个 assistant 事件同时写入主 session 和
+    # agent-acompact-*.jsonl。该内部字段只用于识别这种镜像，不写入最终 association。
+    fragment_identities: set[str] = field(default_factory=set, repr=False)
 
     def semantic_key(self) -> tuple[str, str, str, str]:
         return (
@@ -295,6 +299,52 @@ def subagent_id_from_path(path: Path) -> Optional[str]:
     return stem[6:] if stem.startswith("agent-") else stem
 
 
+def assistant_fragment_identity(
+    record: dict[str, Any], message: dict[str, Any]
+) -> Optional[str]:
+    """返回足以确认两个 JSONL assistant fragment 完全相同的稳定标识。
+
+    message.id 只标识一次模型响应，同一响应的 thinking/tool_use 等 fragment 会共用
+    message.id。因此这里同时要求 JSONL 事件 uuid 和 fragment message 内容相同，避免
+    把真正来自不同 agent 的同 ID 记录误判成自动压缩镜像。
+    """
+
+    event_uuid = record.get("uuid")
+    if not isinstance(event_uuid, str) or not event_uuid:
+        return None
+    canonical_message = json.dumps(
+        message,
+        ensure_ascii=False,
+        sort_keys=True,
+        separators=(",", ":"),
+    ).encode("utf-8")
+    digest = hashlib.sha256(canonical_message).hexdigest()
+    return f"{event_uuid}:{digest}"
+
+
+def is_acompact_location(location: SessionLocation) -> bool:
+    return bool(
+        location.actor_type == "subagent"
+        and location.agent_id
+        and location.agent_id.startswith("acompact-")
+    )
+
+
+def is_acompact_mirror(
+    previous: SessionLocation, current: SessionLocation
+) -> bool:
+    """判断两个不同 actor 位置是否是主 session 与自动压缩文件的同一事件。"""
+
+    if previous.task_id != current.task_id or previous.session_id != current.session_id:
+        return False
+    is_main_acompact_pair = (
+        previous.actor_type == "main" and is_acompact_location(current)
+    ) or (current.actor_type == "main" and is_acompact_location(previous))
+    if not is_main_acompact_pair:
+        return False
+    return bool(previous.fragment_identities & current.fragment_identities)
+
+
 def build_session_index(
     harbor_root: Path,
     *,
@@ -322,7 +372,13 @@ def build_session_index(
     """
     index: dict[str, SessionLocation] = {}
     conflicts: dict[str, list[SessionLocation]] = {}
-    stats = {"session_files": 0, "records": 0, "assistant_fragments": 0}
+    stats = {
+        "session_files": 0,
+        "records": 0,
+        "assistant_fragments": 0,
+        "acompact_mirror_message_ids": 0,
+    }
+    acompact_mirror_message_ids: set[str] = set()
     agent_id_cache: dict[Path, Optional[str]] = {}
 
     files_to_scan = (
@@ -393,6 +449,11 @@ def build_session_index(
                 first_line=line_number,
                 session_file=str(session_file.resolve()),
                 source_files=[str(session_file.resolve())],
+                fragment_identities={
+                    identity
+                    for identity in (assistant_fragment_identity(record, message),)
+                    if identity is not None
+                },
             )
 
             previous = index.get(message_id)
@@ -403,6 +464,7 @@ def build_session_index(
                 # CC 可能把同一模型响应拆成多条 assistant 事件；这里只增加碎片计数，不增加轮次。
                 previous.fragment_count += 1
                 previous.source_files.append(location.session_file)
+                previous.fragment_identities.update(location.fragment_identities)
                 if location.first_timestamp and (
                     not previous.first_timestamp
                     or location.first_timestamp < previous.first_timestamp
@@ -417,11 +479,21 @@ def build_session_index(
                     previous.first_line = location.first_line
                 continue
 
+            if is_acompact_mirror(previous, location):
+                # 自动压缩 transcript 是主 session 的镜像，不是独立执行轨迹。同一个
+                # JSONL 事件同时出现时优先保留 main；只存在于 acompact 的最终摘要响应
+                # 不会进入此分支，仍会作为压缩轮正常导出。
+                acompact_mirror_message_ids.add(message_id)
+                if location.actor_type == "main":
+                    index[message_id] = location
+                continue
+
             candidates = conflicts.setdefault(message_id, [previous])
             # 同一 message id 落在不同 task/session/agent 时绝不覆盖，交给 conflicts 输出。
             if location.semantic_key() not in {item.semantic_key() for item in candidates}:
                 candidates.append(location)
 
+    stats["acompact_mirror_message_ids"] = len(acompact_mirror_message_ids)
     return index, conflicts, stats
 
 

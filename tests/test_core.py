@@ -381,6 +381,138 @@ class FinalizerTests(unittest.TestCase):
                 (output_root / "tasks/task_a/subagent_sub1/round_000001/request.json").exists()
             )
 
+    def test_acompact_mirror_is_owned_by_main_without_hiding_compact_response(self):
+        with workspace_temporary_directory() as temporary:
+            root = Path(temporary)
+            capture_root = root / "captures"
+            harbor_root = root / "harbor-run"
+            output_root = root / "dataset"
+            self._write_capture(capture_root, "cap_work", "msg_work")
+            self._write_capture(capture_root, "cap_compact", "msg_compact")
+
+            task_root = harbor_root / "tasks/task_a"
+            project = task_root / "logs/run/cc_session/.claude/projects/-workspace"
+            project.mkdir(parents=True)
+            mirrored_message = {
+                "id": "msg_work",
+                "content": [{"type": "text", "text": "work"}],
+            }
+            (project / "session-1.jsonl").write_text(
+                json.dumps(
+                    {
+                        "type": "assistant",
+                        "sessionId": "session-1",
+                        "uuid": "event-work",
+                        "isSidechain": False,
+                        "timestamp": "2026-01-01T00:00:01Z",
+                        "message": mirrored_message,
+                    }
+                )
+                + "\n",
+                encoding="utf-8",
+            )
+            subagents = project / "session-1/subagents"
+            subagents.mkdir(parents=True)
+            (subagents / "agent-acompact-auto.jsonl").write_text(
+                "\n".join(
+                    json.dumps(item)
+                    for item in (
+                        {
+                            "type": "assistant",
+                            "sessionId": "session-1",
+                            "uuid": "event-work",
+                            "agentId": "acompact-auto",
+                            "isSidechain": True,
+                            "timestamp": "2026-01-01T00:00:01Z",
+                            "message": mirrored_message,
+                        },
+                        {
+                            "type": "assistant",
+                            "sessionId": "session-1",
+                            "uuid": "event-compact",
+                            "agentId": "acompact-auto",
+                            "isSidechain": True,
+                            "timestamp": "2026-01-01T00:00:02Z",
+                            "message": {
+                                "id": "msg_compact",
+                                "content": [{"type": "text", "text": "summary"}],
+                            },
+                        },
+                    )
+                )
+                + "\n",
+                encoding="utf-8",
+            )
+
+            report = finalize_dataset(capture_root, harbor_root, output_root)
+
+            self.assertEqual(report["matched"], 2)
+            self.assertEqual(report["conflicts"], 0)
+            self.assertEqual(
+                report["session_scan"]["acompact_mirror_message_ids"], 1
+            )
+            main_request = json.loads(
+                (
+                    output_root
+                    / "tasks/task_a/main_agent/round_000001/request.json"
+                ).read_text("utf-8")
+            )
+            self.assertEqual(main_request["association"]["message_id"], "msg_work")
+            compact_request = json.loads(
+                (
+                    output_root
+                    / "tasks/task_a/subagent_acompact-auto/round_000001/request.json"
+                ).read_text("utf-8")
+            )
+            self.assertEqual(
+                compact_request["association"]["message_id"], "msg_compact"
+            )
+
+    def test_acompact_same_message_id_without_identical_event_remains_conflict(self):
+        with workspace_temporary_directory() as temporary:
+            root = Path(temporary)
+            capture_root = root / "captures"
+            harbor_root = root / "harbor-run"
+            output_root = root / "dataset"
+            self._write_capture(capture_root, "cap_shared", "msg_shared")
+
+            task_root = harbor_root / "tasks/task_a"
+            project = task_root / "logs/run/cc_session/.claude/projects/-workspace"
+            project.mkdir(parents=True)
+            (project / "session-1.jsonl").write_text(
+                json.dumps(
+                    {
+                        "type": "assistant",
+                        "sessionId": "session-1",
+                        "uuid": "event-main",
+                        "message": {"id": "msg_shared", "content": []},
+                    }
+                )
+                + "\n",
+                encoding="utf-8",
+            )
+            subagents = project / "session-1/subagents"
+            subagents.mkdir(parents=True)
+            (subagents / "agent-acompact-other.jsonl").write_text(
+                json.dumps(
+                    {
+                        "type": "assistant",
+                        "sessionId": "session-1",
+                        "uuid": "event-other",
+                        "agentId": "acompact-other",
+                        "isSidechain": True,
+                        "message": {"id": "msg_shared", "content": []},
+                    }
+                )
+                + "\n",
+                encoding="utf-8",
+            )
+
+            report = finalize_dataset(capture_root, harbor_root, output_root)
+
+            self.assertEqual(report["matched"], 0)
+            self.assertEqual(report["conflicts"], 1)
+
 
 class OutputPartsTests(unittest.TestCase):
     def setUp(self):
