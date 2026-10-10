@@ -24,6 +24,8 @@ python -m unittest discover -s tests -v
 - 采集初始化、请求/响应写盘、解析和收尾故障时仍保持正文、认证、状态码与重复响应头
 - 真实 TCP 流式转发与健康检查不等待被阻塞的采集线程
 - 采集积压与并发上限、关闭超时、短暂故障后的下一请求恢复采集
+- 自动归档调度、去重、批量/年龄限制、校验/索引失败保护、清理重试、恢复后关联导出
+- 归档慢盘/失败不阻塞转发，恢复拒绝不安全 tar 成员、损坏和重复 capture
 
 ## 真实客户端和服务验收
 
@@ -39,7 +41,7 @@ python -m unittest discover -s tests -v
 ## 运维注意事项
 
 - 每次 Harbor run 使用独立 `--log-dir`。
-- 原始 `raw/` 是事实源，生成最终数据集后也不要删除。
+- 原始 `raw/` 是事实源；需要释放本地空间时使用[自动归档](README_08_自动归档.md)，校验后清理原件，保留归档包和客户端会话。
 - 定期检查 `finalization_report.json` 中的 `unmatched`、`conflicts` 和 `inflight`。
 - 采集在后台完成，整理前等待 `/healthz` 的 `capture.active = 0`，并核对 `failures` 与 `skipped`；两者非零时不能声称该次运行采集完整。
 - 采集故障继续转发，尽力保留 `partial` / `inflight` 和 `capture_error`。磁盘完全不可写时查看进程日志及健康接口，不能要求故障标记一定落盘。

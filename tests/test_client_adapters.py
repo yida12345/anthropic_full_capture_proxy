@@ -414,6 +414,60 @@ class SessionAdapterTests(unittest.TestCase):
             report = finalize_dataset(root / "captures", root / "sessions", root / "dataset", client="kimi")
             self.assertEqual((report["conflicts"], report["unmatched"], report["auxiliary"]), (1, 1, 0))
 
+    def test_kimi_wire_claim_blocks_history_retry_regardless_of_capture_order(self):
+        for accepted_first in (False, True):
+            with self.subTest(accepted_first=accepted_first), tempfile.TemporaryDirectory() as temporary:
+                root = Path(temporary)
+                write_jsonl(root / "sessions/s/wire.jsonl", [
+                    {"message": {"type": "StatusUpdate", "payload": {"message_id": "accepted"}}}])
+                write_jsonl(root / "sessions/s/context.jsonl", [
+                    {"role": "user", "content": "question"},
+                    {"role": "assistant", "content": "answer"},
+                    {"role": "user", "content": "next question"},
+                    {"role": "assistant", "content": "next answer"}])
+                for identifier in (("accepted", "retry") if accepted_first else ("retry", "accepted")):
+                    capture(root, {"model": "test-model", "messages": [{"role": "user", "content": "question"}]},
+                        chat_response(identifier, "answer"))
+                # 同一会话的其它轮次仍可使用 context 回退，不能禁用整个 session。
+                capture(root, {"model": "test-model", "messages": [
+                    {"role": "user", "content": "question"}, {"role": "assistant", "content": "answer"},
+                    {"role": "user", "content": "next question"}]}, chat_response("next", "next answer"))
+                report = finalize_dataset(root / "captures", root / "sessions", root / "dataset", client="kimi")
+                self.assertEqual((report["matched"], report["conflicts"], report["unmatched"]), (2, 1, 0))
+                exported = export_sharegpt_recovered(root / "dataset", root / "export", "separate")
+                self.assertEqual(exported["rounds"], 2)
+                records = [json.loads(line) for line in (root / "export/sharegpt.jsonl").read_text().splitlines()]
+                self.assertCountEqual([record["messages"][-1]["content"] for record in records],
+                                      ["answer", "next answer"])
+
+    def test_kimi_wire_claim_does_not_reserve_another_session(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            for sid in ("s1", "s2"):
+                write_jsonl(root / "sessions" / sid / "context.jsonl", [
+                    {"role": "user", "content": "same"}, {"role": "assistant", "content": "same"}])
+            write_jsonl(root / "sessions/s1/wire.jsonl", [
+                {"message": {"type": "StatusUpdate", "payload": {"message_id": "accepted"}}}])
+            for identifier, sid in (("accepted", "s1"), ("independent", "s2")):
+                capture(root, {"model": "test-model", "prompt_cache_key": sid,
+                    "messages": [{"role": "user", "content": "same"}]}, chat_response(identifier, "same"))
+            report = finalize_dataset(root / "captures", root / "sessions", root / "dataset", client="kimi")
+            self.assertEqual((report["matched"], report["conflicts"]), (2, 0))
+
+    def test_kimi_partial_id_claim_still_reserves_complete_native_answer(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            write_jsonl(root / "sessions/s/context.jsonl", [
+                {"role": "user", "content": "question"}, {"role": "assistant", "content": "answer"}])
+            write_jsonl(root / "sessions/s/wire.jsonl", [
+                {"message": {"type": "StatusUpdate", "payload": {"message_id": "accepted"}}}])
+            capture(root, {"model": "test-model", "messages": [{"role": "user", "content": "question"}]},
+                chat_response("accepted", "answer", finish=None))
+            capture(root, {"model": "test-model", "messages": [{"role": "user", "content": "question"}]},
+                chat_response("retry", "answer"))
+            report = finalize_dataset(root / "captures", root / "sessions", root / "dataset", client="kimi")
+            self.assertEqual((report["matched"], report["conflicts"]), (1, 1))
+
     def test_hermes_sqlite_tool_rounds_and_subagent_export(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)

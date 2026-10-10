@@ -57,6 +57,10 @@ python proxy.py
 
 配置示例见 `config.example.env`。程序不会自动加载该文件，需要由 shell、Docker 或任务调度器注入。
 
+需要长期采集时可加 `--archive-dir`，并配置 `--archive-interval-seconds`、
+`--archive-min-age-seconds` 和 `--archive-batch-size`。默认只备份；使用
+`--archive-delete-source` 才会在归档校验后清理原件。配置及恢复见[自动归档](README_08_自动归档.md)。
+
 ## 3. 健康检查
 
 ```bash

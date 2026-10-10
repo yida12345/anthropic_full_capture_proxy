@@ -26,7 +26,8 @@ capture_logs/run_20260806/raw/
 原始 SSE。`response.json.message` 保留协议对应的 Anthropic Message、OpenAI
 `choices` 或 Responses `output`，是否完整由 state 与聚合状态判定。
 
-运行结束后不要删除 `raw/`；整理后的数据集可以从这些原始记录重新生成。
+运行结束后保留原始证据；可通过[自动归档](README_08_自动归档.md)压缩保存。
+已开启归档原件清理时，恢复完整批次后再整理，在线 `raw/` 可能只有近期轮次。
 
 ## Kimi / Hermes 的会话归档
 

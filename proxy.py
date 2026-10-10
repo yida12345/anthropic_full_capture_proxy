@@ -1,6 +1,7 @@
 import argparse
 import asyncio
 import json
+import math
 import os
 from contextlib import asynccontextmanager
 from dataclasses import dataclass
@@ -9,6 +10,7 @@ from typing import Any, AsyncIterator, Iterable, Optional
 
 from capture_core import RequestCapture, initialize_capture_root
 from capture_sink import CaptureManager
+from capture_archive import ArchiveManager
 
 
 # 逐跳 header 只对当前 TCP/HTTP 连接有效，代理不能把它们直接传给下一跳。
@@ -38,10 +40,26 @@ class Settings:
     timeout_seconds: float
     capture_buffer_bytes: int = 8 * 1024 * 1024
     capture_max_pending: int = 64
+    archive_dir: Optional[Path] = None
+    archive_interval_seconds: float = 3600
+    archive_min_age_seconds: float = 3600
+    archive_batch_size: int = 100
+    archive_delete_source: bool = False
 
     def __post_init__(self):
         if self.capture_buffer_bytes <= 0 or self.capture_max_pending <= 0:
             raise ValueError("采集缓冲区和并发采集上限必须大于零")
+        if (not math.isfinite(self.archive_interval_seconds) or self.archive_interval_seconds <= 0
+                or not math.isfinite(self.archive_min_age_seconds) or self.archive_min_age_seconds < 0
+                or self.archive_batch_size <= 0):
+            raise ValueError("归档间隔和批量必须大于零，最小年龄必须为非负有限数")
+        if self.archive_delete_source and self.archive_dir is None:
+            raise ValueError("清理归档源文件必须配置归档目录")
+        if self.archive_dir is not None:
+            raw = (self.log_dir / "raw").resolve()
+            target = self.archive_dir.resolve()
+            if target == raw or raw in target.parents:
+                raise ValueError("归档目录不能位于原始采集 raw 目录中")
 
 
 def filtered_headers(
@@ -91,6 +109,12 @@ def create_app(settings: Settings, upstream_transport: Any = None) -> Any:
             await asyncio.to_thread(initialize_capture_root, capture_root)
         except Exception as exc:
             app.state.capture_manager.report_failure("initialize", exc)
+        app.state.archive_manager = ArchiveManager(capture_root, settings.archive_dir,
+            interval_seconds=settings.archive_interval_seconds,
+            min_age_seconds=settings.archive_min_age_seconds,
+            batch_size=settings.archive_batch_size, delete_source=settings.archive_delete_source,
+            active_ids=lambda: [sink.capture.capture_id for sink in app.state.capture_manager.tasks.values()])
+        app.state.archive_manager.start()
         timeout = httpx.Timeout(settings.timeout_seconds, read=None)
         app.state.client = httpx.AsyncClient(
             timeout=timeout,
@@ -101,6 +125,7 @@ def create_app(settings: Settings, upstream_transport: Any = None) -> Any:
         try:
             yield
         finally:
+            await app.state.archive_manager.close()
             await app.state.client.aclose()
             await app.state.capture_manager.close()
 
@@ -113,6 +138,7 @@ def create_app(settings: Settings, upstream_transport: Any = None) -> Any:
             "upstream_url": settings.upstream_url,
             "capture_root": str(capture_root),
             "capture": app.state.capture_manager.metrics(),
+            "archive": app.state.archive_manager.metrics(),
         }
 
     @app.api_route(
@@ -277,6 +303,21 @@ def parse_args(argv: Optional[list[str]] = None) -> Settings:
     parser.add_argument("--capture-max-pending", type=int,
         default=int(os.getenv("CAPTURE_MAX_PENDING", "64")),
         help="后台采集任务上限，默认 64；超限跳过采集并继续转发")
+    parser.add_argument("--archive-dir", type=Path,
+        default=Path(os.environ["CAPTURE_ARCHIVE_DIR"]) if os.getenv("CAPTURE_ARCHIVE_DIR") else None,
+        help="自动归档目录；未配置时禁用，可用 CAPTURE_ARCHIVE_DIR")
+    parser.add_argument("--archive-interval-seconds", type=float,
+        default=float(os.getenv("CAPTURE_ARCHIVE_INTERVAL_SECONDS", "3600")),
+        help="归档检查间隔，默认 3600 秒；启动时立即检查一次")
+    parser.add_argument("--archive-min-age-seconds", type=float,
+        default=float(os.getenv("CAPTURE_ARCHIVE_MIN_AGE_SECONDS", "3600")),
+        help="采集收尾至少多久后允许归档，默认 3600 秒")
+    parser.add_argument("--archive-batch-size", type=int,
+        default=int(os.getenv("CAPTURE_ARCHIVE_BATCH_SIZE", "100")),
+        help="单次最多归档或清理的 capture 数，默认 100")
+    parser.add_argument("--archive-delete-source", action=argparse.BooleanOptionalAction,
+        default=os.getenv("CAPTURE_ARCHIVE_DELETE_SOURCE", "false").lower() in {"1", "true", "yes"},
+        help="校验归档并提交索引后清理已归档原件；默认 false，可用 --no-archive-delete-source 覆盖环境")
     args = parser.parse_args(argv)
     return Settings(
         listen_host=args.listen_host,
@@ -286,6 +327,11 @@ def parse_args(argv: Optional[list[str]] = None) -> Settings:
         timeout_seconds=args.timeout_seconds,
         capture_buffer_bytes=args.capture_buffer_bytes,
         capture_max_pending=args.capture_max_pending,
+        archive_dir=args.archive_dir,
+        archive_interval_seconds=args.archive_interval_seconds,
+        archive_min_age_seconds=args.archive_min_age_seconds,
+        archive_batch_size=args.archive_batch_size,
+        archive_delete_source=args.archive_delete_source,
     )
 
 

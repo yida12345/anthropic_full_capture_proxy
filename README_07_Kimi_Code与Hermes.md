@@ -102,6 +102,10 @@ python finalize.py \
 session ID 一致。只依赖主 Wire 的旧子事件如果没有持久 agent ID，不会用
 tool call ID 冒充 agent ID。
 
+同一原生轮次只允许证明一个 HTTP 响应。Wire 已按响应 ID 确认的 capture 会通过严格
+请求/答案匹配占用对应 context 轮次；另一条响应即使历史和文本相同，也会进入 conflicts，
+不会因改用历史回退而成为额外轮次。其它未被占用的轮次仍可按唯一完整历史关联。
+
 ## Hermes Agent
 
 以 OpenAI 兼容上游为例，在独立端口启动代理：

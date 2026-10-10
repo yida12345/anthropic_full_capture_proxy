@@ -10,6 +10,9 @@ Claude Code 默认按 session `message.id` 关联；Kimi 优先使用 Wire 响�
 报告失败，能保存的残缺记录保留在 `partial` / `inflight`。整理前等待后台采集完成并
 核对失败计数，具体参数与检查方法见[安装并启动代理](README_01_安装并启动代理.md)。
 
+可配置归档目录、执行间隔、最小保留时间与批量，在后台将已收尾采集打包为带哈希清单的
+`tar.gz`。可选校验后清理本地原件，并提供离线恢复工具，见[自动归档](README_08_自动归档.md)。
+
 ## 按运行顺序阅读
 
 1. [安装并启动代理](README_01_安装并启动代理.md)
@@ -19,6 +22,7 @@ Claude Code 默认按 session `message.id` 关联；Kimi 优先使用 Wire 响�
 5. [采集与关联机制](README_05_采集与关联机制.md)（参考）
 6. [测试与运维](README_06_测试与运维.md)（参考）
 7. [Kimi Code 与 Hermes 接入](README_07_Kimi_Code与Hermes.md)
+8. [自动归档与恢复](README_08_自动归档.md)
 
 ## 工作流程
 
@@ -61,7 +65,7 @@ export_sharegpt.py / export_sharegpt_recovered.py
 python -m unittest discover -s tests -v
 ```
 
-77 项自动化测试覆盖原有 Claude Code 路径、新客户端关联/导出、compact 和采集故障。
+112 项自动化测试覆盖原有 Claude Code 路径、新客户端关联/导出、compact、采集故障和自动归档。
 真实 Kimi/Hermes 文件工具及原生压缩已另行验收；受测版本和范围见
 [验收说明](tests/ACCEPTANCE.md)。文本、可见 reasoning 和 function 工具可导出；
 未知协议内容、缺失会话和非唯一证据保持未关联或拒绝有损导出。

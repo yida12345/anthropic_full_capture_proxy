@@ -435,6 +435,67 @@ def build_client_associations(captures: list[Any], root: Path, client: str, *, s
                 # 共享规范化历史并记录本轮结束位置，避免每轮复制全部前缀造成平方级内存。
                 histories.append((transcript, history, len(history), canonical, number, time, uid))
             history.extend(canonical)
+
+    def history_candidates(body, request, wanted, answer, message_id):
+        matches = {}
+        for transcript, history, end, canonical, number, time, uid in histories:
+            if not response_matches(canonical, answer, client) or end < len(wanted) or not history_matches(history[end - len(wanted):end], wanted, client):
+                continue
+            # 对已知 system/model 再做一致性检查，不忽略会改变语义的配置。
+            if client == "kimi" and transcript.system is not None:
+                system = normalize_request({"messages": [], "system": transcript.system}, ANTHROPIC)["system"]
+                if isinstance(system, str):
+                    system = [{"type": "text", "text": system}] if system else []
+                if canonical_messages([{"role": "system", "content": system}]) != canonical_messages([
+                    {"role": "system", "content": request.get("system", [])}]):
+                    continue
+            # Hermes 的 session model/system 是会话级快照，切换模型后不是旧轮次的事实源。
+            if client == "kimi" and body.get("prompt_cache_key") and body["prompt_cache_key"] != transcript.session_id:
+                continue
+            match = location(transcript, message_id, number, time, client, "exact_history")
+            # Hermes compaction 的同一 message_uid 可出现在多个物理行，不伪造额外轮次。
+            key = ((transcript.task_id, transcript.lineage_root, transcript.actor_id, uid)
+                if client == "hermes" and uid else (*match.semantic_key(), uid or number))
+            previous = matches.get(key)
+            # A rotation can copy one logical response into a child. Its UID
+            # remains the same: retain the original global DB row as witness.
+            if previous is None or number < previous.first_line:
+                matches[key] = match
+        return list(matches.values())
+
+    def normalized(capture):
+        body = capture_request_body(capture)
+        response = capture.response.get("message")
+        if not body or not isinstance(response, dict):
+            return None
+        protocol = capture.request.get("api_protocol") or infer_protocol(body, response)
+        request = normalize_request(body, protocol)
+        answer = canonical_messages([normalize_response(response, protocol)])
+        wanted = canonical_messages(request.get("messages", []))
+        return (body, request, wanted, answer) if wanted and answer else None
+
+    def witness(candidate):
+        return (candidate.session_file, candidate.first_line, candidate.semantic_key())
+
+    # Wire 与 context 的物理行不同。先用 ID 已确认响应的完整请求/答案，
+    # 严格映射同一 actor 的 context 轮次，避免扫描顺序决定强/弱证据的所有权。
+    claimed = defaultdict(set)
+    for capture in captures:
+        if client != "kimi" or not request_protocol_for_capture(capture):
+            continue
+        direct = direct_ids.get(capture.message_id, [])
+        if not direct:
+            continue
+        try:
+            values = normalized(capture)
+        except (ValueError, TypeError, KeyError):
+            continue
+        if values:
+            semantics = {candidate.semantic_key() for candidate in direct}
+            for candidate in history_candidates(*values, capture.message_id):
+                if candidate.semantic_key() in semantics:
+                    claimed[witness(candidate)].add(capture.capture_id)
+
     for capture in captures:
         if not request_protocol_for_capture(capture):
             continue
@@ -447,20 +508,14 @@ def build_client_associations(captures: list[Any], root: Path, client: str, *, s
             continue
         if capture.state.get("state") != "complete" or capture.response.get("aggregation_errors"):
             continue
-        body = capture_request_body(capture)
-        response = capture.response.get("message")
-        if not body or not isinstance(response, dict):
-            continue
-        protocol = capture.request.get("api_protocol") or infer_protocol(body, response)
         try:
-            request = normalize_request(body, protocol)
-            answer = canonical_messages([normalize_response(response, protocol)])
-            wanted = canonical_messages(request.get("messages", []))
+            values = normalized(capture)
         except (ValueError, TypeError, KeyError):
             stats["unsupported_captures"] += 1
             continue
-        if not wanted or not answer:
+        if values is None:
             continue
+        body, request, wanted, answer = values
         if client in {"kimi", "hermes"}:
             compact_candidates = []
             for transcript in transcripts:
@@ -478,39 +533,19 @@ def build_client_associations(captures: list[Any], root: Path, client: str, *, s
                 associations[capture.capture_id] = compact_candidates
                 stats["compact_matched"] += 1
                 continue
-        matches = {}
-        for transcript, history, end, canonical, number, time, uid in histories:
-            if not response_matches(canonical, answer, client) or end < len(wanted) or not history_matches(history[end - len(wanted):end], wanted, client):
-                continue
-            # 对已知 system/model 再做一致性检查，不忽略会改变语义的配置。
-            if client == "kimi" and transcript.system is not None:
-                system = normalize_request({"messages": [], "system": transcript.system}, ANTHROPIC)["system"]
-                if isinstance(system, str):
-                    system = [{"type": "text", "text": system}] if system else []
-                if canonical_messages([{"role": "system", "content": system}]) != canonical_messages([
-                    {"role": "system", "content": request.get("system", [])}]):
-                    continue
-            # Hermes 的 session model/system 是会话级快照，切换模型后不是旧轮次的事实源。
-            if client == "kimi" and body.get("prompt_cache_key") and body["prompt_cache_key"] != transcript.session_id:
-                continue
-            match = location(transcript, capture.message_id, number, time, client, "exact_history")
-            # Hermes compaction 的同一 message_uid 可出现在多个物理行，不伪造额外轮次。
-            key = ((transcript.task_id, transcript.lineage_root, transcript.actor_id, uid)
-                if client == "hermes" and uid else (*match.semantic_key(), uid or number))
-            previous = matches.get(key)
-            # A rotation can copy one logical response into a child. Its UID
-            # remains the same: retain the original global DB row as witness.
-            if previous is None or number < previous.first_line:
-                matches[key] = match
+        matches = history_candidates(body, request, wanted, answer, capture.message_id)
+        for match in matches:
+            if claimed[witness(match)] - {capture.capture_id}:
+                ambiguity[capture.capture_id] = "session_round_claimed_by_wire_message_id"
         if matches:
-            associations[capture.capture_id] = list(matches.values())
+            associations[capture.capture_id] = matches
             stats["history_matched"] += 1
     # 一个 transcript round 不能同时证明多个不同 HTTP 响应属于它。
     witnesses: dict[tuple, list[str]] = defaultdict(list)
     for capture_id, candidates in associations.items():
         for candidate in candidates:
             if candidate.association_method in {"exact_history", "kimi_compaction_boundary", "hermes_compaction_boundary"}:
-                key = (candidate.session_file, candidate.first_line, candidate.semantic_key())
+                key = witness(candidate)
                 witnesses[key].append(capture_id)
     for capture_ids in witnesses.values():
         if len(set(capture_ids)) > 1:
